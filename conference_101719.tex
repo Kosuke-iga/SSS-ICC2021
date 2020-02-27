@@ -55,26 +55,27 @@ component, formatting, style, styling, insert
 Rogue AP (rAP) detection methods are mainly classified into two categories: fingerprint-based schemes and transmission-based schemes.
 Fingerprint-based schemes focus on the features of a predefined authorized AP itself such as MAC address, channel, RSSI, and clock skew.
 The collected features are then compared with previously known features of legitimate APs to determine the legitimacy of a given AP with the equipment setup in each Wi-Fi network.
-For example, in \cite{snooping1}, \cite{snooping2},\cite{snooping3}, the MAC address of an AP is compared against addresses of legitimate APs for detection.
+In \cite{snooping1}, \cite{snooping2},\cite{snooping3}, the MAC address of an AP is compared against addresses of legitimate APs for detection.
 An unknown MAC address indicates that an AP is rogue.
 Also, other factors like RSSI \cite{rssi1}, \cite{rssi2}, clock skew \cite{clock1}, \cite{clock2}, or channel \cite{channel1} are used to fingerprint rAPs.
-However, these schemes are easily enable an attacker to avoid because the features, including MAC address, are well known that they can be spoofed.
+However, these schemes are easily avoided by an attacker because the features, including MAC address, are spoofed.
 
-In order not to be avoided by attackers, transmission-based schemes focus on the fact that the route in the wireless local area network (WLAN) while being attacked has an extra hop to the rAP instead of the fingerprints of AP which can be easily spoofed.
+In order to deal with the evasion, transmission-based schemes focus on the fact that the route in the wireless local area network (WLAN) while being attacked has an extra hop to the rAP instead of the fingerprints of AP which can be easily spoofed.
 Nikbakhsh et al. \cite{traceroute} compares the routes that a packet travels in the LAN to determine whether an AP is legitimate or not.
 If the traceroute indicates an extra hop, which is proof of the evil twin attack.
-Although this scheme can work in the network topology which has no legitimate wireless range extender (RE) , the LANs have RE especially in the large
- area where a lot of users are such as airports.
-In such LANs, the scheme cause false alarms because it is not able to distinguish RE and rAP.
+Although that scheme can work in the network topology which has no legitimate wireless range extender (RE) the LANs have RE especially in the large area such as airports.
+In such LANs, that scheme cause false alarms because it is not able to distinguish RE and rAP.
 Similarly, \cite{rtt}, \cite{iat} utilize the packet delay caused by the extra hop instead of the hop count in \cite{traceroute}.
 Han. et al. \cite{rtt} utilize round trip time (RTT) between the user and the DNS server to determine whether an AP is legitimite or not.
-Similarly, Yang et al. propose the detection method that uses a discriminative feature of inter-packet arrival time.
+Similarly, Yang et al. propose the detection scheme that uses a discriminative feature of inter-packet arrival time.
 These two techniques use packet delay of traffic caused by the extra hop to the rAP as a feature for detection.
 However, Jang et al. \cite{previous} reveal the fact that the computational power of the software bridging mainly accounted for the packet delay.
 Thus, these schemes which utilize the packet delay cannot detect hardware-based rAPs having little bridging delay unlike software-based rAPs.
 In fact, their experiments show that the shemes is not able to distinguish the legitimate AP and the hardware-based rAP.
-In order to detect both types of rAPs, software-based and hardware-based, \cite{previous} focus on the channel between the legitimate AP and the rAP, which is different from that used between the user device and the rAP so as not to interfere channel each other.
-This scheme detect rAP finding out these two channel with the throughput of the transmission from the user device to the gateway.
+In order to detect both types of rAPs, namely, software-based and hardware-based, \cite{previous} focuses on two communication channels utilized by a rAP between a user's device and legitimate AP (lAP), respectively.
+Although a rAP intervene between a user's device and lAP, two distinct channels are used to reduce communication delay caused by channel interference each other.
+For example, channel 1 and 6 are used as the channel for a user's device and that for a lAP, respectively.
+That scheme detect rAP by finding out these two channel with the throughput of the transmission from the user device to the gateway.
 Although these two channels are always shown up because of the extra hop regardless of the rAP device, the throughput used for finding them out is largely dependent on the network connection.
 Thus, following these transmission-based schemes, it is necessary to design the scheme which enable to detect rAP regardless on each network environment such as a topology and a transmission quality.
 

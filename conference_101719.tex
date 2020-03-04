@@ -120,8 +120,8 @@ Thus, it cannot be detected because hardware-based APs do not cause a computatio
 \subsection{Previous Scheme}
 \subsubsection{Overview of the Previous Scheme}
 The main idea of the previous scheme \cite{previous} is that the adversary needs to use two distinct communication channels on the path from user's device to the DNS server to avoid channel interference each other: one for the path between lAP and rAP and the other for that betweeen rAP and user's device.
-Thus, from the perspective of the user's device, there exists another channel on the route different from that the device uses between the connected AP. 
-Since the throughput value is dependent on the traffic on the path, the channel which is used between a lAP and rAP and not able to be seen direclty from the user's device can be detected as a decline in the throughput by saturating that path.
+Thus, from the perspective of the user's device, there exists another channel on the route different from a channel the device uses with the connected AP. 
+Since the throughput value is dependent on the traffic on the path, the channel which is used between a lAP and rAP and not able to be seen directly from the user's device can be detected as a decline in the throughput by saturating that path.
 For example, when a user's device is using channel 1 with the targeted AP which cannot be judged to be legitimacy, the user-side device introduced for intentional channel interference transmit several packets with all the channel except channel 1 to saturate the path.
 If there exists the other channel on the route, the decline in the throughput can be observed by the user's device.
 

@@ -54,17 +54,18 @@ component, formatting, style, styling, insert
 IP見ればすぐわかるから攻撃者はMITMパターンできますよっていう説明
 \section{RELATED WORKS}
 Rogue AP (rAP) detection methods are mainly classified into two categories: network administrator side detections and user side detections.
-Network administrator side detections focus on the physical device's features such as RSSI and clock skew which cannot be spoofed by an adversary unlike MAC address.
-RAP can be detected compared with the features in the whitelist predefined with equipment setup such as a traffic sensor in each Wi-Fi network.
+Network administrator side detections focus on the physical device's features such as Received Signal Strength Indication (RSSI) and clock skew which cannot be spoofed by an adversary unlike MAC address.
+RAP can be detected by comparing with the features in the predefined whitelist with equipment setup such as a traffic sensor in each Wi-Fi network.
 
 Wu et al. \cite{prapd} utilize the RSSI as the feature for whitelist which is a measurement hard to forge arbitrarily and highly correlated to the transmitter's location and power. 
 An AP which has different RSSI but same MAC address from that in the whitelist shows it is a rAP with spoofed MAC address set by an adversary at different location.
 However, it is hard to detect rAP which has no big difference in location because RSSI is not as microscopic as it can tell a small difference of the nearby location. 
-Although it is useful as a supplementary feature, using only RSSI is insufficient to detect a rAP with high accuracy.
+%Although it is useful as a supplementary feature, using only RSSI is insufficient to detect a rAP with high accuracy.
 
 In order to detect in more detail, Lanze et al. \cite{clockskew} focus on clock skew as a device fingerprinting based purely on physical properties.
 Clock skew is an unvoidable physical phenomenon that causes crystal oscillator based clocks to run with minuscule yet measurable deviations in speed.
-However, these network administrator side detections are inapplicable to Wi-Fi hotspots because they have little motivation to guarantee no attacks nor will setup additional sensors or install detection software in their infrastructure to collect each data or detect them besides free Internet service.
+However, these network administrator side detections are inapplicable to Wi-Fi hotspots because they have to setup additional sensors or install detection software in their infrastructure to prevent attacks besides providing free Internet service.
+Thus, the detection schemes that require no additional devices are desired.
 % of a predefined authorized AP itself such as MAC address, channel, RSSI, and clock skew.
 %The collected features are then compared with previously known features of legitimate APs to determine the legitimacy of a given AP with the equipment setup in each Wi-Fi network.
 %In \cite{snooping1}, \cite{snooping2},\cite{snooping3}, the MAC address of an AP is compared against addresses of legitimate APs for detection.
@@ -75,10 +76,10 @@ However, these network administrator side detections are inapplicable to Wi-Fi h
 
 Meanwhile, user side detections do not need Wi-Fi hotspot to be setup costly devices. 
 They focus on differences in the transmission characteristics caused by the extra hop to a rAP on the path between a lAP and user's device. 
-Such evil hop results in several measurable changes, compared with legitimate networks, in transmission characteristics such as Round Trip Time (RTT) and channel used between a user device and DNS server.
+Compared with legitimate networks, such evil hop results in several measurable changes in transmission characteristics such as Round Trip Time (RTT) and channel used between a user device and DNS server.
 
 Mustafa et al. \cite{rtt} differentiate rAPs and lAPs by measuring the RTT between the user device and the DNS server through different target APs (rAPs or lAPs).
-Because the evil hop, introduced by the rAP, is added on the path, this leads to a longer RTT than that of the victim directly connecting to the lAP.
+Because the evil hop introduced by the rAP is added on the path, RTT in this case is longer compared with the case where a user directly connects to the lAP.
 %In order to detect with the evasion, transmission-based schemes focus on the fact that the route in the wireless local area network (WLAN) while being attacked has an extra hop to the rAP instead of the fingerprints of AP which can be easily spoofed.
 %Nikbakhsh et al. \cite{traceroute} compares the routes that a packet travels in the LAN to determine whether an AP is legitimate or not.
 %If the traceroute indicates an extra hop, which is proof of the evil twin attack.
@@ -92,14 +93,14 @@ Because the evil hop, introduced by the rAP, is added on the path, this leads to
 %Similarly, Yang et al. propose the detection scheme that uses a discriminative feature of inter-packet arrival time.
 %These two techniques use packet delay of traffic caused by the extra hop to the rAP as a feature for detection.
 Although those schemes which utilize the packet delay are useful to the attack which the adversary set rAP up on the laptop for, Jang et al. \cite{previous} reveal the fact that the computational power of the software bridging mainly accounted for the packet delay.
-Thus, these schemes which utilize the packet delay cannot detect hardware-based rAPs having little bridging delay unlike software-based rAPs.
+Thus, the adversary can evade the packet delay based detection by utilizing hardware-based rAPs having little bridging delay unlike software-based rAPs.
 %In fact, their experiments show that the shemes is not able to distinguish the legitimate AP and the hardware-based rAP.
 
 In order to detect both types of rAPs, namely, software-based and hardware-based, \cite{previous} focuses on two communication channels utilized by a rAP between a user's device and lAP, respectively.
-Although a rAP intervene between a user's device and lAP, two distinct channels are used to reduce communication delay caused by channel interference each other.
-For example, channel 1 and 6 are used as the channel for a user's device and that for a lAP, respectively.
+Whereas a rAP intervene between a user's device and lAP, two distinct channels are used to reduce communication delay caused by channel interference each other.
+For example, it is assume that channel 1 is used as the channel between a user's device and a RAP, and channel 6 is that between a RAP and a LAP.
 That scheme detect rAP by finding out these two channels with the throughput of the transmission from the user's device to the DNS server.
-Although the throughput used for finding these two channels out is largely dependent on the network environment, that scheme is the most robust user side detection independent of the performance of the rAP currently because it is reasonable attack model to be setup hardware-based rAP by adversary.
+That scheme is the most robust user side detection which is independent of the performance of the rAP currently because it is reasonable attack model to be setup hardware-based rAP by adversary.
 %Although these two channels are always shown up because of the extra hop regardless of the rAP device, the throughput used for finding them out is largely dependent on the network environment.
 Thus, in this paper, we select \cite{previous} as a previous scheme and aim at proposing the user side detection which enable to detect rAP regardless on each network environment and performance of the rAP.
 
@@ -109,27 +110,28 @@ Thus, in this paper, we select \cite{previous} as a previous scheme and aim at p
 
 \section{ATTACK MODEL AND PREVIOUS SCHEME}
 \subsection{Attack Model}
-In an evil twin attack, the adversary sets up his AP using the SSID of the targeted Wi-Fi network and also MAC address cloned from one of the APs in the network.
+In an evil twin attack, the adversary sets up rAP using the SSID of the targeted Wi-Fi network and MAC address cloned from one of the APs in the network.
 As a result, a user's device receives SSID broadcast from both lAP and the rAP, but it cannot differentiate between these APs.
-The user's device simply assumes that both the APs are legitimate and associates with the one that has a higher RSSI value.
+The user's device simply assumes that both the APs are legitimate and connects with the one that has a higher RSSI value.
 We assume the model that a rAP relays WLAN traffic between a legitimate AP providing Internet connectivity and a user's device, and may act as a man-in-the-middle-attack.
-By avoiding to use mobile Internet access, e.g., 3G/4G, the adversary can evade detection with ISP names or Global IP addresses\cite{rtt}.
+By avoiding to use mobile Internet access, e.g., 3G/4G, the adversary can evade detection with Internet Services Provider (ISP) names or Global IP addresses\cite{rtt}.
 Also, we assume the adversary launched hardware-based APs which cannot be detected accurately by existing schemes because they do not cause a computational delay due to a software bridging.
 %Thus, it cannot be detected because hardware-based APs do not cause a computational delay by the software bridging.
 
 \subsection{Previous Scheme}
 \subsubsection{Overview of the Previous Scheme}
-The main idea of the previous scheme \cite{previous} is that the adversary needs to use two distinct communication channels on the path from user's device to the DNS server to avoid channel interference each other: one for the path between lAP and rAP and the other for that betweeen rAP and user's device.
-Thus, from the perspective of the user's device, there exists another channel on the route different from a channel the device uses with the connected AP. 
+The main idea of the previous scheme \cite{previous} is that the adversary needs to use two distinct communication channels on the path from user's device to the router to avoid channel interference each other: one for the path between lAP and rAP and the other for that betweeen rAP and user's device.
+Thus, from the perspective of the user's device, there exists another channel on the route different from the channel with the connected AP. 
 Since the throughput value is dependent on the traffic on the path, the channel which is used between a lAP and rAP and not able to be seen directly from the user's device can be detected as a decline in the throughput by saturating that channel.
 For example, when a user's device is using channel 1 with the targeted AP which cannot be judged to be legitimacy, the user-side device introduced for intentional channel interference transmit several packets with all the channel except channel 1 to saturate the path.
 If there exists the other channel on the route, the decline in the throughput can be observed by the user's device.
 
 \subsubsection{Shortcoming of the Previous Scheme}
-Although the previous scheme is successful in the detection for hardware-based rAP in the experimental environment, it cannot detect accurately in the real world because of various reasons such as mobility of the traffic, collisions, network topology changes, unintentional interference and so on.
-Although the previous scheme is able to detect a rAP with high accuracy in the environment whose traffic is stable, the real environment is unsteady and subject to changes which can lead to decline the accuracy.
+Although the previous scheme is successful in the detection for hardware-based rAP in the experimental environment, it cannot detect accurately in the real world because the throughput used for finding two channels out is largely dependent on various factors of the network environment such as mobility of the traffic, collisions, network topology changes, unintentional interference and so on.
+Since the traffic in real environment is unsteady, the previous scheme is subject to environmental changes which can lead to degrade the accuracy.
 Thus, it is necessary to propose the scheme which is independent of the traffic environment. 
-+悪魔の双子は中継器として機能するため従来手法までの検知手法では正規中継器と悪性中継器を識別できないためにit can be 誤検知
+Also, the previous scheme can consider incorrectly a legitimate repeater which uses distinct channels on the both sides as a rAP because of the decline in the throughput as with a rAP.
+%+悪魔の双子は中継器として機能するため従来手法までの検知手法では正規中継器と悪性中継器を識別できないためにit can be 誤検知
 
 
 \section{PROPOSED SCHEME}
@@ -174,7 +176,6 @@ The second and last procedures are repeatedly conducted for every MAC address ac
 In this procedure, MAC address of APs, including an AP directly connected, which exist in the communication range of a user's device and have SSID of the network a user is trying to use are collected by the user's device from beacon frame they are transmitting.
 ここで収集したMACアドレスをこう表す，直接接続はこう表す．
 It does not matter whether the rAP is spoofying its MAC address or not.
-このとき直接接続しているAPが攻撃端末でなりすましが行われていても今後の検知スキームには影響がない
 At this stage, if same MAC addresses are acquired, it means either of them clone another MAC address.
 Thus, using the network should be avoided whether it is on the same path or not because the risk of being attacked is extremely high. 
 In contrast, in the case an rAP clones the MAC address which the lAP far from the user's device has, the user's device cannot receive both of the MAC addesses.
@@ -186,11 +187,11 @@ In this procedure, the MAC address of the user's device is changed to one of the
 
 \subsubsection{ARP Observation}
 In this procedure, ARP is observed to search MAC address the lAP on the other side of the connected AP has if the user's device is attacked.
-ARP is a procedure always done at the beginning of the Wi-Fi communication for mapping IP address to MAC address in a LAN to establish communication to the Internet and composed two phases: ARP request, and ARP reply.
-ARP request is a packet sent by a user's device to a gateway i.e. router of the LAN at the beginning of the network communication. 
+ARP is a procedure always done at the beginning of the Wi-Fi communication for mapping IP address to MAC address in a LAN to establish communication to the Internet and composed of two phases: ARP request, and ARP reply.
+ARP request is a packet sent by a user's device to a gateway i.e. router of the LAN at the beginning of the network communication.
 Since MAC address is used for a destination address of a packet in LAN communication, the device cannnot communicate with the Internet, or even gateway, without the MAC address of the gateway.
 In order to acquire a MAC address of a gateway, ARP request packets, which includes source MAC address information, are sent to the gateway's IP address. 
-After the gateway get the packets from the device, ARP reply packets are sent by the gateway to the source device on the basis of the source MAC address included in ARP request packets, which can tell the gateway's MAC address by including it.
+After the gateway get the packet from the device, ARP reply packets are sent by the gateway to the source device on the basis of the source MAC address included in ARP request packets, which can tell the gateway's MAC address by including it as a source MAC address.
 Thus, if the user's device has same MAC address with that of the lAP on the same path to the gateway, it cannnot acquire the ARP reply because the lAP on the way back to the source of request, i.e. the user's device, can receive both packets which are sent to the two devices which have same MAC addresses.
 Although, in non attack scenario, a user's device can receive ARP replys no matter which MAC address it has acquired at the first procedure because there exists no several APs on the same path in the communication range.
 On the other hand, in attack scenario, since one of the MAC addresses acquired at the collection phase is same address with lAP on the path, it cannot acquire ARP replys in the case it is set to the MAC address at the last phase.

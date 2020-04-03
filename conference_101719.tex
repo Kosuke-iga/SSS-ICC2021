@@ -97,10 +97,10 @@ Although that scheme which leverages the packet delay are useful only for the at
 Thus, the adversary can evade the packet delay based detection by utilizing hardware-based RAPs having little bridging delay unlike software-based RAPs.
 %In fact, their experiments show that the shemes is not able to distinguish the legitimate AP and the hardware-based RAP.
 
-In order to detect both types of RAPs, namely, software-based and hardware-based, \cite{previous} focuses on two communication channels utilized by a RAP between a user's device and LAP, respectively.
+In order to detect both types of RAPs, namely, software-based and hardware-based ones, \cite{previous} focuses on two communication channels utilized by a RAP between a user's device and LAP.
 Whereas a RAP intervene between a user's device and LAP, two distinct channels are used to reduce communication delay caused by channel interference each other.
 For example, it is assume that channel 1 is used as the channel between a user's device and a RAP, and channel 6 is that between a RAP and a LAP.
-That scheme detect RAP by finding out these two channels with the throughput of the transmission from the user's device to the DNS server.
+That scheme detects RAP by finding out the presence of these two channels with the throughput of the transmission from the user's device to the DNS server.
 That scheme is the most robust user side detection which is independent of the performance of the RAP because it is the countermeasure against a reasonable attack model which hardware-based RAP is used.
 %Although these two channels are always shown up because of the extra hop regardless of the RAP device, the throughput used for finding them out is largely dependent on the network environment.
 Thus, we select \cite{previous} as the previous scheme.
@@ -112,18 +112,18 @@ In the next section, we elaborate the previous scheme.
 
 \section{ATTACK MODEL AND PREVIOUS SCHEME}
 \subsection{Attack Model}
-In an evil twin attack, the adversary sets up RAP using a SSID of a LAP in the targeted Wi-Fi network and MAC address cloned from one of the APs in the network.
+In an evil twin attack, the adversary sets up RAP which uses a SSID of a LAP in the targeted Wi-Fi network and MAC address cloned from one of the APs in the network.
 As a result, although a user's device receives SSID broadcast from both LAP and the RAP, it cannot differentiate between these APs.
 Thus, the user's device simply connects with the AP that has a higher RSSI value.
-We assume the model that a RAP relays WLAN traffic between a legitimate AP providing Internet connectivity and a user's device, which act as a man-in-the-middle-attack.
-By avoiding to use mobile Internet access, e.g., 3G/4G, the adversary can evade detection with Internet Services Provider (ISP) names or Global IP addresses\cite{rtt}.
+We assume the model that a RAP relays WLAN traffic between a LAP providing Internet connectivity and a user's device, which act as a ``man-in-the-middle-attack'' to steal private information of an user.
+By avoiding using mobile Internet access, e.g., 3G/4G, the adversary can evade detections with Internet Services Provider (ISP) names or Global IP addresses\cite{rtt}.
 In addition to that, we assume that the adversary exploits hardware-based APs which cannot be detected accurately by existing schemes since they do not cause a computational delay due to a software bridging.
 %Thus, it cannot be detected because hardware-based APs do not cause a computational delay by the software bridging.
 
 \subsection{Previous Scheme}
 \subsubsection{Overview of the Previous Scheme}
 The main idea of the previous scheme \cite{previous} is that the adversary needs to use two distinct communication channels on the path from user's device to the LAP to avoid channel interference each other.
-The one is the channel for the path between LAP and RAP, and the other is that for the path betweeen RAP and user's device.
+The one is the channel for the path between LAP and RAP, and the other is that for the path between RAP and the user's device.
 Thus, from the perspective of the user's device, there exists another channel on the route that is different from the channel with the connected AP.
 The extra channel cannot be observed directly from the user's device.
 Since the throughput value is dependent on the traffic on the path, the channel which is used between a LAP and RAP can be detected by a decline in the throughput.
@@ -134,8 +134,8 @@ If there exists the other channel on the route, the decline in the throughput ca
 \subsubsection{Shortcoming of the Previous Scheme}
 Although the previous scheme is successful in the detection for hardware-based RAP in the experimental environment, it cannot detect accurately in the real world.
 This is because throughput is considerably dependent on various factors of the network environment such as mobility of the traffic, collisions, network topology changes, and unintentional interference.
-Since the traffic in real environment is unsteady, the previous scheme is subject to environmental changes which can lead to degrade the accuracy.
-%Also, the previous scheme can consider incorrectly a legitimate repeater which uses distinct channels on the both sides as a RAP because of the decline in the throughput as with a RAP.
+Since the traffic in real environment is unsteady, the previous scheme is subject to environmental changes, which can lead to degrade the accuracy.
+Thus, the requirement that we must satisfy is to leverage factors which are independent of the network environment for the detection.
 %+悪魔の双子は中継器として機能するため従来手法までの検知手法では正規中継器と悪性中継器を識別できないためにit can be 誤検知
 
 
@@ -146,22 +146,30 @@ In the next subsection, the algorithm is described in detail.
 %Our goal of our scheme is to realize the user side detection which are independent of the features which are affected by a network environment and able to tell whether it is a legitimate repeater or RAP accurately.
 
 \subsection{Idea}
-The main idea of our scheme is that there exist two APs, namely, RAP and LAP, in the communication range of a user's device which are both on the same path from it to a LAP.
+The main idea of the proposed scheme is that there exist two APs, namely, RAP and LAP on the same path from a user' device to a LAP.
+Since this idea is independent of the network environment, it is useful for overcoming the shortcoming of the previous scheme.
 In general, a LAP is the only device which exists on the same path from a user's device to a gateway.
 In contrast, since a RAP act as a man-in-the-middle, there exists another AP, which is legitimate, on the other side of a connected AP in an attack scenario.
 Therefore, a connected AP can be revealed as a RAP when a LAP is detected on the other side of it.
 
-Based on this idea, our scheme reveal a LAP on the other side of a connected RAP by finding out its MAC address from beacon frames in the communication range of a user's device.
+On the basis of this idea, the proposed scheme reveals that a LAP is on the other side of a connected RAP by finding out the MAC address of LAP.
+In order to discover the MAC address of a LAP on the same path, we leverage the phenomenon that a user's device cannot receive Address Resolution Protocol (ARP) replay packets in the situation where there exist duplicate MAC addresses on the same path.
+The proposed scheme intentionally creates such situation by setting the MAC address of a user's device to the MAC addresses obtained from beacon frames of APs in the communication range of a user's device.
+Note that the MAC address of the AP with which a user's device connects is excluded from targets for setting MAC addresses.
+If the MAC address of a user's device is set to that of a LAP on the same path, a LAP receives ARP replay packets whose original destination is a user's device before a user's device receives them.
+Thus, since a user's device cannot receive ARP relay packets, it continues to resend ARP requests, which results in disabling internet connectivity.
+By observing the arrival of ARP replay packets, the proposed scheme can correctly reveal that there exists RAP and LAP on the path, which detects the attack.
+When a user's device connects with the RAP, there exists the MAC address of a LAP in the communication range of a user's device.
+This is because the RAP are located relatively near a LAP to avoid communication delay.
+Hence, we can inevitably obtain the MAC address of a LAP in the case where there exists the RPA in a network.
 %In order to reveal a LAP on the other side, our scheme finds out its MAC address from beacon frames in the communication range of a user's device.
-Although, it is assumed that there exist LAPs on the other path in a communication range of a user's device since several APs which have same SSID canbe deployed in a network.
-In order to solve this problem, our scheme observe ARP reply packets from a gateway whose original destination is a user's device, setting MAC address of a user's device to their MAC addresses on purpose.
-In a non attack scenario, a user's device can acquire evev if its MAC address is set to that of LAPs on the distnct paths.
-In contrast, in attack scenario, there exists a case that the ARP reply packets cannot be sent to a user's device when user's MAC address is set to that of the RAP.
-In other words, the same MAC address of the RAP is included as a destination of them in the packets.
-Since the ARP reply packets destinated originally to the user's device are go through the RAP on the same path at first, they result in being acquired by the RAP before being done by the user's device.
+In the real situation, it is possible that there exist several LAPs in a communication range of a user's device.
+Thus, we collect the only MAC addresses of APs which have the identical SSID to that of AP connected by a user's device.
+This is because RAP must utilize the SSID of LAP for pretending to be LAP.
+A user's device can receive ARP replay packets even if its MAC address is set to that of each LAP on the distinct paths.
+This is because the MAC addresses cannot be duplicated on the same path.
 
-By doing so, our scheme can reveal that there exists two APs on the path, detecting the attack.
-In addition to the independence of a real environment, our scheme is not affected by a spoofed MAC address because it focuses on a legitimate MAC address never spoofed.
+In addition to the independence of a real environment, the proposed scheme is not affected by a spoofed MAC address because it focuses on the only legitimate MAC address never spoofed.
 
 %正規中継器と攻撃者端末の違いをはっきりさせるための言い訳（Limitationでつかえるかも）
 %This is because several APs are already set to cover whole area in an appropriate arragement with several communication channel so that every user in the LAN can use Internet without overlapping each other's channel.
@@ -196,7 +204,7 @@ In addition to the independence of a real environment, our scheme is not affecte
 %ユーザとDNSサーバとの間の通信に直接関わる（経路上に存在する）端末MACアドレスがユーザ端末の受信範囲内に複数存在することに着目する．
 %→一体型でも従来同様検知可能・トラヒックによらない・正規中継器を誤検知しない
 \subsection{Algorithm}
-In this subsection, the algorithm for detection based on searching the MAC address of LAP on the same path is explained.
+In this subsection, the algorithm for detection based on searching the MAC addresses of LAP on the same path is explained.
 The algorithm consists of three procedures, 1) AP information collection, 2) setting MAC address on user's device, and 3) ARP observation.
 The second and last procedures are repeatedly conducted for every MAC address acquired in the first phase which is presented as 試行回数の数式．
 \subsubsection{AP Information Collection}

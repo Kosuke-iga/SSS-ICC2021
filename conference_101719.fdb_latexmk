@@ -1,9 +1,9 @@
 # Fdb version 3
-["dvipdf"] 1585726450 "conference_101719.dvi" "conference_101719.pdf" "conference_101719" 1585726450
-  "conference_101719.dvi" 1585726450 24228 fd1cc2d4adf269df4dffc6551069d11e "latex"
+["dvipdf"] 1585986109 "conference_101719.dvi" "conference_101719.pdf" "conference_101719" 1585986109
+  "conference_101719.dvi" 1585986109 25684 1a325b19b45f209ad614652c28a57f20 "latex"
   (generated)
   "conference_101719.pdf"
-["latex"] 1585726449 "conference_101719.tex" "conference_101719.dvi" "conference_101719" 1585726450
+["latex"] 1585986108 "conference_101719.tex" "conference_101719.dvi" "conference_101719" 1585986109
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1480098689 2172 fd0c924230362ff848a33632ed45dc23 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmbi7t.tfm" 1480098689 2228 e564491c42a4540b5ebb710a75ff306c ""
@@ -77,8 +77,8 @@
   "/usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf" 1522066949 33362 cf75436e19743e94a92a6b1b9183c434 ""
   "/usr/local/texlive/2018/texmf-var/web2c/eptex/platex.fmt" 1554957816 4475037 84866e383b237b72ed6743fa770b777c ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "conference_101719.aux" 1585726450 1831 53a2cb1efecded57d3fe8de8828b46b9 ""
-  "conference_101719.tex" 1585726447 26906 bdc4cbe69184ef65e203b16918a4a6a2 ""
+  "conference_101719.aux" 1585986109 1894 b5d02f5912d374d4b75eaffc1fc528ef ""
+  "conference_101719.tex" 1585986107 19543 15d34901c3a55e2f4bab91b9517a4626 ""
   (generated)
   "conference_101719.log"
   "conference_101719.dvi"

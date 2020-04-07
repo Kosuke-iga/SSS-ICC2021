@@ -144,37 +144,42 @@ In addition to that, the proposed scheme is not affected by a spoofed MAC addres
 
 \subsection{Algorithm}
 In this subsection, the algorithm for detection based on searching the MAC address of LAP on the same path is explained.
-The algorithm consists of three procedures, 1) AP information collection, 2) setting MAC address on user device, and 3) ARP observation.
-The second and last procedures are repeatedly conducted for every MAC address in  $AP_{all}=\{A_i|0\le i \le n_{all}\}$, where $n_{all}$ is the number of all APs acquired in the first   phase.
-Let $A_{target}$, $M_{A_{target}}$ and $S_{A_{target}}$ denote the targeted AP for detection which is directly connected, MAC address of $A_{target}$, and SSID of $A_{target}$, respectively.
+From this subsection, let \newcommand{\tarAP}{A_{target}}$\tarAP$ and \newcommand{\inputAP}{A_{input}}$\inputAP$ denote a targeted AP and input AP.
+In addition, a MAC address and SSID of $A_x$ are represented as $M_{A_x}$ and $S_{A_x}$, respectively.
+\newcommand{\tarMAC}{M_{A_{target}}} \newcommand{\tarSSID}{S_{A_{target}}} \newcommand{\userMAC}{M_{user\_device}}
 
-\subsubsection{AP Information Collection}
-In this procedure, the user device collects information of APs which exist in the communication range of a user device through beacon frames transmitted for establishment of communication.
-Among these, APs whose SSID is same with that of the targeted AP, namely $S_{target}$, are extracted.
-They are represented as $A_i$, whose MAC addresses are done as $M_{A_i}$.
-At this stage, if there exists the AP which satisfy the formula: $M_{A_i} = M_{A_{target}}$  among $MAC_{all}=\{M_i|0 \le i \le n_{all}\}$, which means either of them clones another, it is detected as a RAP.
+\subsubsection{Preparation for the detection}
+MAC addresses and SSIDs of APs are collected through beacon frames which exist in the communication range of a user device in preparation for the detection.
+Among them, APs whose SSIDs are identical to that of the targeted AP, namely \newcommand{\SSID}{S_{A_{target}}}$\SSID$, are extracted and represented as $AP_{all}=\{A_{input}|0\le input \le n_{all}\}$, where $n_{all}$ .
+
+\subsubsection{Flowchart of Our System}
+The algorithm consists of four procedures as shown in \ref{fig:flowchart}, which are 1) Comparison with $\tarMAC$, 2)Setting $\userMAC$ to \newcommand{\inputMAC}{M_{A_{input}}}$\inputMAC$ , 3)ARP request from a user device to a gateway and 4)Observation of ARP reply from the gateway to the user device.
+Note that they are repeatedly conducted for every MAC address in $APP_{all}$ unless a RAP is detected.
+
+\subsubsection{Comparison with $\tarMAC$}
+In the first phase, our system compares the $\inputMAC$ with the $\tarMAC$.
+If they are the same MAC address, namely $\inputMAC = \tarMAC$, it easily judges the either of them is RAP due to the cloned address.
 Thus, using the network should be avoided whether it is on the same path or not because the risk of being attacked is extremely high. 
-In contrast, in the case where a RAP clones the MAC address which the LAP far from the user device has or it does not clone, we cannot detect only by checking the accordance of MAC addresses.
-Thus the further investigation of the existence of another AP on the path is needed.
+However, in the case where a RAP clones the MAC address which the LAP far from the user device has or it does not clone, our system cannot detect only by checking the accordance of MAC addresses.
+Thus, the detection process goes to the next phase.
 
-\subsubsection{Setting MAC Address on user device}
-In this procedure, in order to reveal the existence of LAP which is connected on the other side of the targeted AP if  the user device is attacked, the situation is intentionally created where the MAC address of LAP is duplicated by the user device.
-Thus, the MAC address of user device is set to $M_{Ai}$ in preparation for the next procedure.
+\subsubsection{Setting $\userMAC$ to $\inputMAC$}
+In this phase, in order to reveal the existence of LAP which is connected on the other side of the targeted AP if the user device is attacked, $\userMAC$ is set to $\inputMAC$ in preparation for the next procedure.
 
-\subsubsection{ARP Observation}
-After the MAC address is set to $M_i$, the connection between the user device and $A_{target}$ is once lost since the gateway become unable to use original MAC address or $M_{i-1}$ as a destination for the packets.
-Therefore, the gateway needs to upgrade the ARP table, in which the sets of MAC addresses and IP addresses of all the devices in the network are registered, so as to continue the communication with it.
-Consequently, the ARP works automatically with new $M_i$ set to user device.
-Thus, in this procedure, these ARP packets are observed so as to investigate whether the $A_i$ is on the same path with the user device. ここってso as toの主語とメインの主語が異なるけど問題ないのかなぁ．
+\subsubsection{ARP Request from the User Device to the Gateway}
+After the MAC address is set to $\inputMAC$, the connection between the user device and $\tarAP$ is once lost since the gateway become unable to use original MAC address as a destination for the packets.
+Thus, the user device needs to send ARP request in order to reconnect with it through the $\tarAP$ automatically due to the stronger RSSI than any other $AP_{all}$.
 
+\subsubsection{Observation of ARP Reply from the Gateway to the User Device}
+Finally, in this procedure, the ARP reply packets, whose destination is set as $\inputMAC$, are observed in order to investigate whether the $\inputAP$ is on the same path with the user device.
+If the packets do not reach the user device, the $\tarAP$ can be revealed as a RAP, which exists between the user device and the $\inputAP$ and the detection procedure is finished.
+Otherwise, since the $\tarAP$ is judged that it is on the distinct path from the $\inputAP$ , the flow are repeated from the beginning with the next $\inputAP$ until the all $\inputMAC$s of $AP_{all}$ are input.
+If the all $\inputAP$ are done without the detection of RAP, the $\tarAP$ is declared as a LAP. 
 %ARP is a procedure always done at the beginning of the Wi-Fi communication for mapping IP address to MAC address in a LAN to establish communication to the Internet and composed of two phases: ARP request, and ARP reply.
 %ARP request is a packet sent by a user device to a gateway i.e. router of the LAN at the beginning of the network communication.
 %Since MAC address is used for a destination address of a packet in LAN communication, the device cannnot communicate with the Internet, or even gateway, without the MAC address of the gateway.
 %In order to acquire a MAC address of a gateway, ARP request packets, which includes source MAC address information, are sent to the gateway's IP address. 
 %After the gateway get the packet from the device, ARP reply packets are sent by the gateway to the source device on the basis of the source MAC address included in ARP request packets, which can tell the gateway's MAC address by including it as a source MAC address.
-As a result, in non attack scenario or an attack scenario of $A_i\ne LAP$, which means $A_i$ is on distinct path, ARP reply packets from the gateway are observed by the user device within the detection time, represented as $t$.
-In contrast, in the case of $M_{A_i}=M_{LAP}$ in an attack scenario, ARP reply packets from the gateway cannot be observed since the LAP on the way back to the source of ARP request, i.e. the user device, receive them.
-By searching such $M_{A_i}$ from $MAC_{all} = \{M_i|0\le i \le n_{all}\}$, the proposed scheme can reveal the $AP_{target}$ as a RAP.
 
 \begin{thebibliography}{00}
 \bibitem{snooping1} A. Adya, P. Bahl, R. Chandra, and L. Qiu, “Architecture and techniques for diagnosing faults in IEEE 802.11 infrastructure networks,”n Proc. of ACM Annual International Co.nference on Mobile Computing and Networking, MOBICOM, 2004, pp. 30-44.

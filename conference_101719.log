@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.0-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.11)  4 APR 2020 16:41
+This is e-pTeX, Version 3.14159265-p3.8.0-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.4.11)  8 APR 2020 01:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -564,6 +564,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ]
 [2]
 
+LaTeX Warning: Reference `fig:flowchart' on page 3 undefined on input line 156.
+
+
+
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
 
@@ -583,12 +587,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3681 strings out of 493281
- 52109 string characters out of 6145041
+ 3690 strings out of 493281
+ 52186 string characters out of 6145041
  130712 words of memory out of 5000000
- 7583 multiletter control sequences out of 15000+600000
+ 7592 multiletter control sequences out of 15000+600000
  46884 words of font info for 143 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 30i,11n,35p,329b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,11n,35p,346b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on conference_101719.dvi (3 pages, 25684 bytes).
+Output written on conference_101719.dvi (3 pages, 25552 bytes).

@@ -9,6 +9,8 @@
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\newcommand{\SSID}{S_{A_{target}}}$\SSID$
+
 \begin{document}
 
 \title{Conference Paper Title*\\
@@ -145,7 +147,8 @@ Since the proposed scheme is independent of the real network environment, it is 
 In addition to that, the proposed scheme is not affected by a spoofed MAC address because it focuses on the only legitimate MAC address never spoofed.
 
 \subsection{Algorithm}
-In this subsection, the algorithm for detection based on searching the MAC address of LAP on the same path is explained.
+In this subsection, the algorithm for detection based on searching the MAC address of a LAP on the same path is explained.
+The proposed algorithm mainly consists of 1) MAC address collection phase and 2) ARP reply based detection phase. 
 
 \subsubsection{MAC Address Collection}
 Let \newcommand{\tarAP}{A_{connected}}$\tarAP$ denote a AP which connects with a user's device.

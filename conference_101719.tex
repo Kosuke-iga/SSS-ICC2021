@@ -9,8 +9,11 @@
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-\newcommand{\SSID}{S_{A_{target}}}$\SSID$
-
+\newcommand{\SSID}{S_{A_{target}}}
+\newcommand{\tarMAC}{M_{A_{target}}}
+\newcommand{\userMAC}{M_{user_device}}
+\newcommand{\inputAP}{A_{input}}
+\newcommand{\tarAP}{A_{target}}
 \begin{document}
 
 \title{Conference Paper Title*\\
@@ -151,7 +154,7 @@ In this subsection, the algorithm for detection based on searching the MAC addre
 The proposed algorithm mainly consists of 1) MAC address collection phase and 2) ARP reply based detection phase. 
 
 \subsubsection{MAC Address Collection}
-Let \newcommand{\tarAP}{A_{connected}}$\tarAP$ denote a AP which connects with a user's device.
+Let $\tarAP$ denote a AP which connects with a user's device.
 The set of MAC addresses of APs whose SSIDs are identical to that of $\tarMAC$  in the communication range of a user's device is created through beacon frames of them. 
 Let the set denote $M_{all}=\{M_{input}|0\le input \le n_{all}  \}$, where $n_{all}$ is the number of collected MAC addresses.
 
@@ -174,7 +177,7 @@ Thus, the user device sends ARP request in order to reconnect with it through th
 Finally, in the third procedure, the ARP reply packets whose destination is set as $\inputMAC$ are observed to investigate whether the $\inputAP$ is on the same path with the user's device.
 If the packets do not reach the user's device, the $\tarAP$ can be revealed as the MAC address of the RAP which exists between the user device and the LAP with  $\inputAP$, and the detection phase is finished.
 Otherwise, the $\tarAP$ is judged that it is on the distinct path from the $\inputAP$.
-In this case, the same procedures in the flowchart are repeatedly conducted for another $\inputAP$ in $\M_{all}$ until the RAP is detected.
+In this case, the same procedures in the flowchart are repeatedly conducted for another $\inputAP$ in $M_{A_{all}}$ until the RAP is detected.
 If the detection phase is carried out for all $\inputAP$ without the detection of RAP, the $\tarAP$ is declared as a LAP. 
 %ARP is a procedure always done at the beginning of the Wi-Fi communication for mapping IP address to MAC address in a LAN to establish communication to the Internet and composed of two phases: ARP request, and ARP reply.
 %ARP request is a packet sent by a user device to a gateway i.e. router of the LAN at the beginning of the network communication.

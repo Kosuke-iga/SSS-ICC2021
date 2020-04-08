@@ -118,10 +118,10 @@ In the following subsections, we firstly explain the idea of the proposed scheme
 In the next subsection, the algorithm is described in detail.
 
 \subsection{Idea}
-The main idea of the proposed scheme is that there exist two APs, namely, RAP and LAP on the same path from a user device to a gateway.
-In general, a LAP is the only device which exists on the same path from a user device to a gateway.
+The main idea of the proposed scheme is that there exist two APs, namely, the RAP and a LAP on the same path from a user device to a gateway.
+In general, a LAP is the only device which exists on the path.
 Therefore, in this case, the LAP is identical to the AP directly connected with a user device.
-In an attack scenario, besides the connected RAP, a LAP exists inevitably on the other side of the RAP due to a man-in-the-middle-attack.
+In an attack scenario, besides the connected the RAP, a LAP exists inevitably on the other side of the RAP due to a man-in-the-middle-attack.
 Therefore, a connected AP can be revealed as the RAP when the presence of a LAP is detected on the same path.
 
 On the basis of this idea, the proposed scheme reveals that a LAP is on the other side of the connected RAP by finding out the MAC address of a LAP.
@@ -130,51 +130,49 @@ The proposed scheme intentionally creates such situation by setting the MAC addr
 Note that the MAC address of the AP with which a user device connects is excluded from targets for setting MAC addresses.
 If the MAC address of a user device is set to that of a LAP on the same path, a LAP receives ARP reply packets whose original destination is a user device before a user device receives them.
 Thus, since a user device cannot receive ARP reply packets, it continues to resend ARP requests, which results in disabling internet connectivity.
-By observing the continuance of resending ARP request packets within a definite period of time without ARP reply packets, the proposed scheme can correctly reveal that there exists the RAP and a LAP on the path, which detects the attack.
+By observing the continuance of resending ARP request packets within a definite period of time without ARP reply packets, the proposed scheme can reveal that there exists the RAP and a LAP on the path, which detects the attack.
+
 When a user device connects with the RAP, there exists the MAC address of a LAP in the communication range of a user device.
 This is because the RAP are located relatively near a LAP to avoid communication delay.
 Hence, we can inevitably obtain the MAC address of a LAP in the case where there exists the RAP in a network.
 In the real situation, it is possible that there exist several LAPs in a communication range of a user device.
 Thus, we collect the only MAC addresses of APs which have the identical SSID to that of AP connected by a user device.
 This is because RAP must utilize an SSID of a LAP for pretending to be LAP.
-A user device can receive ARP reply packets even if its MAC address is set to that of each LAP on the distinct paths.
+A user device can receive ARP reply packets even if its MAC address is set to that of each LAP on distinct paths.
 This is because the MAC addresses can be duplicated except those on the same path.
+
 Since the proposed scheme is independent of the real network environment, it is useful for overcoming the shortcoming of the previous scheme.
 In addition to that, the proposed scheme is not affected by a spoofed MAC address because it focuses on the only legitimate MAC address never spoofed.
 
 \subsection{Algorithm}
 In this subsection, the algorithm for detection based on searching the MAC address of LAP on the same path is explained.
-From this subsection, let \newcommand{\tarAP}{A_{target}}$\tarAP$ and \newcommand{\inputAP}{A_{input}}$\inputAP$ denote a targeted AP and input AP.
-In addition, a MAC address and SSID of $A_x$ are represented as $M_{A_x}$ and $S_{A_x}$, respectively.
-\newcommand{\tarMAC}{M_{A_{target}}} \newcommand{\tarSSID}{S_{A_{target}}} \newcommand{\userMAC}{M_{user\_device}}
 
-\subsubsection{Preparation for the detection}
-MAC addresses and SSIDs of APs are collected through beacon frames which exist in the communication range of a user device in preparation for the detection.
-Among them, APs whose SSIDs are identical to that of the targeted AP, namely \newcommand{\SSID}{S_{A_{target}}}$\SSID$, are extracted and represented as $AP_{all}=\{A_{input}|0\le input \le n_{all}\}$, where $n_{all}$ .
+\subsubsection{MAC Address Collection}
+Let \newcommand{\tarAP}{A_{connected}}$\tarAP$ denote a AP which connects with a user's device.
+The set of MAC addresses of APs whose SSIDs are identical to that of $\tarMAC$  in the communication range of a user's device is created through beacon frames of them. 
+Let the set denote $M_{all}=\{M_{input}|0\le input \le n_{all}  \}$, where $n_{all}$ is the number of collected MAC addresses.
 
-\subsubsection{Flowchart of Our System}
-The algorithm consists of four procedures as shown in \ref{fig:flowchart}, which are 1) Comparison with $\tarMAC$, 2)Setting $\userMAC$ to \newcommand{\inputMAC}{M_{A_{input}}}$\inputMAC$ , 3)ARP request from a user device to a gateway and 4)Observation of ARP reply from the gateway to the user device.
-Note that they are repeatedly conducted for every MAC address in $APP_{all}$ unless a RAP is detected.
+\subsubsection{ARP Reply based Detection}
+\figurename~\ref{fig:flowchart} shows the flowchart of this phase.
+As shown in \figurename~\ref{fig:flowchart}, this phase consists of four procedures which are 1) Comparison with $\tarMAC$, 2)Setting $\userMAC$ to \newcommand{\inputMAC}{M_{A_{input}}}$\inputMAC$ , 3) Observation of ARP reply from the gateway to the user device.
+These procedures are repeatedly conducted for every $M_input$ in $M_{all}$ unless the RAP is detected.
 
-\subsubsection{Comparison with $\tarMAC$}
-In the first phase, our system compares the $\inputMAC$ with the $\tarMAC$.
-If they are the same MAC address, namely $\inputMAC = \tarMAC$, it easily judges the either of them is RAP due to the cloned address.
-Thus, using the network should be avoided whether it is on the same path or not because the risk of being attacked is extremely high. 
-However, in the case where a RAP clones the MAC address which the LAP far from the user device has or it does not clone, our system cannot detect only by checking the accordance of MAC addresses.
-Thus, the detection process goes to the next phase.
+In the first phase, the $\inputMAC$ and the $\tarMAC$ are compared.
+If they are the same MAC address, it easily judges the either of them is the RAP due to the cloned address.
+In this case, since RAP is detected, the detection phase is finished.
+However, in the case where the RAP clones a MAC address of a LAP beyond the communication range of a user's device or it does not clone, the accordance of MAC addresses cannot be detected only by this MAC address checking.
+Thus, the detection process goes to the second phase.
 
-\subsubsection{Setting $\userMAC$ to $\inputMAC$}
-In this phase, in order to reveal the existence of LAP which is connected on the other side of the targeted AP if the user device is attacked, $\userMAC$ is set to $\inputMAC$ in preparation for the next procedure.
+In the second phase, $\userMAC$ which denotes the MAC address of a user' s device is set to $\inputMAC$.
 
-\subsubsection{ARP Request from the User Device to the Gateway}
-After the MAC address is set to $\inputMAC$, the connection between the user device and $\tarAP$ is once lost since the gateway become unable to use original MAC address as a destination for the packets.
-Thus, the user device needs to send ARP request in order to reconnect with it through the $\tarAP$ automatically due to the stronger RSSI than any other $AP_{all}$.
+After $\userMAC$ is set to $\inputMAC$, the connection between the user device and $\tarAP$ is once lost since the gateway become unable to use the original MAC address as a destination for the packets.
+Thus, the user device sends ARP request in order to reconnect with it through the $\tarAP$ automatically due to the stronger RSSI than any other $M_{all}$.
 
-\subsubsection{Observation of ARP Reply from the Gateway to the User Device}
-Finally, in this procedure, the ARP reply packets, whose destination is set as $\inputMAC$, are observed in order to investigate whether the $\inputAP$ is on the same path with the user device.
-If the packets do not reach the user device, the $\tarAP$ can be revealed as a RAP, which exists between the user device and the $\inputAP$ and the detection procedure is finished.
-Otherwise, since the $\tarAP$ is judged that it is on the distinct path from the $\inputAP$ , the flow are repeated from the beginning with the next $\inputAP$ until the all $\inputMAC$s of $AP_{all}$ are input.
-If the all $\inputAP$ are done without the detection of RAP, the $\tarAP$ is declared as a LAP. 
+Finally, in the third procedure, the ARP reply packets whose destination is set as $\inputMAC$ are observed to investigate whether the $\inputAP$ is on the same path with the user's device.
+If the packets do not reach the user's device, the $\tarAP$ can be revealed as the MAC address of the RAP which exists between the user device and the LAP with  $\inputAP$, and the detection phase is finished.
+Otherwise, the $\tarAP$ is judged that it is on the distinct path from the $\inputAP$.
+In this case, the same procedures in the flowchart are repeatedly conducted for another $\inputAP$ in $\M_{all}$ until the RAP is detected.
+If the detection phase is carried out for all $\inputAP$ without the detection of RAP, the $\tarAP$ is declared as a LAP. 
 %ARP is a procedure always done at the beginning of the Wi-Fi communication for mapping IP address to MAC address in a LAN to establish communication to the Internet and composed of two phases: ARP request, and ARP reply.
 %ARP request is a packet sent by a user device to a gateway i.e. router of the LAN at the beginning of the network communication.
 %Since MAC address is used for a destination address of a packet in LAN communication, the device cannnot communicate with the Internet, or even gateway, without the MAC address of the gateway.

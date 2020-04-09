@@ -9,6 +9,7 @@
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
 \newcommand{\SSID}{S_{A_{target}}}
 \newcommand{\tarMAC}{M_{A_{target}}}
 \newcommand{\userMAC}{M_{user_device}}
@@ -47,7 +48,7 @@ email address or ORCID}
 
 \begin{abstract}
 This document is a model and instructions for \LaTeX.
-This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
+This and the .cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
 or Math in Paper Title or Abstract.
 \end{abstract}
 
@@ -184,6 +185,102 @@ If the detection phase is carried out for all $\inputAP$ without the detection o
 %Since MAC address is used for a destination address of a packet in LAN communication, the device cannnot communicate with the Internet, or even gateway, without the MAC address of the gateway.
 %In order to acquire a MAC address of a gateway, ARP request packets, which includes source MAC address information, are sent to the gateway's IP address. 
 %After the gateway get the packet from the device, ARP reply packets are sent by the gateway to the source device on the basis of the source MAC address included in ARP request packets, which can tell the gateway's MAC address by including it as a source MAC address.
+
+\section{EVALUATION}
+In order to demonstrate the effectiveness of our scheme, we compare it with the scheme \cite{previous} which interferes the channel between a LAP and RAP explained above as a previous scheme.
+
+The metric of the evaluations are Accuracy (ACC), TPR (True Positive Rate), and FPR (False Positive Rate) defined as
+\begin{gather}
+    ACC = \frac{TP + TN}{TP + TN + FP + FN} \\
+    TPR = \frac{TP}{TP + FN} \\
+    FPR = \frac{FP}{FP + TN}
+\end{gather}
+where TP, TN, FP, and FN denote the number of True Positive (RAPs is reregarded as RAPs), True Negative (LAPs are regarded as LAPs), False Positive (LAPs are regarded as RAPs), and False Negative (RAPs are regarded as LAPs), respectively.
+We evaluate our scheme with these metrics by two scenarios which are the case of attack where a user device connects with a RAP and that of non-attack where a user device connects with a LAP.
+
+\subsection{Experimental Setup}
+We implemented the detectors in a laptop, which is a MacBook Pro with an Intel Core i5 CPU and 16GB RAM.
+In order to configure \cite{previous} for comparison, we use a TP-Link Archer C6 as an interference device.
+
+Simiraly, the same AP devices are used for both LAP and RAP.
+In additon, in order to set a RAP up for distinct channel from LAP, TP-Link Archer C50 is introduced as a repeater between the RAP and LAP.
+These two APs, where one is in the station mode and the other is in AP mode, are interconnected using a LAN cable.
+All devices are operated in the IEEE 802.11n mode with MIMO.
+We arrange a LAP, RAP, and user device at equal intervals and it is about 5 feet.
+
+\subsection{Traffic Scenario}
+In order to demonstrate the robustness against unstable traffic in real environment, we intentionally generate random traffic to the LAP at random time in each experiment.
+\figurename~\ref{fig:traffic} shows one of the traffic examples used in the experiments. 
+
+\subsection{Time of Detection}
+The experiments are conducted for 100 times in each case, namely attack scenario and non attack scenario, respectively.
+The average time required per detection is represented as $T$.
+It is affected by the observation time of ARP procedure per AP, which is represented as $\Delta t$ , and also the number of LAPs before a RAP is detected in an attack scenario.
+We conduct each evaluation by changing $\Delta t$  set to 5s through 10s at every second.
+In addition, during the time, if ARP reply packets are observed on the occasion of the time, our scheme judges the AP is not on the same path with a targeted AP and proceed to the next AP.
+Conversaly, if ARP reply packets cannot be observed during the observation time, our scheme regards the AP as a RAP and quit continuing the entire detection.
+
+\subsection{Evaluation of the Proposed Scheme}
+First, in order to show the effectiveness of our scheme, we compare it with \cite{previous} with ACC.
+\figurename~\ref{fig:acc} shows the result of our evaluation for each scheme.
+The both schemes are conducted in the random traffic scenario.
+As shown in \figurename~\ref{fig:acc}, \cite{previous} cannot detect the attack accurately and the ACC is about 69\%.
+As regards the proposal scheme, however the ACC is lower than that of \cite{previous} when each ARP observation time is shorter than 5s, it is getting higher with the observation time.
+In particular, in the case where the time is longer than 7s, ACC is improved up to 96.5\%.
+
+\begin{table}[htb] 
+    \begin{center}
+        \caption{Evaluation of the Detection}
+        \begin{tabular}{c c c c } \hline
+            $\Delta t$ (s) & ACC (\%) & TPR (\%)& FPR (\%) \\ \hline \hline
+            5.0 & 59.7 & 100.0 & 19.4   \\ 
+            6.0 & 74.0 & 100.0 & 48.1   \\
+            7.0 & 94.4 & 100.0 & 88.8   \\
+            8.0 & 96.5 & 100.0 & 92.9   \\
+            9.0 & 96.4 & 100.0 & 92.7   \\
+            10.0& 96.5 & 100.0 & 93.1   \\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+As a result, shown in \tablename~\ref{}, the longer each observation time is, the higher FPR is.
+Moreover, the higher FPR results in the higher ACC, directly since the TPR is always 100.0\%.
+In order to reveal the reason, we analyze the ARP packets in detail.
+Through the packet analysis, we disclose the reason is that the time for finishing ARP procedure tends to be longer than 6s and it is not always fixed.
+Thus, in the case of lower FPR, LAPs are detected as RAPs incorrectly since it is not enough for a user device to get ARP reply packets.
+Given the fact, we conduct the further experiment to realize more precise detection by setting enough time to auquire ARP reply packets.
+As a result, we enable the detection without any error when the $\Delta t$ is set to 15s.
+
+\subsection{Evaluation in a Real Environment}
+In order to demonstrate the effectiveness of our scheme in a real enrionment, we conduct it in a cafe and evaluate ACC and the total time required for the detection.
+There exists three APs arranged, whose SSID are all same.
+In the attack scenario, one of them is replaced by a RAP, which has a same SSID.
+In the same way with the last experiment above, we conduct our scheme in the both cases where a user device connects with a RAP or LAP.
+The experiments are conducted around 2:00pm on a weekday at an cafe.
+The observation time of ARP procedure is set to 15s enough to get ARP reply packets.
+\tablename~\ref{tab:real} shows the results in the real environment.
+Our scheme realize 100\% accuracy even in a real environment if the time for observation of ARP procedure is enough.
+At that time, the avg. total time per detection is 32.1s.
+
+\begin{table}[htb] 
+    \begin{center}
+        \caption{Evaluation Result in Real Environment}
+        \begin{tabular}{c c} \hline
+            ACC (\%) & Avg. Total Time (s) \\ \hline \hline
+            100.0 & 32.1 \\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+Through this result, it can be said that our proposal can detect the attack accurately in a real environment whose traffic is unstable.
+However, as with other existing schemes, our schemes also assumes Wi-Fi network models where legitimate repeaters are not installed.
+It may be not unusual to introduce a legitimate repeater in their network to relay traffic farther at the expense of transmission speed in a large area.
+In this case, our proposal can not distinguish a RAP and legitimate repeater since both of them relay packets between a user device and LAP in the same way as man-in-the-middle.
+However, in order to detect the attack even in such Wi-Fi networks, we are focusing on their RSSI values.
+Since a legitimate repeater has a function to rely packets from a LAP to where it cannot do due to the long distance, it should be located far from a LAP in general.
+In contrast, a RAP is basically introduced near a connecting LAP not to cause traffic delay due to their long distance.
+On the basis of this idea, we work on the additional procedure as a future work to distinguish legitimate repeater with RSSI value, which can tell their general distance each other \cite{rssi}.
+For example, it can judge a AP as a legitimate repeater if their difference of RSSI values are larger than a threshold of the value.
 
 \begin{thebibliography}{00}
 \bibitem{snooping1} A. Adya, P. Bahl, R. Chandra, and L. Qiu, “Architecture and techniques for diagnosing faults in IEEE 802.11 infrastructure networks,”n Proc. of ACM Annual International Co.nference on Mobile Computing and Networking, MOBICOM, 2004, pp. 30-44.

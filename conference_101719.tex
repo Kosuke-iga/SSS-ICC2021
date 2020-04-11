@@ -187,7 +187,7 @@ If the detection phase is carried out for all $\inputAP$ without the detection o
 %After the gateway get the packet from the device, ARP reply packets are sent by the gateway to the source device on the basis of the source MAC address included in ARP request packets, which can tell the gateway's MAC address by including it as a source MAC address.
 
 \section{EVALUATION}
-In order to demonstrate the effectiveness of our scheme, we compare it with the scheme \cite{previous} which interferes the channel between a LAP and RAP explained above as a previous scheme.
+In order to demonstrate the effectiveness of the proposed scheme, we compare it with the scheme \cite{previous} which interferes the channel between a LAP and RAP explained above as a previous scheme.
 
 The metric of the evaluations are Accuracy (ACC), TPR (True Positive Rate), and FPR (False Positive Rate) defined as
 \begin{gather}
@@ -203,7 +203,7 @@ We implemented the detectors in a laptop, which is a MacBook Pro with an Intel C
 In order to configure \cite{previous} for comparison, we use a TP-Link Archer C6 as an interference device.
 
 Simiraly, the same AP devices are used for both LAP and RAP.
-In additon, in order to set a RAP up for distinct channel from LAP, TP-Link Archer C50 is introduced as a repeater between the RAP and LAP.
+In additon, in order to set a RAP up for distinct channel from a LAP, TP-Link Archer C50 is introduced as a repeater between the RAP and the LAP.
 These two APs, where one is in the station mode and the other is in AP mode, are interconnected using a LAN cable.
 All devices are operated in the IEEE 802.11n mode with MIMO.
 We arrange a LAP, RAP, and user device at equal intervals and it is about 5 feet.
@@ -213,22 +213,20 @@ In order to demonstrate the robustness against unstable traffic in real environm
 \figurename~\ref{fig:traffic} shows one of the traffic examples used in the experiments. 
 
 \subsection{Time of Detection}
-The experiments are conducted for 100 times in each case, namely attack scenario and non attack scenario, respectively.
+The experiments are conducted for each case, namely attack scenario and non attack scenario 100 times.
 The average time required per detection is represented as $T$.
 It is affected by the observation time of ARP procedure per AP, which is represented as $\Delta t$ , and also the number of LAPs before a RAP is detected in an attack scenario.
-We conduct each evaluation by changing $\Delta t$  set to 5s through 10s at every second.
-In addition, during the time, if ARP reply packets are observed on the occasion of the time, our scheme judges the AP is not on the same path with a targeted AP and proceed to the next AP.
-Conversaly, if ARP reply packets cannot be observed during the observation time, our scheme regards the AP as a RAP and quit continuing the entire detection.
+We conduct each evaluation by changing $\Delta t$ from 5 seconds to 10 seconds at every second.
 
 \subsection{Evaluation of the Proposed Scheme}
-First, in order to show the effectiveness of our scheme, we compare it with \cite{previous} with ACC.
+First, in order to show the effectiveness of the proposed scheme, we compare it with the previous scheme \cite{previous} in terms of ACC.
 \figurename~\ref{fig:acc} shows the result of our evaluation for each scheme.
 The both schemes are conducted in the random traffic scenario.
-As shown in \figurename~\ref{fig:acc}, \cite{previous} cannot detect the attack accurately and the ACC is about 69\%.
+As shown in \figurename~\ref{fig:acc}, the previous scheme cannot accurately detect the attack, and the ACC is about 69\%.
 As regards the proposal scheme, however the ACC is lower than that of \cite{previous} when each ARP observation time is shorter than 5s, it is getting higher with the observation time.
 In particular, in the case where the time is longer than 7s, ACC is improved up to 96.5\%.
 
-\begin{table}[htb] 
+\begin{table}[t] 
     \begin{center}
         \caption{Evaluation of the Detection}
         \begin{tabular}{c c c c } \hline
@@ -244,23 +242,23 @@ In particular, in the case where the time is longer than 7s, ACC is improved up 
 \end{table}
 
 As a result, shown in \tablename~\ref{}, the longer each observation time is, the higher FPR is.
-Moreover, the higher FPR results in the higher ACC, directly since the TPR is always 100.0\%.
+Moreover, the lower FPR results in the higher ACC directly since the TPR is always 100.0\%.
 In order to reveal the reason, we analyze the ARP packets in detail.
 Through the packet analysis, we disclose the reason is that the time for finishing ARP procedure tends to be longer than 6s and it is not always fixed.
-Thus, in the case of lower FPR, LAPs are detected as RAPs incorrectly since it is not enough for a user device to get ARP reply packets.
+Thus, in the case of less than 7.0 seconds, LAPs are detected as RAPs incorrectly since it is not enough for a user device to get ARP reply packets.
 Given the fact, we conduct the further experiment to realize more precise detection by setting enough time to auquire ARP reply packets.
-As a result, we enable the detection without any error when the $\Delta t$ is set to 15s.
+As a result, we conclude that the proposed scheme enables the detection without any error when the $\Delta t$ is set to 15 seconds.
 
 \subsection{Evaluation in a Real Environment}
-In order to demonstrate the effectiveness of our scheme in a real enrionment, we conduct it in a cafe and evaluate ACC and the total time required for the detection.
+In order to demonstrate the effectiveness of the proposed scheme in a real environment, we conduct an experiment in a cafe and evaluate ACC and the total time required for the detection.
 There exists three APs arranged, whose SSID are all same.
 In the attack scenario, one of them is replaced by a RAP, which has a same SSID.
-In the same way with the last experiment above, we conduct our scheme in the both cases where a user device connects with a RAP or LAP.
+In the same way with the experiment in the previous subsection, we conduct the proposed scheme in the both cases where a user's device connects with a RAP or a LAP.
 The experiments are conducted around 2:00pm on a weekday at an cafe.
-The observation time of ARP procedure is set to 15s enough to get ARP reply packets.
+The observation time of ARP procedure is set to 15 seconds enough to get ARP reply packets.
 \tablename~\ref{tab:real} shows the results in the real environment.
 Our scheme realize 100\% accuracy even in a real environment if the time for observation of ARP procedure is enough.
-At that time, the avg. total time per detection is 32.1s.
+At that time, the average total time per detection is 32.1 seconds.
 
 \begin{table}[htb] 
     \begin{center}
@@ -272,15 +270,15 @@ At that time, the avg. total time per detection is 32.1s.
     \end{center}
 \end{table}
 
-Through this result, it can be said that our proposal can detect the attack accurately in a real environment whose traffic is unstable.
-However, as with other existing schemes, our schemes also assumes Wi-Fi network models where legitimate repeaters are not installed.
-It may be not unusual to introduce a legitimate repeater in their network to relay traffic farther at the expense of transmission speed in a large area.
-In this case, our proposal can not distinguish a RAP and legitimate repeater since both of them relay packets between a user device and LAP in the same way as man-in-the-middle.
-However, in order to detect the attack even in such Wi-Fi networks, we are focusing on their RSSI values.
-Since a legitimate repeater has a function to rely packets from a LAP to where it cannot do due to the long distance, it should be located far from a LAP in general.
+Through this result, we conclude that the proposed proposal can accurately detect the attack even in a real environment whose traffic is unstable.
+However, as with other existing schemes, the proposed scheme also assumes Wi-Fi network models where legitimate repeaters are not installed.
+It may be usual to introduce a legitimate repeater in their network to relay traffic farther at the expense of transmission speed in a large area.
+In this case, the proposed scheme cannot distinguish a RAP and legitimate repeater since both of them relay packets between a user device and a LAP in the same way as man-in-the-middle.
+However, in order to detect the attack even in such Wi-Fi networks, we focus on their RSSI values.
+Since a legitimate repeater has a function to rely packets from a LAP to devices which cannot connect with the LAP due to the long distance, it should be located far from a LAP in general.
 In contrast, a RAP is basically introduced near a connecting LAP not to cause traffic delay due to their long distance.
-On the basis of this idea, we work on the additional procedure as a future work to distinguish legitimate repeater with RSSI value, which can tell their general distance each other \cite{rssi}.
-For example, it can judge a AP as a legitimate repeater if their difference of RSSI values are larger than a threshold of the value.
+Thus, we assume that a AP can be judged whether it is a legitimate repeater or not on the basis of this idea.
+In the future, we plan to devise the additional countermeasures and conduct experiments so as to distinguish legitimate repeater with RSSI value, which can tell their general distance each other \cite{rssi}.
 
 \begin{thebibliography}{00}
 \bibitem{snooping1} A. Adya, P. Bahl, R. Chandra, and L. Qiu, “Architecture and techniques for diagnosing faults in IEEE 802.11 infrastructure networks,”n Proc. of ACM Annual International Co.nference on Mobile Computing and Networking, MOBICOM, 2004, pp. 30-44.

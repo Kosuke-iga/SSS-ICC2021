@@ -8,7 +8,7 @@
 \begin{document}
     
 \begin{tikzpicture}[scale=1]
-	\tikzset{block/.style={rectangle, draw, text width=6cm, font=\Large, text centered, minimum height=1.5cm}};
+	\tikzset{block/.style={rectangle, draw, text width=7cm, font=\Large, text centered, minimum height=1.5cm}};
 	\tikzset{empty/.style={rectangle}};
 	\tikzset{init/.style={rectangle, draw, text width=4cm, rounded corners, font=\Large, text centered, minimum height=1.5cm}};
     \tikzset{end/.style={rectangle, draw, text width=8cm, rounded corners, font=\Large, text centered, minimum height=1.5cm}};
@@ -29,11 +29,11 @@
 	\tikzset{declare/.style={rectangle, draw, text width=2.5cm,font=\Large, text centered, minimum height=1.0cm}};
 	% Place nodes
 	\node [empty](em) at (-3cm, 4cm){};
-	\node [init] (init) at (0cm,3.2cm) {Input: $M_{A_{input}}$};
-	\node [decision] (compare) at (0cm,-0.5cm) {Comparison with $M_{A_{target}}$};
+	\node [init] (init) at (0cm,3.2cm) {Input: $m_{A_{input}}$};
+	\node [decision] (compare) at (0cm,-0.5cm) {Comparison with $m_{A_{target}}$};
     \draw [thick, ->] (init) -- (compare);
-    \node [block] (set) at (0cm, -4.2cm) {Setting $M_{user}$ to $M_{A_{input}}$};
-    \draw [thick, ->] (compare) -- node[right]{\Large $M_{A_{input}} \ne M_{A_{target}}$}(set);
+    \node [block] (set) at (0cm, -4.2cm) {Setting MAC address to $m_{A_{input}}$};
+    \draw [thick, ->] (compare) -- node[right] {\Large $m_{A_{input}} \ne m_{A{target}}$}(set);
     \node [decision] (observe) at (0cm, -7.9cm) {Observation of ARP reply packets from a gateway};
     \draw [thick, ->] (set) -- node[right]{\Large $\rm Send\ ARP\ Requests$} (observe);
     \node [end] (lap) at (0cm, -11.6cm) {Declare that $A_{input}$ is a LAP on the different path};
@@ -46,7 +46,7 @@
 	\node [empty](em) at (-6cm, -12.4cm){};
 	\node [empty](em) at (13.5cm, -12.4cm){};
 
-    \coordinate (m) at (10cm, -0.1cm) node at (m) [left] {\Large $M_{A_{input}} = M_{A_{target}}$};
+    \coordinate (m) at (10cm, -0.1cm) node at (m) [left] {\Large $m_{A_{input}} = m_{A_{target}}$};
     \coordinate (m) at (5.9cm, -7.0cm) node at (m) [left] {\Large $\rm No$};
 	\coordinate (m) at (6.3cm, -7.5cm) node at (m) [left] {\Large$\rm Reply$};
 	%Place draw

@@ -39,6 +39,11 @@ F.~Lanze, A.~Panchenko, B.~Braatz, and T.~Engel, ``Letting the puss in boots
   temperature,'' in \emph{Proceedings of the 9th ACM symposium on Information,
   computer and communications security}, 2014, pp. 3--14.
 
+\bibitem{iat}
+C.~Yang, Y.~Song, and G.~Gu, ``Active user-side evil twin access point
+  detection using statistical techniques,'' \emph{IEEE Transactions on
+  Information Forensics and Security}, vol.~7, no.~5, pp. 1638--1651, 2012.
+
 \bibitem{previous}
 R.~{Jang}, J.~{Kang}, A.~{Mohaisen}, and D.~{Nyang}, ``Catch me if you can:
   Rogue access point detection using intentional channel interference,''

@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+%\usepackage[dvipdfmx]{}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
@@ -47,18 +48,65 @@ email address or ORCID}
 \maketitle
 
 \begin{abstract}
-This document is a model and instructions for \LaTeX.
-This and the .cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
-or Math in Paper Title or Abstract.
+Detecting a rougue AP (RAP) in Wi-Fi network is imperative.
+The existing schemes are divided into network administrator side detections and user side detections.
+The former is inapplicable to the free Wi-Fi network due to the cost problem.
+Although the latter can be introduced every Wi-Fi network, its detection performances depend on the real environment or performance of a RAP.
+Thus, it is necessary to design the scheme which is independent of such factors.
+In this paper, we propose \title.
+Since the RAP is established between a user device and legitimate AP (LAP), in attack case, there exists two APs on the path.
+On the basis of this idea, the proposed scheme reveal the connected AP as a RAP by searching another AP on the path besides the connected AP.
+In order to finding a LAP out, the proposed scheme observes ARP procedure to detect its MAC address.
+By setting MAC address of a user device to that of LAP which is on the same path, ARP reply packets from a gateway does not sent to the user device as in usual.
+As aresult, the proposed scheme achieves an accuracy of 96.5\%.
+True positive rate and false positive rate are 31.0\% higher and 9.0\% lower than the previous scheme even in unstable traffic environment. 
+Furthermore, by extending the observation time of ARP procedure, we realize an accuracy of 100.0\% without any error.
+The proposed scheme can detect RAPs accurately even in a real environment where the prevous scheme cannnot.
 \end{abstract}
 
 \begin{IEEEkeywords}
 component, formatting, style, styling, insert
 \end{IEEEkeywords}
- 攻撃モデル先に言いたい感ある．
+
 \section{INTRODUCTION}
-IP見ればすぐわかるから攻撃者はMITMパターンできますよっていう説明
-\section{RELATED WORKS}
+With the rapid development of wireless communication techniques, Wi-Fi as the most commonly used Internet access technology is deployed and keeps spreading all over the world to everywhere of our daily life, such as shopping malls, restaurants, public transit systems and so on.
+While the free access to Wi-Fi network attarcts a large number of users, it also allows an adversary to launch attacks to users just by setting up a rogue AP (RAP) in the network.
+An Evil Twin Attack is one of the attack where a RAP is established between a user device and the Internet as man-in-the-middle.
+The RAP clones the service set identifier (SSID) and or even MAC address of a legitimate AP provided by a public facility, which is the reason why it is called "evil twin attack".
+By acting as man-in-the-middle and observing relayed packets between a user device and LAP, an adversary can eavesdrop on the exchange of sensitive information such as identity credentials, passwords, and bank account.
+In addition, an adversary can also mount an acctive attack by leading a user to phishing websites or infecting a user device with malicious softwares.
+Since, our wireless devices connect automatically to an AP which has the strongest received signal strength indication (RSSI) of all APs which have same SSID and moreover they are provided Internet services as usual, an adversary can succed an attack without being noticed by a user.
+Thus, the detection of the RAPs is urgent demand.
+
+The attack is divided into two models based on how a RAP provide the Internet service to user device.
+A model where a RAP use mobile communication can be detected easily with Internet Services Provider (ISP) names or Global IP addresses\cite{rtt}.
+We focus on another model where a RAP uses same gateway with LAPs in the network by connecting with one of it since it cannot be detected by existing schemes.
+During an early stage, the RAP detection is network administrator side detection based on whitelist-based mechanisms\cite{prapd}\cite{clockskew }.
+However, those solutions are inapplicable to Wi-Fi hotspots since administrators have little motivation to guarantee no attacks by setting up additional devices in their infrastructures.
+In order to realize applicable detection, the user side detections based on communication features have been proposed\cite{rtt}\cite{previous}.
+Nevertheless, these existing approachs depend on an attack model or environment.
+
+In order to realize the user side detection which is independent of other factors, in this paper, we propose \title.
+The main idea of our scheme is that there exist two APs, namely the RAP and a LAP, on the same path from a user device to a gateway.
+Therefore, in an attack scenario, besides the connected RAP, a LAP exists inevitably on the other side of the RAP due to a man-in-the-middle.
+On the basis of this idea, the proposed scheme reveals the connected AP as RAP by finding MAC address of such LAP from obtainable beacon frames by a user device.
+However, a user device cannnot distinguish the path of LAPs only by acquiring candidate MAC addresses.
+Thus, we focus on the phenomenon that a user device connot receive Address Resolution Protocol (ARP) reply packets from a gateway in the situation where there exist duplicate MAC addresses on the same path.
+The proposed scheme intentionally creates such situation by setting the MAC address of a user device to the candidate MAC addresses and finds out the one that a LAP on the same path has.
+By doing this, the proposed scheme can reveal the connected AP as RAP in a attack scenario.
+The contributions of our scheme are as follows:
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\arabic{enumi}).}
+    \item To the best of our knowledge, the proposed scheme is the first one which does not require features of the RAP. By taking advantage of the feature of a LAP, the proposed detection does not allow an adversary to avoid it by manipulating features of a RAP.
+    \item The proposed scheme achieves accurate detection performance without any error even in a real environment. It is independent of other factors unlike existing works.
+\end{enumerate}
+The rest of this paper is constructed as follows: Related works are described in Section \ref{sec:2}.
+The attack model, previous scheme and its shortcoming are intriduced in Section \ref{sec:3}.
+The proposed scheme is explained in Section \ref{sec:4}.
+Various evaluation results are shown in Section \ref{sec:5}.
+Finally, the conclusions of this paper are presented in Section \ref{sec:6}.
+
+\section{RELATED WORKS}\label{sec:2}
 Rogue AP (RAP) detection methods are mainly classified into two categories: network administrator side detections and user side detections.
 Network administrator side detections focus on the physical features such as Received Signal Strength Indication (RSSI) and clock skew which cannot be spoofed by an adversary.
 RAP can be detected by comparing with the physical features of it with those in the predefined whitelist with equipments such as traffic sensors in each Wi-Fi network.
@@ -91,7 +139,7 @@ That scheme is the most robust user side detection which is independent of the p
 Thus, we select \cite{previous} as the previous scheme.
 In the next section, we elaborate the previous scheme.
 
-\section{ATTACK MODEL AND PREVIOUS SCHEME}
+\section{ATTACK MODEL AND PREVIOUS SCHEME}\label{sec:3}
 \subsection{Attack Model}
 In an evil twin attack, the adversary sets up a RAP which uses a SSID of a LAP in the targeted Wi-Fi network.
 Besides, the MAC address of the RAP is cloned from one of the LAPs in the network.
@@ -113,21 +161,30 @@ For example, when a user device is using channel 1 with the targeted AP which ca
 If there exists the other channel on the route, the decline in the throughput can be observed by the user device, and the presence of RAP is revealed.
 
 \subsubsection{Shortcoming of the Previous Scheme}\label{sec:shortcoming}
+\begin{figure}[t]
+    \begin{center}
+        \includegraphics[width=70mm,bb=9 9 358 434]{image/Thrput.png}
+        \caption{Throughput in a Cafe}
+        \label{thrput}
+    \end{center}
+\end{figure}
+
 Although the previous scheme is successful in the detection for hardware-based RAP in the experimental environment, it cannot detect accurately in the real world.
 This is because throughput is considerably dependent on various factors of the network environment such as mobility of the traffic, collisions, network topology changes, and unintentional interference.
-Since the traffic in real environment is unsteady, the previous scheme is subject to environmental changes, which can lead to degrade the accuracy.
+\figurename~\ref{thrput} is the graph which shows the change of throughput in a cafe on a weekday.
+Since the traffic in real environment is unsteady as shown in \figurename~\ref{thrput} in fact, the previous scheme is subject to environmental changes, which can lead to degrade the accuracy.
 Thus, the requirement that we must satisfy is to leverage factors which are independent of the network environment for the detection.
 
-\section{PROPOSED SCHEME}
+\section{PROPOSED SCHEME}\label{sec:4}
 In order to meet the requirements mentioned in Section \ref{sec:shortcoming}, in this paper, we propose \title{}.
 In the following subsections, we firstly explain the idea of the proposed scheme.
 In the next subsection, the algorithm is described in detail.
 
 \subsection{Idea}
-The main idea of the proposed scheme is that there exist two APs, namely, the RAP and a LAP on the same path from a user device to a gateway.
+The main idea of the proposed scheme is that there exist two APs, namely, the RAP and a LAP, on the same path from a user device to a gateway.
 In general, a LAP is the only device which exists on the path.
 Therefore, in this case, the LAP is identical to the AP directly connected with a user device.
-In an attack scenario, besides the connected the RAP, a LAP exists inevitably on the other side of the RAP due to a man-in-the-middle-attack.
+In an attack scenario, besides the connected RAP, a LAP exists inevitably on the other side of the RAP due to a man-in-the-middle-attack.
 Therefore, a connected AP can be revealed as the RAP when the presence of a LAP is detected on the same path.
 
 On the basis of this idea, the proposed scheme reveals that a LAP is on the other side of the connected RAP by finding out the MAC address of a LAP.
@@ -186,7 +243,7 @@ If the detection phase is carried out for all $\inputAP$ without the detection o
 %In order to acquire a MAC address of a gateway, ARP request packets, which includes source MAC address information, are sent to the gateway's IP address. 
 %After the gateway get the packet from the device, ARP reply packets are sent by the gateway to the source device on the basis of the source MAC address included in ARP request packets, which can tell the gateway's MAC address by including it as a source MAC address.
 
-\section{EVALUATION}
+\section{EVALUATION}\label{sec:5}
 In order to demonstrate the effectiveness of the proposed scheme, we compare it with the scheme \cite{previous} which interferes the channel between a LAP and RAP explained above as a previous scheme.
 
 The metric of the evaluations are Accuracy (ACC), TPR (True Positive Rate), and FPR (False Positive Rate) defined as
@@ -210,7 +267,6 @@ We arrange a LAP, RAP, and user device at equal intervals and it is about 5 feet
 
 \subsection{Traffic Scenario}
 In order to demonstrate the robustness against unstable traffic in real environment, we intentionally generate random traffic to the LAP at random time in each experiment.
-\figurename~\ref{fig:traffic} shows one of the traffic examples used in the experiments. 
 
 \subsection{Time of Detection}
 The experiments are conducted for each case, namely attack scenario and non attack scenario 100 times.
@@ -219,38 +275,50 @@ It is affected by the observation time of ARP procedure per AP, which is represe
 We conduct each evaluation by changing $\Delta t$ from 5 seconds to 10 seconds at every second.
 
 \subsection{Evaluation of the Proposed Scheme}
-First, in order to show the effectiveness of the proposed scheme, we compare it with the previous scheme \cite{previous} in terms of ACC.
-\figurename~\ref{fig:acc} shows the result of our evaluation for each scheme.
+
+\begin{figure}[t]
+    \begin{minipage}{0.33\hsize}
+        \begin{center}
+            \includegraphics[width=20mm,bb=9 9 358 434]{image/ACC.png}
+        \end{center}
+        \caption{The ACC of the Proposed Scheme}
+        \label{fig:acc}
+    \end{minipage}
+    \begin{minipage}{0.33\hsize}
+        \begin{center}
+            \includegraphics[width=20mm,bb=9 9 358 434]{image/TPR.png}
+        \end{center}
+        \caption{The TPR of the Proposed Scheme}
+        \label{fig:tpr}
+    \end{minipage}
+    \begin{minipage}{0.33\hsize}
+        \begin{center}
+            \includegraphics[width=20mm,bb=9 9 358 434]{image/FPR.png}
+        \end{center}
+        \caption{The FPR of the Proposed Scheme}
+        \label{fig:fpr}
+    \end{minipage}
+
+\end{figure}
+First, in order to show the effectiveness of the proposed scheme (Prop.), we compare it with the previous scheme \cite{previous} (Prev.).
+\figurename~\ref{fig:acc}, \ref{fig:tpr}, and\ref{fig:fpr} show the results of our evaluations for each scheme.
 The both schemes are conducted in the random traffic scenario.
 As shown in \figurename~\ref{fig:acc}, the previous scheme cannot accurately detect the attack, and the ACC is about 69\%.
-As regards the proposal scheme, however the ACC is lower than that of \cite{previous} when each ARP observation time is shorter than 5s, it is getting higher with the observation time.
-In particular, in the case where the time is longer than 7s, ACC is improved up to 96.5\%.
+As regards the proposal scheme, however the ACC is lower than that of \cite{previous} when each ARP observation time is not greater than 6s, it is getting higher with the observation time.
+In particular, in the case where the time is longer than 7s, ACC is improved up to 96.5\% in the propsed scheme.
 
-\begin{table}[t] 
-    \begin{center}
-        \caption{Evaluation of the Detection}
-        \begin{tabular}{c c c c } \hline
-            $\Delta t$ (s) & ACC (\%) & TPR (\%)& FPR (\%) \\ \hline \hline
-            5.0 & 59.7 & 100.0 & 19.4   \\ 
-            6.0 & 74.0 & 100.0 & 48.1   \\
-            7.0 & 94.4 & 100.0 & 88.8   \\
-            8.0 & 96.5 & 100.0 & 92.9   \\
-            9.0 & 96.4 & 100.0 & 92.7   \\
-            10.0& 96.5 & 100.0 & 93.1   \\ \hline
-        \end{tabular}
-    \end{center}
-\end{table}
+As a result, shown in \figurename~\ref{fpr}, the longer each observation time is, the lower FPR is in the proposal scheme.
+It improves up to 74\% in the result of the last three time settings compared with that of the beginning.
+In additon, as shown in \figurename~\ref{tpr}, TPR of the proposed scheme is 100.0\% regardless of the observation time, which means it never pass a RAP over in an attack scenario.
 
-As a result, shown in \tablename~\ref{}, the longer each observation time is, the higher FPR is.
-Moreover, the lower FPR results in the higher ACC directly since the TPR is always 100.0\%.
-In order to reveal the reason, we analyze the ARP packets in detail.
+In order to reveal the reason of these results, we analyze the ARP packets in detail.
 Through the packet analysis, we disclose the reason is that the time for finishing ARP procedure tends to be longer than 6s and it is not always fixed.
-Thus, in the case of less than 7.0 seconds, LAPs are detected as RAPs incorrectly since it is not enough for a user device to get ARP reply packets.
+Thus, in the case of less than 7.0 seconds, several LAPs are detected as RAPs incorrectly since it is not enough for a user device to get ARP reply packets while the reverse is never happen.
 Given the fact, we conduct the further experiment to realize more precise detection by setting enough time to auquire ARP reply packets.
 As a result, we conclude that the proposed scheme enables the detection without any error when the $\Delta t$ is set to 15 seconds.
 
 \subsection{Evaluation in a Real Environment}
-In order to demonstrate the effectiveness of the proposed scheme in a real environment, we conduct an experiment in a cafe and evaluate ACC and the total time required for the detection.
+In order to demonstrate the robustness and reruired time of the proposed scheme in a real environment, we conduct an experiment in a cafe and evaluate ACC and the total time required for the detection.
 There exists three APs arranged, whose SSID are all same.
 In the attack scenario, one of them is replaced by a RAP, which has a same SSID.
 In the same way with the experiment in the previous subsection, we conduct the proposed scheme in the both cases where a user's device connects with a RAP or a LAP.
@@ -280,6 +348,7 @@ In contrast, a RAP is basically introduced near a connecting LAP not to cause tr
 Thus, we assume that a AP can be judged whether it is a legitimate repeater or not on the basis of this idea.
 In the future, we plan to devise the additional countermeasures and conduct experiments so as to distinguish legitimate repeater with RSSI value, which can tell their general distance each other \cite{rssi}.
 
+\section{conclusion}\label{sec:6}
 \begin{thebibliography}{00}
 \bibitem{snooping1} A. Adya, P. Bahl, R. Chandra, and L. Qiu, “Architecture and techniques for diagnosing faults in IEEE 802.11 infrastructure networks,”n Proc. of ACM Annual International Co.nference on Mobile Computing and Networking, MOBICOM, 2004, pp. 30-44.
 \bibitem{snooping2} P. Bahl, R. Chandra, J. Padhye, L. Ravindranath, M. Singh, A. Wolman, and B. Zill, “Enhancing the security of corporate Wi-Fi etworks using DAIR,” in Proc. of ACM International Conference on Mobile Systems, Applications, and Services, MobiSys, 2006, pp. 1–14.

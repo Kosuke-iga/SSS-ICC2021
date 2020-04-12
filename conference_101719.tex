@@ -4,7 +4,7 @@
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
-\usepackage{graphicx}
+\usepackage[dvipdfmx]{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
 %\usepackage[dvipdfmx]{}
@@ -13,7 +13,7 @@
 
 \newcommand{\SSID}{S_{A_{target}}}
 \newcommand{\tarMAC}{M_{A_{target}}}
-\newcommand{\userMAC}{M_{user_device}}
+\newcommand{\userMAC}{M_{user}}
 \newcommand{\inputAP}{A_{input}}
 \newcommand{\tarAP}{A_{target}}
 \begin{document}
@@ -163,7 +163,7 @@ If there exists the other channel on the route, the decline in the throughput ca
 \subsubsection{Shortcoming of the Previous Scheme}\label{sec:shortcoming}
 \begin{figure}[t]
     \begin{center}
-        \includegraphics[width=70mm,bb=9 9 358 434]{image/Thrput.png}
+        \includegraphics[scale=0.5]{image/Thrput.pdf}
         \caption{Throughput in a Cafe}
         \label{thrput}
     \end{center}
@@ -208,7 +208,14 @@ Since the proposed scheme is independent of the real network environment, it is 
 In addition to that, the proposed scheme is not affected by a spoofed MAC address because it focuses on the only legitimate MAC address never spoofed.
 
 \subsection{Algorithm}
-In this subsection, the algorithm for detection based on searching the MAC address of a LAP on the same path is explained.
+\begin{figure}[t]
+    \begin{center}
+        \includegraphics[scale=0.4]{image/flowchart.pdf}
+        \caption{The Flowchart of Proposed Scheme}
+        \label{flowchart}
+    \end{center}
+\end{figure}
+n this subsection, the algorithm for detection based on searching the MAC address of a LAP on the same path is explained.
 The proposed algorithm mainly consists of 1) MAC address collection phase and 2) ARP reply based detection phase. 
 
 \subsubsection{MAC Address Collection}
@@ -274,32 +281,32 @@ The average time required per detection is represented as $T$.
 It is affected by the observation time of ARP procedure per AP, which is represented as $\Delta t$ , and also the number of LAPs before a RAP is detected in an attack scenario.
 We conduct each evaluation by changing $\Delta t$ from 5 seconds to 10 seconds at every second.
 
-\subsection{Evaluation of the Proposed Scheme}
-
-\begin{figure}[t]
+\begin{figure*}[ht]
     \begin{minipage}{0.33\hsize}
         \begin{center}
-            \includegraphics[width=20mm,bb=9 9 358 434]{image/ACC.png}
+            \includegraphics[scale=0.4]{image/ACC.pdf}
         \end{center}
         \caption{The ACC of the Proposed Scheme}
         \label{fig:acc}
     \end{minipage}
     \begin{minipage}{0.33\hsize}
         \begin{center}
-            \includegraphics[width=20mm,bb=9 9 358 434]{image/TPR.png}
+            \includegraphics[scale=0.4]{image/TPR.pdf}
         \end{center}
         \caption{The TPR of the Proposed Scheme}
         \label{fig:tpr}
     \end{minipage}
     \begin{minipage}{0.33\hsize}
         \begin{center}
-            \includegraphics[width=20mm,bb=9 9 358 434]{image/FPR.png}
+            \includegraphics[scale=0.4]{image/FPR.pdf}
         \end{center}
         \caption{The FPR of the Proposed Scheme}
         \label{fig:fpr}
     \end{minipage}
 
-\end{figure}
+\end{figure*}
+
+\subsection{Evaluation of the Proposed Scheme}
 First, in order to show the effectiveness of the proposed scheme (Prop.), we compare it with the previous scheme \cite{previous} (Prev.).
 \figurename~\ref{fig:acc}, \ref{fig:tpr}, and\ref{fig:fpr} show the results of our evaluations for each scheme.
 The both schemes are conducted in the random traffic scenario.
@@ -349,20 +356,9 @@ Thus, we assume that a AP can be judged whether it is a legitimate repeater or n
 In the future, we plan to devise the additional countermeasures and conduct experiments so as to distinguish legitimate repeater with RSSI value, which can tell their general distance each other \cite{rssi}.
 
 \section{conclusion}\label{sec:6}
-\begin{thebibliography}{00}
-\bibitem{snooping1} A. Adya, P. Bahl, R. Chandra, and L. Qiu, “Architecture and techniques for diagnosing faults in IEEE 802.11 infrastructure networks,”n Proc. of ACM Annual International Co.nference on Mobile Computing and Networking, MOBICOM, 2004, pp. 30-44.
-\bibitem{snooping2} P. Bahl, R. Chandra, J. Padhye, L. Ravindranath, M. Singh, A. Wolman, and B. Zill, “Enhancing the security of corporate Wi-Fi etworks using DAIR,” in Proc. of ACM International Conference on Mobile Systems, Applications, and Services, MobiSys, 2006, pp. 1–14.
-\bibitem{snooping3} R. Chandra, J. Padhye, A. Wolman, and B. Zill, “A location-based management system for enterprise wireless LANs,” in Proc. of USENIX Symposium on Networked Systems Design and Implementation NSDI, 2007.
-\bibitem{rssi1} D. B. Faria and D. R. Cheriton, “Detecting identity-based attacks in wireless networks using signalprints,” in Proc. of ACM Workshop on Wireless Security, 2006, pp. 43–52.
-\bibitem{rssi2} Y. Sheng, K. Tan, G. Chen, D. Kotz, and A. Campbell, “Detecting 802.11 MAC layer spoofing using received signal strength,” in Proc. of the 27th Conference on Computer Communications, INFOCOM, 2008.
-\bibitem{clock1} F. Lanze, A. Panchenko, B. Braatz, and T. Engel, “Letting the puss in boots sweat: detecting fake access points using dependency of clock skews on temperature,” in Proc. of ACM Symposium on Information, Computer and Communications Security, ASIACCS, 2014, pp. 3–14.
-\bibitem{clock2} S. Jana and S. K. Kasera, “On fast and accurate detection of unauthorized wireless access points using clock skews,” IEEE Trans. Mob. Comput., vol. 9, no. 3, pp. 449–462, 2010.
-\bibitem{channel1} V. Brik, S. Banerjee, M. Gruteser, and S. Oh, “Wireless device identifica- tion with radiometric signatures,” in Proc. ofACM Annual International Conference on Mobile Computing and Networking, MOBICOM, 2008.
-\bibitem{traceroute} S. Nikbakhsh, A. B. A. Manaf, M. Zamani, and M. Janbeglou, “A novel approach for rogue access point detection on the client-side,” 27th International Conference on Advanced Information Networking and Applications Workshops, 2012.
-\bibitem{rtt} H. Han, B. Sheng, C. C. Tan, Q. Li, and S. Lu, “A timing-based scheme for rogue AP detection,” IEEE Trans. Parallel Distrib. Syst., vol. 22, no. 11, pp. 1912–1925, 2011
-\bibitem{iat} C. Yang, Y. Song, and G. Gu, “Active user-side evil twin access point detection using statistical techniques,” IEEE Trans. Information Forensics and Security, vol. 7, no. 5, pp. 1638–1651, 2012.
-\bibitem{previous} R. Jang, J. Kang, A. Mohaisen and D. Nyang, "Catch Me If You Can: Rogue Access Point Detection Using Intentional Channel Interference," in IEEE Transactions on Mobile Computing.
 
-\end{thebibliography}
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEE_ref}
 \vspace{12pt}
 \end{document}

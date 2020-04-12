@@ -1,9 +1,16 @@
 # Fdb version 3
-["dvipdf"] 1586669089 "conference_101719.dvi" "conference_101719.pdf" "conference_101719" 1586669090
-  "conference_101719.dvi" 1586669089 42588 fd61eba3c84a7dfe202535330b0ed595 "latex"
+["bibtex conference_101719"] 1586686613 "conference_101719.aux" "conference_101719.bbl" "conference_101719" 1586686615
+  "/usr/local/texlive/2020/texmf-dist/bibtex/bst/IEEEtran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
+  "IEEE_ref.bib" 1586676116 1734 eb459b6d2f25f550ccad6018871ee58a ""
+  "conference_101719.aux" 1586686614 3867 5a8a68a30f2e79366e0ed4cc157872ea "latex"
+  (generated)
+  "conference_101719.blg"
+  "conference_101719.bbl"
+["dvipdf"] 1586686615 "conference_101719.dvi" "conference_101719.pdf" "conference_101719" 1586686615
+  "conference_101719.dvi" 1586686614 40548 033231cdd5ae403a202b8da7c6d84109 "latex"
   (generated)
   "conference_101719.pdf"
-["latex"] 1586669088 "conference_101719.tex" "conference_101719.dvi" "conference_101719" 1586669090
+["latex"] 1586686613 "conference_101719.tex" "conference_101719.dvi" "conference_101719" 1586686615
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmbi7t.tfm" 1136768653 2228 e564491c42a4540b5ebb710a75ff306c ""
@@ -58,6 +65,7 @@
   "/usr/local/texlive/2020/texmf-dist/tex/latex/cite/cite.sty" 1425427964 26218 19edeff8cdc2bcb704e8051dc55eb5a7 ""
   "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1459978653 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
   "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
+  "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvipdfmx.def" 1498427493 10299 c742d2190e924996d2f4e34b541cd5e3 ""
   "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvips.def" 1498170935 5895 4b59bd0c17e1116fd6b6e7c683dea655 ""
   "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty" 1580683321 16932 04729abe63b66ec59ea56edcd722b058 ""
   "/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty" 1580683321 9067 1b996612394a52e1efe89c8bfe8a5892 ""
@@ -69,13 +77,15 @@
   "/usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf" 1583102494 39451 60d7debd9ef8ece44cbe965493576c2d ""
   "/usr/local/texlive/2020/texmf-var/web2c/eptex/platex.fmt" 1586592799 2464184 e3ab41f280361bacd01c8f45f29fd55b ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "conference_101719.aux" 1586669089 3819 9744f22e4abb34a09620f5f9bc254c84 "latex"
-  "conference_101719.tex" 1586669087 32779 95e67c1840bc873d0ea1d58e709a6d49 ""
-  "image/ACC.png" 1586668775 16274 cddad8480e75b6934fa2dca56f3064ee ""
-  "image/FPR.png" 1586668790 17139 73ba16ff177d9873cfc24b875ceb46ca ""
-  "image/TPR.png" 1586668771 14687 96c2308b6fc751f6c89136d49f6544bc ""
-  "image/Thrput.png" 1586667147 19061 9663ca95657b56f6f916b778d7e94ea5 ""
+  "conference_101719.aux" 1586686614 3867 5a8a68a30f2e79366e0ed4cc157872ea "latex"
+  "conference_101719.bbl" 1586686613 2261 632b327db44528e78a843dbcdfbf820a "bibtex conference_101719"
+  "conference_101719.tex" 1586686610 30158 61c87212e21f3bca06708e3bb6dfa927 ""
+  "image/ACC.pdf" 1586685380 17534 a3a4327e757dfeee345b1a9f9db6249b ""
+  "image/FPR.pdf" 1586685370 17527 867b788a50a86203aa1e96de753de116 ""
+  "image/TPR.pdf" 1586685397 17118 fa6e2def9105cc099912c777905f2e70 ""
+  "image/Thrput.pdf" 1586685389 14712 ae6d3cee5deaa6e4aca49bb6452ac7b0 ""
+  "image/flowchart.pdf" 1586686259 13505 95ce063d27e7a658fc6b5a4b65ae86f0 ""
   (generated)
-  "conference_101719.log"
-  "conference_101719.aux"
   "conference_101719.dvi"
+  "conference_101719.aux"
+  "conference_101719.log"

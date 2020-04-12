@@ -105,14 +105,16 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvips.def
-INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvips.def
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/base/textcomp.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/base/textcomp.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/xcolor/xcolor.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/xcolor/xcolor.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/color.cfg
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvips.def
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvips.def
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 INPUT conference_101719.aux
@@ -157,14 +159,22 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
 OUTPUT conference_101719.dvi
-INPUT image/Thrput.png
+INPUT image/Thrput.pdf
+INPUT extractbb -B cropbox -O image/Thrput.pdf
+INPUT image/flowchart.pdf
+INPUT extractbb -B cropbox -O image/flowchart.pdf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT image/ACC.png
-INPUT image/TPR.png
-INPUT image/FPR.png
+INPUT image/ACC.pdf
+INPUT extractbb -B cropbox -O image/ACC.pdf
+INPUT image/TPR.pdf
+INPUT extractbb -B cropbox -O image/TPR.pdf
+INPUT image/FPR.pdf
+INPUT extractbb -B cropbox -O image/FPR.pdf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
+INPUT conference_101719.bbl
+INPUT conference_101719.bbl
 INPUT conference_101719.aux

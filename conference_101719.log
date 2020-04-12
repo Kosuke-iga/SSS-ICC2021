@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  12 APR 2020 14:24
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  12 APR 2020 19:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -386,10 +386,10 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvips.def on input line 105.
+Package graphics Info: Driver file: dvipdfmx.def on input line 105.
 
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvips.def
-File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
 ))
 \Gin@req@height=\dimen183
 \Gin@req@width=\dimen184
@@ -404,6 +404,10 @@ Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: dvips.def on input line 225.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
 Package xcolor Info: Model `RGB' extended on input line 1364.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
@@ -476,60 +480,49 @@ LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 (Font)              using `JY1/mc/m/n' instead on input line 71.
 
-
-LaTeX Warning: Citation `prapd' on page 1 undefined on input line 84.
-
-
-LaTeX Warning: Citation `clockskew' on page 1 undefined on input line 84.
-
 [1
 
 
-]
-
-LaTeX Warning: Citation `prapd' on page 2 undefined on input line 114.
-
-
-LaTeX Warning: Citation `clockskew' on page 2 undefined on input line 120.
-
-[2]
-File: image/Thrput.png Graphic file (type eps)
- <image/Thrput.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+] [2]
+File: image/Thrput.pdf Graphic file (type pdf)
+<image/Thrput.pdf>
+File: image/flowchart.pdf Graphic file (type pdf)
+<image/flowchart.pdf>
  [3]
 
-LaTeX Warning: Reference `fig:flowchart' on page 4 undefined on input line 220.
+LaTeX Warning: Reference `fig:flowchart' on page 4 undefined on input line 227.
 
 
 
-LaTeX Warning: Reference `fig:flowchart' on page 4 undefined on input line 221.
+LaTeX Warning: Reference `fig:flowchart' on page 4 undefined on input line 228.
 
 
-File: image/ACC.png Graphic file (type eps)
-<image/ACC.png>
-File: image/TPR.png Graphic file (type eps)
- <image/TPR.png>
-File: image/FPR.png Graphic file (type eps)
- <image/FPR.png>
-Underfull \hbox (badness 10000) in paragraph at lines 280--301
-[][]$[]$[] []$[]$[]
- []
-
+File: image/ACC.pdf Graphic file (type pdf)
+<image/ACC.pdf>
+File: image/TPR.pdf Graphic file (type pdf)
+<image/TPR.pdf>
+File: image/FPR.pdf Graphic file (type pdf)
+<image/FPR.pdf>
 [4]
 
-LaTeX Warning: Reference `fpr' on page 5 undefined on input line 310.
+LaTeX Warning: Reference `fpr' on page 5 undefined on input line 317.
 
 
-LaTeX Warning: Reference `tpr' on page 5 undefined on input line 312.
+LaTeX Warning: Reference `tpr' on page 5 undefined on input line 319.
 
 
-LaTeX Warning: Reference `tab:real' on page 5 undefined on input line 327.
+LaTeX Warning: Reference `tab:real' on page 5 undefined on input line 334.
+
+(./conference_101719.bbl
+
+LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
+(Font)              using `JT1/gt/m/n' instead on input line 27.
 
 
-LaTeX Warning: Citation `rssi' on page 5 undefined on input line 349.
+LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
+(Font)              using `JY1/gt/m/n' instead on input line 27.
 
-[5]
+[5])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -552,12 +545,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3591 strings out of 481140
- 51467 string characters out of 5917417
- 310098 words of memory out of 5000000
- 19608 multiletter control sequences out of 15000+600000
+ 3640 strings out of 481140
+ 52394 string characters out of 5917417
+ 310039 words of memory out of 5000000
+ 19648 multiletter control sequences out of 15000+600000
  573701 words of font info for 145 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 32i,11n,37p,334b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,11n,37p,307b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on conference_101719.dvi (6 pages, 42588 bytes).
+Output written on conference_101719.dvi (6 pages, 40548 bytes).

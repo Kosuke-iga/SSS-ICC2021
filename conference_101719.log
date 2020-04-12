@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  12 APR 2020 19:16
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  12 APR 2020 23:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -489,31 +489,23 @@ File: image/Thrput.pdf Graphic file (type pdf)
 File: image/flowchart.pdf Graphic file (type pdf)
 <image/flowchart.pdf>
  [3]
-
-LaTeX Warning: Reference `fig:flowchart' on page 4 undefined on input line 227.
-
-
-
-LaTeX Warning: Reference `fig:flowchart' on page 4 undefined on input line 228.
-
-
 File: image/ACC.pdf Graphic file (type pdf)
 <image/ACC.pdf>
 File: image/TPR.pdf Graphic file (type pdf)
 <image/TPR.pdf>
 File: image/FPR.pdf Graphic file (type pdf)
 <image/FPR.pdf>
-[4]
+ [4]
 
-LaTeX Warning: Reference `fpr' on page 5 undefined on input line 317.
-
-
-LaTeX Warning: Reference `tpr' on page 5 undefined on input line 319.
+LaTeX Warning: Reference `fpr' on page 5 undefined on input line 320.
 
 
-LaTeX Warning: Reference `tab:real' on page 5 undefined on input line 334.
+LaTeX Warning: Reference `tpr' on page 5 undefined on input line 322.
 
-(./conference_101719.bbl
+
+LaTeX Warning: Reference `tab:real' on page 5 undefined on input line 337.
+
+[5] (./conference_101719.bbl
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 (Font)              using `JT1/gt/m/n' instead on input line 27.
@@ -522,7 +514,7 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 27.
 
-[5])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -545,12 +537,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3640 strings out of 481140
- 52394 string characters out of 5917417
+ 3639 strings out of 481140
+ 52383 string characters out of 5917417
  310039 words of memory out of 5000000
- 19648 multiletter control sequences out of 15000+600000
+ 19647 multiletter control sequences out of 15000+600000
  573701 words of font info for 145 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  32i,11n,37p,307b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on conference_101719.dvi (6 pages, 40548 bytes).
+Output written on conference_101719.dvi (6 pages, 40932 bytes).

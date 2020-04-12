@@ -115,10 +115,10 @@ Wu et al. \cite{prapd} pay attention to the RSSI which is hard to be forged arbi
 For each LAP in a network, RSSI, which is measured by additional costly devices, is registered as the information in whitelist beforehand.
 By using RSSI, even if the MAC address of an AP is identical to that in the whitelist, that scheme can disclose that it is a RAP with spoofed MAC address set by an adversary at different location.
 However, that scheme is hard to detect RAP which is located near the LAP because RSSI is not as exact as it can indicate a small difference of the nearby location. 
-%Although it is useful as a supplementary feature, using only RSSI is insufficient to detect a RAP with high accuracy.
+Although it is useful as a supplementary feature, using only RSSI is insufficient to detect a RAP with high accuracy.
 
 In order to detect in more detail, Lanze et al. \cite{clockskew} focus on clock skew as a device fingerprinting based purely on physical properties.
-Clock skew is an unvoidable physical phenomenon that causes crystal oscillator based clocks to run with minuscule yet measurable deviations in speed.
+Clock skew is an unvoidable physical phenomenon that causes clocks to run at minuscule yet remotely observable different speeds.
 However, these network administrator side detections are inapplicable to Wi-Fi hotspots because they have to setup additional sensors or install detection software in their infrastructure to prevent attacks besides providing free Internet service.
 Thus, the detection schemes that require no equipment of additional devices by a network administrator are desired.
 
@@ -131,7 +131,7 @@ Because there exists the extra hop caused by the RAP on the path, RTT is longer 
 Although that scheme which leverages the packet delay are useful only for the case where the adversary sets RAP up on the laptop, Jang et al. \cite{previous} reveal the fact that the computational power of the software bridging mainly accounts for the packet delay.
 Thus, the adversary can evade the packet delay based detection by utilizing hardware-based RAPs having little bridging delay unlike software-based RAPs.
 
-In order to detect both types of RAPs, namely, software-based and hardware-based ones, \cite{previous} focuses on two communication channels utilized by a RAP between a user device and LAP.
+In order to detect both types of RAPs, namely, software-based and hardware-based ones, Jang et al. focus on two communication channels utilized by a RAP between a user device and LAP\cite{previous}.
 Whereas a RAP intervene between a user device and LAP, two distinct channels are used to reduce communication delay caused by channel interference each other.
 For example, it is assumed that channel 1 is used as the channel between a user device and a RAP, and channel 6 is that between a RAP and a LAP.
 That scheme detects RAP by finding out the presence of these two channels with the throughput of the transmission from the user device to the DNS server.
@@ -210,9 +210,9 @@ In addition to that, the proposed scheme is not affected by a spoofed MAC addres
 \subsection{Algorithm}
 \begin{figure}[t]
     \begin{center}
-        \includegraphics[scale=0.4]{image/flowchart.pdf}
+        \includegraphics[scale=0.45]{image/flowchart.pdf}
         \caption{The Flowchart of Proposed Scheme}
-        \label{flowchart}
+        \label{fig:flowchart}
     \end{center}
 \end{figure}
 n this subsection, the algorithm for detection based on searching the MAC address of a LAP on the same path is explained.
@@ -249,38 +249,6 @@ If the detection phase is carried out for all $\inputAP$ without the detection o
 %Since MAC address is used for a destination address of a packet in LAN communication, the device cannnot communicate with the Internet, or even gateway, without the MAC address of the gateway.
 %In order to acquire a MAC address of a gateway, ARP request packets, which includes source MAC address information, are sent to the gateway's IP address. 
 %After the gateway get the packet from the device, ARP reply packets are sent by the gateway to the source device on the basis of the source MAC address included in ARP request packets, which can tell the gateway's MAC address by including it as a source MAC address.
-
-\section{EVALUATION}\label{sec:5}
-In order to demonstrate the effectiveness of the proposed scheme, we compare it with the scheme \cite{previous} which interferes the channel between a LAP and RAP explained above as a previous scheme.
-
-The metric of the evaluations are Accuracy (ACC), TPR (True Positive Rate), and FPR (False Positive Rate) defined as
-\begin{gather}
-    ACC = \frac{TP + TN}{TP + TN + FP + FN} \\
-    TPR = \frac{TP}{TP + FN} \\
-    FPR = \frac{FP}{FP + TN}
-\end{gather}
-where TP, TN, FP, and FN denote the number of True Positive (RAPs is reregarded as RAPs), True Negative (LAPs are regarded as LAPs), False Positive (LAPs are regarded as RAPs), and False Negative (RAPs are regarded as LAPs), respectively.
-We evaluate our scheme with these metrics by two scenarios which are the case of attack where a user device connects with a RAP and that of non-attack where a user device connects with a LAP.
-
-\subsection{Experimental Setup}
-We implemented the detectors in a laptop, which is a MacBook Pro with an Intel Core i5 CPU and 16GB RAM.
-In order to configure \cite{previous} for comparison, we use a TP-Link Archer C6 as an interference device.
-
-Simiraly, the same AP devices are used for both LAP and RAP.
-In additon, in order to set a RAP up for distinct channel from a LAP, TP-Link Archer C50 is introduced as a repeater between the RAP and the LAP.
-These two APs, where one is in the station mode and the other is in AP mode, are interconnected using a LAN cable.
-All devices are operated in the IEEE 802.11n mode with MIMO.
-We arrange a LAP, RAP, and user device at equal intervals and it is about 5 feet.
-
-\subsection{Traffic Scenario}
-In order to demonstrate the robustness against unstable traffic in real environment, we intentionally generate random traffic to the LAP at random time in each experiment.
-
-\subsection{Time of Detection}
-The experiments are conducted for each case, namely attack scenario and non attack scenario 100 times.
-The average time required per detection is represented as $T$.
-It is affected by the observation time of ARP procedure per AP, which is represented as $\Delta t$ , and also the number of LAPs before a RAP is detected in an attack scenario.
-We conduct each evaluation by changing $\Delta t$ from 5 seconds to 10 seconds at every second.
-
 \begin{figure*}[ht]
     \begin{minipage}{0.33\hsize}
         \begin{center}
@@ -306,6 +274,41 @@ We conduct each evaluation by changing $\Delta t$ from 5 seconds to 10 seconds a
 
 \end{figure*}
 
+\section{EVALUATION}\label{sec:5}
+In order to demonstrate the effectiveness of the proposed scheme, we compare it with the scheme \cite{previous} which interferes the channel between a LAP and RAP explained above as a previous scheme.
+
+The metric of the evaluations are Accuracy (ACC), TPR (True Positive Rate), and FPR (False Positive Rate) defined as
+\begin{gather}
+    ACC = \frac{TP + TN}{TP + TN + FP + FN} \\
+    TPR = \frac{TP}{TP + FN} \\
+    FPR = \frac{FP}{FP + TN}
+\end{gather}
+where TP, TN, FP, and FN denote the number of True Positive (RAPs is reregarded as RAPs), True Negative (LAPs are regarded as LAPs), False Positive (LAPs are regarded as RAPs), and False Negative (RAPs are regarded as LAPs), respectively.
+We evaluate our scheme with these metrics by two scenarios which are the case of attack where a user device connects with a RAP and that of non-attack where a user device connects with a LAP.
+
+\subsection{Experimental Setup}
+\subsubsection{Detector}
+We implemented the detectors in a laptop, which is a MacBook Pro with an Intel Core i5 CPU and 16GB RAM.
+In order to configure \cite{previous} for comparison, we use a TP-Link Archer C6 as an interference device.
+
+\subsubsection{LAP and RAP}
+TP-Link Archer C6 is also used to setup the LAP.
+As regards the RAP, in order to use distinct channels on both sides, it is composed of two APs (TP-Link Archer C6 and TP-Link Archer C50).
+These two APs, where one is in the station mode ($AP_{sm}$) and the other is in AP mode ($AP_{am}$), are interconnected using a LAN cable.
+In this figure, $AP_{sm}$ is responsible for repeating packets to and from the LAP and $AP_{am}$ has a spoofed SSID and MAC address.
+All devices are operated in the IEEE 802.11n mode with MIMO.
+We arrange a LAP, RAP, and user device at equal intervals and it is about 5 feet.
+
+\subsection{Traffic Scenario}
+In order to demonstrate the robustness against unstable traffic in real environment, we intentionally generate random traffic to the LAP at random time in each experiment.
+
+\subsection{Time of Detection}
+The experiments are conducted for each case, namely attack scenario and non attack scenario 100 times.
+The average time required per detection is represented as $T$.
+It is affected by the observation time of ARP procedure per AP, which is represented as $\Delta t$ , and also the number of LAPs before a RAP is detected in an attack scenario.
+We conduct each evaluation by changing $\Delta t$ from 5 seconds to 10 seconds at every second.
+
+
 \subsection{Evaluation of the Proposed Scheme}
 First, in order to show the effectiveness of the proposed scheme (Prop.), we compare it with the previous scheme \cite{previous} (Prev.).
 \figurename~\ref{fig:acc}, \ref{fig:tpr}, and\ref{fig:fpr} show the results of our evaluations for each scheme.
@@ -326,7 +329,7 @@ As a result, we conclude that the proposed scheme enables the detection without 
 
 \subsection{Evaluation in a Real Environment}
 In order to demonstrate the robustness and reruired time of the proposed scheme in a real environment, we conduct an experiment in a cafe and evaluate ACC and the total time required for the detection.
-There exists three APs arranged, whose SSID are all same.
+There exists three APs arranged, whose SSIDs are all same.
 In the attack scenario, one of them is replaced by a RAP, which has a same SSID.
 In the same way with the experiment in the previous subsection, we conduct the proposed scheme in the both cases where a user's device connects with a RAP or a LAP.
 The experiments are conducted around 2:00pm on a weekday at an cafe.

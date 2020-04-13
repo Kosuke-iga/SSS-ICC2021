@@ -1,11 +1,11 @@
-PWD /Users/kosuke-i/Desktop/研究室/国際会議/local
+PWD /Users/kosuke-i/Desktop/研究室/国際会議/local/starbucks
 INPUT /usr/local/texlive/2020/texmf.cnf
 INPUT /usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2020/texmf.cnf
 INPUT /usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2020/texmf-var/web2c/eptex/platex.fmt
-INPUT flowchart.tex
-OUTPUT flowchart.log
+INPUT starbucks.tex
+OUTPUT starbucks.log
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/tools/shellesc.sty
@@ -173,14 +173,21 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libr
 INPUT /usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-dvipdfmx.def
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-dvipdfmx.def
-INPUT flowchart.aux
-INPUT flowchart.aux
-OUTPUT flowchart.aux
+INPUT starbucks.aux
+INPUT starbucks.aux
+OUTPUT starbucks.aux
+INPUT ../attack-model/image/smart.png
+INPUT extractbb -B cropbox -O ../attack-model/image/smart.png
+INPUT ../attack-model/image/lap.png
+INPUT extractbb -B cropbox -O ../attack-model/image/lap.png
+INPUT ../attack-model/image/lap.png
+INPUT ../attack-model/image/gateway.png
+INPUT extractbb -B cropbox -O ../attack-model/image/gateway.png
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
-OUTPUT flowchart.dvi
-INPUT flowchart.aux
+OUTPUT starbucks.dvi
+INPUT starbucks.aux

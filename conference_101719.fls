@@ -159,21 +159,25 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
 OUTPUT conference_101719.dvi
-INPUT image/Thrput.pdf
-INPUT extractbb -B cropbox -O image/Thrput.pdf
-INPUT image/flowchart.pdf
-INPUT extractbb -B cropbox -O image/flowchart.pdf
+INPUT attack-model/attack-model.pdf
+INPUT extractbb -B cropbox -O attack-model/attack-model.pdf
+INPUT figure/Thrput.pdf
+INPUT extractbb -B cropbox -O figure/Thrput.pdf
+INPUT flowchart/flowchart.pdf
+INPUT extractbb -B cropbox -O flowchart/flowchart.pdf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT image/ACC.pdf
-INPUT extractbb -B cropbox -O image/ACC.pdf
-INPUT image/TPR.pdf
-INPUT extractbb -B cropbox -O image/TPR.pdf
-INPUT image/FPR.pdf
-INPUT extractbb -B cropbox -O image/FPR.pdf
+INPUT figure/ACC.pdf
+INPUT extractbb -B cropbox -O figure/ACC.pdf
+INPUT figure/TPR.pdf
+INPUT extractbb -B cropbox -O figure/TPR.pdf
+INPUT figure/FPR.pdf
+INPUT extractbb -B cropbox -O figure/FPR.pdf
+INPUT starbucks/starbucks.pdf
+INPUT extractbb -B cropbox -O starbucks/starbucks.pdf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
 INPUT conference_101719.bbl
 INPUT conference_101719.bbl

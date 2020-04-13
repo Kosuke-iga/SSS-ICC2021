@@ -1,9 +1,9 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  13 APR 2020 02:39
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  14 APR 2020 09:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**flowchart.tex
-(./flowchart.tex
+**attack-model.tex
+(./attack-model.tex
 pLaTeX2e <2020-02-02>+3 (based on LaTeX2e <2020-02-02> patch level 5)
 L3 programming layer <2020-03-06>
 (/usr/local/texlive/2020/texmf-dist/tex/latex/standalone/standalone.cls
@@ -478,8 +478,8 @@ File: l3backend-dvipdfmx.def 2020-03-12 L3 backend support: dvipdfmx
 \l__pdf_internal_box=\box93
 \g__pdf_backend_object_int=\count266
 \g__pdf_backend_annotation_int=\count267
-) (./flowchart.aux)
-\openout1 = `flowchart.aux'.
+) (./attack-model.aux)
+\openout1 = `attack-model.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -502,31 +502,49 @@ LaTeX Font Info:    ... okay on input line 8.
  ABD: EveryShipout initializing macros
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
+File: image/smart.png Graphic file (type bmp)
+<image/smart.png>
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 32.
+(Font)              <7> on input line 16.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 32.
+(Font)              <5> on input line 16.
+File: image/lap.png Graphic file (type bmp)
+<image/lap.png>
+File: image/lbeacon.png Graphic file (type bmp)
+<image/lbeacon.png>
+File: image/lap.png Graphic file (type bmp)
+<image/lap.png>
+File: image/lbeacon.png Graphic file (type bmp)
+<image/lbeacon.png>
+File: image/lap.png Graphic file (type bmp)
+<image/lap.png>
+File: image/lbeacon.png Graphic file (type bmp)
+<image/lbeacon.png>
+File: image/gateway.png Graphic file (type bmp)
+<image/gateway.png>
+File: image/pc.png Graphic file (type bmp)
+<image/pc.png>
+File: image/evil.png Graphic file (type bmp)
+<image/evil.png>
+File: image/lap.png Graphic file (type bmp)
+<image/lap.png>
+File: image/lbeacon.png Graphic file (type bmp)
+<image/lbeacon.png>
+File: image/smart.png Graphic file (type bmp)
+<image/smart.png>
  [1
 
 ] [2
 
 ]
-(./flowchart.aux) ) 
+(./attack-model.aux) ) 
 Here is how much of TeX's memory you used:
- 14163 strings out of 481140
- 315192 string characters out of 5917417
- 562883 words of memory out of 5000000
- 29961 multiletter control sequences out of 15000+600000
- 537585 words of font info for 46 fonts, out of 8000000 for 9000
+ 14193 strings out of 481140
+ 315360 string characters out of 5917417
+ 563730 words of memory out of 5000000
+ 29984 multiletter control sequences out of 15000+600000
+ 536209 words of font info for 41 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 60i,8n,68p,419b,747s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,6n,67p,422b,741s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on flowchart.dvi (2 pages, 11744 bytes).
+Output written on attack-model.dvi (2 pages, 13016 bytes).

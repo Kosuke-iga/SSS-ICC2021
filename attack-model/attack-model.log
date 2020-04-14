@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  14 APR 2020 09:46
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  14 APR 2020 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -505,9 +505,9 @@ Missing character: There is no ; in font nullfont!
 File: image/smart.png Graphic file (type bmp)
 <image/smart.png>
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 16.
+(Font)              <14.4> on input line 16.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 16.
+(Font)              <7> on input line 16.
 File: image/lap.png Graphic file (type bmp)
 <image/lap.png>
 File: image/lbeacon.png Graphic file (type bmp)
@@ -539,12 +539,12 @@ File: image/smart.png Graphic file (type bmp)
 ]
 (./attack-model.aux) ) 
 Here is how much of TeX's memory you used:
- 14193 strings out of 481140
- 315360 string characters out of 5917417
- 563730 words of memory out of 5000000
- 29984 multiletter control sequences out of 15000+600000
- 536209 words of font info for 41 fonts, out of 8000000 for 9000
+ 14200 strings out of 481140
+ 315454 string characters out of 5917417
+ 564752 words of memory out of 5000000
+ 29989 multiletter control sequences out of 15000+600000
+ 537585 words of font info for 46 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  60i,6n,67p,422b,741s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on attack-model.dvi (2 pages, 13016 bytes).
+Output written on attack-model.dvi (2 pages, 13012 bytes).

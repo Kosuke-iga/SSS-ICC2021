@@ -178,6 +178,12 @@ INPUT attack-model.aux
 OUTPUT attack-model.aux
 INPUT image/smart.png
 INPUT extractbb -B cropbox -O image/smart.png
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT image/lap.png
 INPUT extractbb -B cropbox -O image/lap.png
 INPUT image/lbeacon.png

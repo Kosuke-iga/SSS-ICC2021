@@ -76,13 +76,13 @@ component, formatting, style, styling, insert
 \end{IEEEkeywords}
 
 \section{INTRODUCTION}
-With the rapid development of wireless communication techniques, Wi-Fi as the most commonly used Internet access technology is deployed and keeps spreading all over the world.
+With the rapid development of wireless communication techniques, Wi-Fi as the most commonly used Internet access technology is deployed and keeps spreading all over the world\cite{bg-evi} .
 It is located in everywhere of our daily life, such as shopping malls, restaurants, public transit systems and so on.
-While the free access to Wi-Fi network attarcts a large number of users, it also allows adversaries to launch attacks to the users just by setting up a rogue AP (RAP) on their laptop in the network.
+While the free access to Wi-Fi network attarcts a large number of users, it also allows adversaries to launch attacks to the users just by setting up a rogue AP (RAP) on their laptop in the network\cite{laptop-evi}.
 An Evil Twin Attack is one of the attack where a RAP launched on a laptop is established between a user device and the Internet as man-in-the-middle (MITM) attacks.
-The RAP clones the service set identifier (SSID) and or even MAC address of a legitimate AP provided by a public facility, which is the reason why it is called ``evil twin attack''.
+The RAP clones the service set identifier (SSID) and or even MAC address of a legitimate AP provided by a public facility, which is the reason why it is called ``evil twin attack''\cite{spoof-evi}.
 By acting as MITM attack, adversaries can eavesdrop on the exchange of sensitive information such as identity credentials, passwords, and bank accounts observing relayed packets through their laptop between a user device and LAP.
-In addition, adversaries can also mount an active attack by leading a user to phishing websites or infecting a user device with malicious softwares.
+In addition, adversaries can also mount an active attack by leading a user to phishing websites or infecting a user device with malicious softwares\cite{research}.
 Since, wireless devices connect automatically to an AP which has the strongest received signal strength indication (RSSI) among all APs which have same SSID.
 Moreover by exploiting the characteristic that users freely connect free Wi-Fi network,  an adversary can succed in the attacks without being noticed by a user.
 Thus, the detection of the RAPs is urgent demand.
@@ -103,7 +103,7 @@ Therefore, it is necessary to realize the user side detection which is independe
 In order to realize the user side detection which is independent of a network environment, in this paper, we propose \title{} .
 The main idea of our scheme is that there exist two APs, namely the RAP and a LAP, on the same path from a user device to a gateway.
 Therefore, in an attack scenario, besides the connected RAP, a LAP exists inevitably on the other side of the RAP because of the MITM attack.
-On the basis of this idea, the proposed scheme reveals the connected AP as RAP by finding MAC address of such LAP from obtainable beacon frames by a user device.
+On the basis of this idea, the proposed scheme reveals the connected AP as RAP by finding MAC address of such LAP from obtainable beacon frames by a user device \cite{beacon}.
 In order to find the MAC address, we leverage the phenomenon that a user device cannot receive Address Resolution Protocol (ARP) reply packets from a gateway in the situation where its MAC address and that of a AP are duplicated on the same path.
 The proposed scheme intentionally creates such situation by setting the MAC address of a user device to the one on the same path has.
 By doing this, the proposed scheme can reveal the connected AP as a RAP in an attack scenario.
@@ -164,12 +164,12 @@ In the next section, we elaborate the previous scheme.
 \end{figure}
 \subsection{Attack Model}
 In an evil twin attack, the adversary sets up a RAP which uses a SSID of a LAP in the targeted Wi-Fi network.
-Besides, the MAC address of the RAP is cloned from one of the LAPs in the network.
+Besides, the MAC address of the RAP is cloned from one of the LAPs in the network\cite{spoof-evi}.
 As a result, although a user device receives SSID broadcast from the RAP, it cannot differentiate between these APs.
 Thus, the user device simply connects with the AP that has a higher RSSI value.
 We assume that a RAP relays WLAN traffic between a LAP and a user device, which act as a MITM attack to steal private information of a user.
 By avoiding using mobile Internet access, e.g., 3G/4G, the adversary can evade simple detections with Internet Services Provider (ISP) names or Global IP addresses\cite{rtt}.
-In addition to that, as shown in \figurename~\ref{fig:model}, we assume that the adversary exploits hardware-based APs which cannot be detected accurately by existing schemes since they do not cause a computational delay due to a software bridging.
+In addition to that, as shown in \figurename~\ref{fig:model}, we assume that the adversary exploits hardware-based APs which cannot be detected accurately by existing schemes since they do not cause a computational delay due to a software bridging\cite{previous}.
 In order to use distinct channels on the both sides, a RAP is composed of two routers which are interconnected with a LAN cable.
 One of these routers is connected to a LAP in station mode and the other disguise user device as a LAP in service mode.
 Because a high-end router which can relay packets with distinct channels appears nowadays, it can replace a RAP in our model.
@@ -312,6 +312,7 @@ We evaluate our scheme with these metrics by two scenarios which are the case of
 \subsection{Experimental Setup}
 \subsubsection{Detector}
 We implemented the detectors in a laptop, which is a MacBook Pro with an Intel Core i5 CPU and 16GB RAM.
+We observe ARP packets with T-shark, which is a tool for capturing packets\cite{wire}.
 In order to configure \cite{previous} for comparison, we use a TP-Link Archer C6 as an interference device.
 
 \subsubsection{LAP and RAP}
@@ -397,7 +398,17 @@ Thus, we assume that a AP can be judged whether it is a legitimate repeater or n
 In the future, we plan to devise the additional countermeasures and conduct some experiments so as to distinguish legitimate repeater with RSSI value.
 
 \section{conclusion}\label{sec:6}
+In this paper, we have proposed \title{}.
+We collect MAC addresses from user side and set the MAC address of user device to them.
+By observing ARP packets in the situation, we can reveal the legitimacy of connected AP.
+The detection performance of the scheme is better than the previous scheme.
+The results show it can detect a RAP without any error even in unstable traffic environment.
+In addition, the simulation in a small cafe shows the availability in a real network.
+In the future, we will conduct a large-scaled examination of the proposed scheme.
+Furhermore, we need to expand the scheme for the network where a legitimate repeater is arranged.
 
+\section*{acknowledgment}
+This work is partly supported by the Grant in Aid for Scientific Research (No.17K06440) from Japan Society for Promotion of Science (JSPS).
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEE_ref}

@@ -30,23 +30,23 @@
 	% Place nodes
 	\node [empty](em) at (-3cm, 4cm){};
     \node [init] (init) at (0cm,3.2cm) {Input: $m_{input}$};
-    \node [decision] (compare) at (0cm,-0.5cm) {Comparison with $m_{target}$};
+    \node [decision] (compare) at (0cm,-0.5cm) {Comparison with $m_{connect}$};
     \draw [thick, ->] (init) -- (compare);
     \node [block] (set) at (0cm, -4.2cm) {Setting MAC address to $m_{input}$};
-    \draw [thick, ->] (compare) -- node[right] {\Large $m_{input} \ne m_{target}$}(set);
+    \draw [thick, ->] (compare) -- node[right] {\Large $m_{input} \ne m_{connect}$}(set);
     \node [decision] (observe) at (0cm, -7.9cm) {Observation of ARP reply packets from a gateway};
     \draw [thick, ->] (set) -- node[right]{\Large $\rm Send\ ARP\ Requests$} (observe);
-    \node [end] (lap) at (0cm, -11.6cm) {Declare that $\rm AP_{owner}$ is a LAP on the different path};
+    \node [end] (lap) at (0cm, -11.6cm) {Declare that AP with $m_{owner}$ is a LAP on the different path};
     \draw [thick, ->] (observe) -- node[right]{\Large $\rm Get\ ARP\ Replys$}(lap);
 
-    \node [end2] (rap) at (10cm, -7.9cm) {Identify $\rm AP_{target}$ as a RAP};
+    \node [end2] (rap) at (10cm, -7.9cm) {Identify $\rm AP_{connect}$ as a RAP};
     \draw [thick, ->] (observe) -- (rap);
     \draw [thick, ->] (compare) -| (rap);
 	% \coordinate (sc) at (1.8cm, -11.6cm) node at (sc) [left] {\Large$\rm logo\ existence$};
 	\node [empty](em) at (-6cm, -12.4cm){};
 	\node [empty](em) at (13.5cm, -12.4cm){};
 
-    \coordinate (m) at (10cm, -0.1cm) node at (m) [left] {\Large $m_{input} = m_{target}$};
+    \coordinate (m) at (10cm, -0.1cm) node at (m) [left] {\Large $m_{input} = m_{connect}$};
     \coordinate (m) at (5.9cm, -7.0cm) node at (m) [left] {\Large $\rm No$};
 	\coordinate (m) at (6.3cm, -7.5cm) node at (m) [left] {\Large$\rm Reply$};
 	%Place draw

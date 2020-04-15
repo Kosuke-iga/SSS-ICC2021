@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  14 APR 2020 10:40
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  15 APR 2020 03:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -523,7 +523,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 Here is how much of TeX's memory you used:
  14163 strings out of 481140
  315192 string characters out of 5917417
- 562883 words of memory out of 5000000
+ 562884 words of memory out of 5000000
  29961 multiletter control sequences out of 15000+600000
  537585 words of font info for 46 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191

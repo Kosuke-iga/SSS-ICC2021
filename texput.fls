@@ -1,0 +1,6 @@
+PWD /Users/kosuke-i/Desktop/研究室/国際会議/local
+INPUT /usr/local/texlive/2018/texmf.cnf
+INPUT /usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2018/texmf.cnf
+INPUT /usr/local/texlive/2018/texmf-var/web2c/eptex/platex.fmt
+OUTPUT texput.log

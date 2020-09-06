@@ -1,0 +1,51 @@
+\documentclass[dvipdfmx]{standalone}
+\usepackage{tikz}
+\usepackage[latin1]{inputenc}
+\usetikzlibrary{shapes,arrows,shapes,shapes.geometric,calc}
+\usetikzlibrary{positioning}
+
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    \tikzset{frame/.style={rectangle, draw, text width=5.2cm, text centered, minimum height=3.75cm,}};
+    \tikzset{empty/.style={rectangle}};
+
+    \node[empty](em) at (0cm, 9cm){};
+    \node[frame] (bg) at (5.5cm,7.12cm){};
+    \node (user) at (0cm, 6cm) {\includegraphics[scale=0.15]{image/smart.png}};
+    \coordinate(return) at (0cm, 5.3cm) node at (return)  [below] {\Large $\rm User\ Device$};
+    \draw[very thick,densely dashed] (0.55cm, 6cm) -- (3.5cm, 6cm);
+    \coordinate(return) at (2cm, 6.7cm) node at (return)  [below] {\Large $\rm ch.1$};
+    \node (rap1) at (4cm, 6cm) {\includegraphics[scale=0.15]{image/lap.png}};
+    \node (bcn1) at (3.6cm, 6.6cm) {\includegraphics[scale=0.1]{image/lbeacon.png}};
+    \coordinate(return) at (5.5cm, 5.25cm) node at (return)  [below] {\Large $\rm RAP$};
+    \draw[very thick] (4.5cm, 6cm) -- (6.5cm, 6cm);
+    \node (rap2) at (7cm, 6cm) {\includegraphics[scale=0.15]{image/lap.png}};
+    \node (bcn2) at (7.4cm, 6.6cm) {\includegraphics[scale=0.1]{image/lbeacon.png}};
+    \draw[very thick, densely dashed] (7.5cm, 6cm) -- (10.5cm, 6cm);
+    \coordinate(return) at (9cm, 6.7cm) node at (return)  [below] {\Large $\rm ch.6$};
+    \node (lap) at (11cm, 6cm) {\includegraphics[scale=0.15]{image/lap.png}};
+    \node (bcn3) at (10.6cm, 6.6cm) {\includegraphics[scale=0.1]{image/lbeacon.png}};
+    \coordinate(return) at (11cm, 5.3cm) node at (return)  [below] {\Large $\rm LAP$};
+    \draw[very thick] (11.5cm, 6cm) -- (14.7cm, 4.5cm);
+    \node (gateway) at (15cm, 4.5cm) {\includegraphics[scale=0.15]{image/gateway.png}};
+    \coordinate(return) at (15cm, 3.8cm) node at (return)  [below] {\Large $\rm Gateway$};
+    \draw[very thick] (4cm, 6.2cm) -- (5.1cm, 7.6cm);
+    \node (pc) at (5.4cm,8.1cm) {\includegraphics[scale=0.15]{image/pc.png}};
+    \node (evil) at (7cm,8.25cm){\includegraphics[scale=0.13]{image/evil.png}};
+    \coordinate(return) at (7cm, 7.63cm) node at (return)  [below] {\Large $\rm Adversary$};
+
+    \node(lap2) at (11cm, 3cm) {\includegraphics[scale=0.15]{image/lap.png}};
+    \node(bcn4) at (10.6cm, 3.6cm) {\includegraphics[scale=0.1]{image/lbeacon.png}};
+    \coordinate(return) at (11cm, 2.3cm) node at (return)  [below] {\Large $\rm LAP$};
+    \draw[very thick](11.5cm,3cm)--(14.7cm, 4.5cm);
+    \node(user2) at (7cm, 3cm) {\includegraphics[scale=0.15]{image/smart.png}};
+    \coordinate(return) at (7cm, 2.3cm) node at (return)  [below] {\Large $\rm User\ Device$};
+    \draw[very thick, densely dashed] (7.5cm, 3cm) -- (10.5cm, 3cm);
+    \coordinate(return) at (9cm, 3.7cm) node at (return)  [below] {\Large $\rm ch.11$};
+
+
+\end{tikzpicture}
+
+\end{document}
+ 

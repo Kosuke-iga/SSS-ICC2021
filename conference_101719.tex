@@ -158,6 +158,8 @@ Besides, in some cases, the MAC address of the RAP is cloned from one of the LAP
 As a result, although a client receives SSID broadcast from the RAP and LAPs, it cannot differentiate between them.
 Thus, since the client simply connects with the AP that has a higher RSSI, the RAP sends beacon frames with stronger signals.
 \figurename~\ref{fig:model} shows the attack model, where a RAP relays traffic via a LAP as a MITM attack to eavsdrop client's sensitive data.
+The targeted network is open Wi-Fi, whose LAPs have no security protocols such as WPA2, in our model since MITM attack is not succeeded in WPA2 protected Wi-Fi\cite{kataoka}.
+Thus, the WPA2 protected Wi-Fi is beyond the scope of our work.
 By avoiding using mobile Internet access, e.g., 3G/4G, the adversary can evade simple detections with Internet Services Provider (ISP) names or Global IP addresses \cite{rtt}.
 In addition to that, the adversary in our model exploits a hardware-based AP, which is introduced by \cite{previous}, in order to realize a detection scheme independent of its computational performance.
 The distinct channels can be used on the both sides to avoid channel interference since the RAP is composed of two APs which are interconnected with a LAN cable.
@@ -176,18 +178,34 @@ For example, when a client is using channel 1 with the connected AP which cannot
 If there exists the other channel on the route, the decline in the throughput can be observed by the client, and the presence of RAP is revealed.
 
 \subsubsection{Shortcoming of the Previous Scheme}\label{sec:shortcoming}
-\begin{figure}[t]
+%\begin{figure}[t]
+%   \begin{center}
+%      \includegraphics[scale=0.3]{figure/Thrput.pdf}
+%     \caption{Throughput in a Cafe}
+%    \label{thrput}
+%    \end{center}
+%   \vspace{-2zh}
+%\end{figure}
+\begin{table}[t] 
     \begin{center}
-        \includegraphics[scale=0.3]{figure/Thrput.pdf}
-        \caption{Throughput in a Cafe}
-        \label{thrput}
+        \caption{The Comparison between Accuracies in Different Traffic Evnvironment}
+        \label{tab:thrput result}
+        \begin{tabular}{c c} \hline
+            Constant Traffic (80Mbps) & Random Traffic \\ \hline \hline
+            0.92 & 0.74 \\ \hline
+        \end{tabular}
     \end{center}
     \vspace{-2zh}
-\end{figure}
+\end{table}
 Although the previous scheme is successful in the detection for a hardware-based RAP in the experimental environment, it cannot detect the RAP accurately in the real world.
 This is because throughput is considerably dependent on various factors of the network environment such as mobility of the traffic, collisions, network topology changes, and unintentional interference.
-\figurename~\ref{thrput} shows the graph regarding the change of throughput in a cafe on a weekday.
-As shown in \figurename~\ref{thrput}, since the traffic in real environment is unsteady in fact, the previous scheme is subject to environmental changes, which can lead to degrade the detection performance.
+%\figurename~\ref{thrput} shows the graph regarding the change of throughput in a cafe on a weekday.
+%As shown in \figurename~\ref{thrput}, since the traffic in real environment is unsteady in fact, the previous scheme is subject to environmental changes, which can lead to degrade the detection performance.
+\tablename~\ref{tab:thrput result} shows the detection accuracies in different traffic environments.
+The one is the constant traffic environment, where the 80Mbps traffic is communictaed through a LAP connected with a RAP, and the other is the random traffic environment, which reproduces the real LAN in our lives.
+In the former environment, the previous scheme can detect with high accuracy.
+On the contrary, the accuracy of the detection degraded from to 0.74 in random traffic.
+The previous scheme is subject to traffic environment, which leads to degrade the detection performance.
 Thus, the requirement that we must satisfy is to leverage factors which are independent of the network environment for the detection.
 
 \section{PROPOSED SCHEME}\label{sec:4}

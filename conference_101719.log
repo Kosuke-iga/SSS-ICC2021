@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.9.30)  2 OCT 2020 16:47
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.9.30)  5 OCT 2020 12:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -435,54 +435,54 @@ File: attack-model/attack-model.pdf Graphic file (type pdf)
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
 (Font)              No change on input line 155.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 169.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
 (Font)              No change on input line 171.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 173.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 191.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 193
+(Font)              No change on input line 193.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 195
 .
  (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 193
+LaTeX Font Info:    Trying to load font information for U+msb on input line 195
 .
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 200.
+(Font)              No change on input line 202.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 211.
+(Font)              No change on input line 213.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 215.
+(Font)              No change on input line 217.
  [3]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 242.
+(Font)              No change on input line 254.
 File: flowchart/flowchart.pdf Graphic file (type pdf)
 <flowchart/flowchart.pdf>
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 257.
+(Font)              No change on input line 269.
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--260
+Underfull \hbox (badness 10000) in paragraph at lines 269--272
  \OT1/ptm/m/it/10 1) MAC Ad-dress Col-lec-tion: [][] \OT1/ptm/m/n/10 Let $\OT1/
 cmr/m/n/10 SSID[]$ \OT1/ptm/m/n/10 and
  []
 
 
-Underfull \hbox (badness 6741) in paragraph at lines 257--260
+Underfull \hbox (badness 6741) in paragraph at lines 269--272
 \OT1/ptm/m/n/10 SSIDs are iden-ti-cal to $\OT1/cmr/m/n/10 SSID[]$ \OT1/ptm/m/n/
 10 is cre-ated with
  []
 
 
-Underfull \hbox (badness 4266) in paragraph at lines 257--260
+Underfull \hbox (badness 4266) in paragraph at lines 269--272
 \OT1/ptm/m/n/10 bea-con frames of them. Let the set is de-noted by
  []
 
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 262.
+(Font)              No change on input line 274.
 File: figure/ACC.pdf Graphic file (type pdf)
 <figure/ACC.pdf>
 File: figure/FPR.pdf Graphic file (type pdf)
@@ -490,31 +490,31 @@ File: figure/FPR.pdf Graphic file (type pdf)
 File: figure/TPR.pdf Graphic file (type pdf)
 <figure/TPR.pdf>
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 305.
+(Font)              No change on input line 317.
 [4]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 317.
+(Font)              No change on input line 329.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 319.
+(Font)              No change on input line 331.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 324.
+(Font)              No change on input line 336.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 332.
+(Font)              No change on input line 344.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 335.
+(Font)              No change on input line 347.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 340.
+(Font)              No change on input line 352.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 359.
+(Font)              No change on input line 371.
 File: starbucks/starbucks.pdf Graphic file (type pdf)
 <starbucks/starbucks.pdf>
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 382.
+(Font)              No change on input line 394.
  [5]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 408.
+(Font)              No change on input line 420.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 418.
+(Font)              No change on input line 430.
  (./conference_101719.bbl
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
 (Font)              No change on input line 2.
@@ -567,4 +567,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  36i,9n,37p,343b,403s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on conference_101719.dvi (7 pages, 49312 bytes).
+Output written on conference_101719.dvi (7 pages, 49444 bytes).

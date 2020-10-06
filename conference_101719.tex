@@ -176,7 +176,7 @@ Thus, from the perspective of the client, there exists another channel on the ro
 The extra channel cannot be observed directly from the client.
 The previous scheme detects the RAP by finding out these two channels on the basis of the decline in the throughput.
 In order to decrease the throughput, the previous scheme saturates the channel used between a LAP and the RAP by intentional interfering with an additional equipment in a client.
-For example, when a client is using channel 1 with the connected AP which cannot be judged to be legitimacy, the equipment in a client transmits a large number of packets to all the channel except channel 1 to saturate traffic on the path.
+For example, when a client is using channel 1 with the connected AP whose benignancy is unidentified, the equipment in a client transmits a large number of packets to all the channel except channel 1 to saturate traffic on the path.
 If there exists the other channel on the route, the decline in the throughput can be observed by the client, and the presence of RAP is revealed.
 
 \subsubsection{Shortcoming of the Previous Scheme}\label{sec:shortcoming}
@@ -222,7 +222,7 @@ In an attack scenario, besides the connected AP, a LAP exists inevitably on the 
 Therefore, a connected AP can be revealed as the RAP when the presence of a LAP is detected on the other side of it.
 
 On the basis of this idea, the proposed scheme reveals a LAP is on the other side of the connected AP by finding out its MAC address.
-In order to discover the MAC address of such LAP, we leverage the phenomenon that a client cannot receive ARP reply packets in the situation where there exist duplicate MAC addresses on the path from a client to a gateway.
+In order to discover the MAC address of such LAP, we leverage the phenomenon that a client cannot receive ARP reply packets in the situation where there exist duplicate MAC addresses on the path from a gateway back to a client.
 The proposed scheme intentionally creates such situation by setting the MAC address of a client to the MAC addresses obtained from beacon frames of APs in its communication range.
 Note that the MAC address of the AP with which a client connects directly is excluded from targets for setting MAC addresses.
 If the MAC address of a client is set to that of a LAP on the other side of the connected AP, the LAP receives ARP reply packets whose original destination is the client before the client receives them.
@@ -241,15 +241,15 @@ By doing this, it can be more efficient since there exists several LAPs includin
 %This is because a RAP must utilize an SSID of a LAP for pretending to be a LAP.
 %---------------------------------------------------------------------------------------------------------------複数LAPの状況について（修正）
 Furthermore, in the case where multiple LAPs which have same SSID and a RAP are set in the targeted LAN in real situations, the proposed scheme can detect without any problems.
-In that case, only a client which forms MITM topology with a RAP can not receive ARP replys if its MAC address is duplicated and the other can get ARP replys since they can be sent to both of the duplicated addresses.
+In that case, only a client which forms MITM topology with a RAP cannot receive ARP replys if its MAC address is duplicated and the other can get them since they can be sent to both of the duplicated addresses.
 Although it can not detect in the case a client does not form MITM with a RAP but it exists, the client does not have any risk to be eavesdropped on the exchange of its data.
 %Thus, it means it can detect in the case that MITM attacks are formed the detec
 %---------------------------------------------------------------------------------------------------------------複数LAPの状況について（元々）
 %A client can receive ARP reply packets even if its MAC address is set to that of each LAP via which the traffic is not relayed to a gateway.
 %This is because the packets can be sent to both client and each LAP.
 %---------------------------------------------------------------------------------------------------------------
-Since the proposed scheme is independent of the real network environment, it is useful for overcoming the shortcoming of the previous scheme.
-In addition to that, the proposed scheme is not affected by a spoofed MAC address because it focuses on the only legitimate MAC address never spoofed.
+Since the proposed scheme is independent of various factors of the real LAN environment, it is useful for overcoming the shortcoming of the previous scheme.
+In addition, the proposed scheme is not affected by a spoofed MAC address because it focuses on the only legitimate MAC address never spoofed.
 
 \subsection{Algorithm} \label{sec:alg}
 \begin{figure}[t]
@@ -260,14 +260,14 @@ In addition to that, the proposed scheme is not affected by a spoofed MAC addres
     \end{center}
 \vspace{-2zh}
 \end{figure}
-The goal of the scheme is reveal whether the connected AP is LAP or not, namely $\tarAP = LAP$ or $\tarAP \ne LAP$.
+In this subsection, the algorithm of the scheme is explained.
+Its goal is reveal whether the connected AP is a LAP or not, namely $\tarAP = LAP$ or $\tarAP \ne LA$, by searching the MAC address of a LAP between a client and a gateway.
 $\tarAP$ denotes a AP which connect with a client.
-In this subsection, the algorithm for the goal based on searching the MAC address of a LAP between a client and a gateway is explained.
-The proposed algorithm mainly consists of 1) MAC address collection and 2) ARP reply based detection.
+The algorithm mainly consists of 1) MAC address collection and 2) ARP reply based detection.
 
 \subsubsection{MAC Address Collection}
 Let $\SSID$ and $\tarMAC$ denote SSID and MAC address of $\tarAP$, respectively.
-The set of MAC addresses of APs whose SSIDs are identical to $\SSID$  is created with beacon frames of them.
+The set of MAC addresses of APs whose SSID is identical to $\SSID$  is created with beacon frames of them.
 Let the set is denoted by $M_{all}=\{m_{input}|0\le input \le n_{all}  \}$, where $n_{all}$ is the number of collected MAC addresses.
 
 \subsubsection{ARP Reply based Detection}
@@ -278,7 +278,7 @@ These procedures are repeatedly conducted for every $m_{input}$ in $M_{all}$ unl
 In the first phase, $\inputMAC$ and $\tarMAC$ are compared.
 If they are the same MAC address, it easily judges that $\tarMAC$ is the cloned address.
 In this case, $\tarAP$ is detected as the RAP and the detection is finished since it is not the case in non attack scenario.
-However, in the case where the RAP clones a MAC address of a LAP beyond the communication range of a client or it does not clone, the accordance of MAC addresses cannot be detected only by this MAC address checking.
+However, in the case where the RAP clones a MAC address of a LAP beyond the communication range of a client or it does not clone, the accordance of MAC addresses cannot be detected only by this procedure.
 Thus, the detection process proceeds to the second phase.
 
 In the second phase, the MAC address of a client is set to $\inputMAC$.
@@ -287,9 +287,9 @@ Thus, the client sends ARP request in order to reconnect with it through the $\t
 
 Finally, in the third procedure, the ARP reply packets whose destination is set as $\inputMAC$ are observed to investigate whether the AP with $\inputMAC$ is on the other side of $\tarAP$.
 If the packets do not reach the client, the $\tarAP$ can be revealed as the RAP which exists between the client and the LAP with $\inputMAC$, and the detection phase is finished.
-Otherwise, the $\tarAP$ is judged that it is on the distinct path from the AP with $\inputMAC$.
+Otherwise, the benignancy of the $\tarAP$ stil cannot be judged by the AP with $\inputMAC$.
 In this case, the same procedures in the flowchart are repeatedly conducted for another $\inputMAC$ in $M_{A_{all}}$ until the RAP is detected.
-If the detection phase is carried out for all $\inputMAC$ without the detection of RAP, the $\tarAP$ is declared as a LAP. 
+If the detection phase is carried out for all $\inputMAC$ without the detection of RAP, the $\tarAP$ is declared as a LAP.
 \begin{figure*}[ht]
     \begin{minipage}{0.33\hsize}
         \begin{center}
@@ -420,7 +420,7 @@ In the future, we plan to devise the additional countermeasures and conduct some
 \section{conclusion}\label{sec:6}
 In this paper, we have proposed RAP detection by using ARP failure under the MAC address duplication.
 We collect MAC addresses from user side and set the MAC address of a client to them.
-By observing ARP packets in the situation, we can reveal the legitimacy of connected AP.
+By observing ARP packets in the situation, we can reveal the benignancy of connected AP.
 The detection performance of the proposed scheme is better than the previous scheme.
 The results show it can detect a RAP without any error even in unstable traffic environment.
 In addition, the experiment in a small cafe shows the availability in a real network.

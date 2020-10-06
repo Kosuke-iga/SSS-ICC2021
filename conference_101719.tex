@@ -42,7 +42,7 @@ Email: igarashi@sasase.ics.ac.keio.jp}
 \begin{abstract}
 Detecting a Rouge Access Point (RAP) in Wi-Fi network is imperative.
 The previous scheme is user side detection focusing on two channels used by a RAP.
-That scheme can detect a RAP in a stable traffic environment by revealing the channel used with a LAP with intentional interference.
+That scheme can detect a RAP in stable traffic environment by revealing the channel used with a LAP with intentional interference.
 However, the detection performance is degraded in the real environment where traffic is more unstable because it affects the channel interference.
 Thus, it is necessary to design the scheme which is independent of such factors.
 In this paper, we propose RAP detection by using Address Resolution Protocol (ARP) failure under the Media Access Control (MAC) address duplication.
@@ -53,7 +53,7 @@ In order to find the MAC address, we leverage the phenomenon that a client canno
 By doing this, the presence of a LAP is revealed, which can judge that the connected AP is a RAP.
 In our evaluation, the proposed scheme achieves accuracy of 96.5\% even in unstable traffic environment.
 True positive rate and false positive rate are 31.0\% higher and 9.0\% lower than the previous scheme.
-Furthermore, the proposed scheme can detect RAPs accurately in a real environment where the previous scheme cannot.
+Furthermore, it can detect RAPs accurately in real environment where the previous scheme cannot.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -86,21 +86,21 @@ Thus, in order to cope with both software-based RAPs and hardware-based ones, th
 That scheme can detect the RAP by finding out these two channels on the basis of the decline in the throughput.
 That scheme is the most useful detection since it can deal with a hardware-based RAP which does not cause delay.
 Hence, we focus on that scheme \cite{previous} as the previous scheme.
-Although the previous scheme is successful in the experimental environment, its detection performance is degraded by unstable traffic in a real environment.
+Although the previous scheme is successful in the experimental environment, its detection performance is degraded by unstable traffic in real environment.
 Therefore, it is necessary to realize the user side detection which is independent of the network traffic.
 
-In order to realize the user side detection which is independent of a network environment, in this paper, we propose RAP detection by using Address Resolution Protocol (ARP) failure under the MAC address duplication.
+In order to realize the user side detection which is independent of network environment, in this paper, we propose RAP detection by using Address Resolution Protocol (ARP) failure under the MAC address duplication.
 The main idea of our scheme is that the traffic is relayed via two APs, namely the RAP and a LAP, on the LAN path from a client to a gateway.
 Therefore, besides the connected RAP, a LAP exists inevitably on the other side of the RAP because of the MITM attack in an attack scenario.
-On the basis of this idea, the proposed scheme reveals a connected AP as a RAP by finding MAC address of such a LAP from obtainable beacon frames by a client \cite{beacon}.
+On the basis of this idea, our scheme reveals a connected AP as a RAP by finding MAC address of such a LAP from obtainable beacon frames by a client \cite{beacon}.
 In order to find the MAC address, we leverage the phenomenon that a client cannot receive ARP reply packets from a gateway in the situation where there exists the duplicated MAC address, which is set in the packets as the destination address, on the path back to the client.
-The proposed scheme intentionally creates such situation by setting the MAC address of a client to that of the LAP on the other side of the connected RAP.
-By doing this, the proposed scheme can reveal the connected AP as a RAP regardless of network environment.
+Our scheme intentionally creates such situation by setting the MAC address of a client to that of the LAP on the other side of the connected RAP.
+By doing this, our scheme can reveal the connected AP as a RAP regardless of network environment.
 The contributions of our scheme are as follows:
 \begin{enumerate}
     \renewcommand{\labelenumi}{\arabic{enumi}).}
     \item To the best of our knowledge, the proposed scheme is the first one which is independent of fingerprints of a RAP. By focusing only on the characteristic of attack and a MAC address of a LAP, the proposed scheme does not allow an adversary to avoid detection by manipulating features of the RAP.
-    \item The proposed scheme achieves accurate detection performance without any error even in a real environment. It can guarantee beneficial effects on every available hotspot.
+    \item The proposed scheme achieves accurate detection without any error even in real environment. It can guarantee beneficial effects on every available hotspot.
 \end{enumerate}
 The rest of this paper is constructed as follows: Related works are described in Section \ref{sec:2}.
 The attack model, previous scheme and its shortcoming are introduced in Section \ref{sec:3}.
@@ -115,7 +115,7 @@ A RAP can be detected by comparing with the physical features of it with those i
 
 Wu et al. \cite{prapd} focus on the RSSI which is hard to be forged arbitrarily and highly correlated to the AP's location and power.
 For each LAP in a network, RSSI, which is measured by additional costly devices, is registered in a whitelist beforehand.
-By using RSSI, even if the MAC address of an AP is identical to that in the whitelist, that scheme can disclose that it is a RAP with spoofed MAC address set by an adversary at different location.
+By using RSSI, even if the MAC address is spoofed by adversary, that scheme can disclose that it is a RAP at different location from that of LAPs.
 However, that scheme is hard to detect RAP which is located near the LAP because RSSI is not as exact as it can indicate a small difference of the nearby location.
 Although RSSI is useful as a supplementary feature, using only RSSI is insufficient to detect a RAP with high accuracy.
 
@@ -190,11 +190,11 @@ If there exists the other channel on the route, the decline in the throughput ca
 %\end{figure}
 \begin{table}[t] 
     \begin{center}
-        \caption{The Accuracies in Different Traffic Environments}
+        \caption{The Accuracy in Different Traffic Environment}
         \label{tab:thrput result}
         \begin{tabular}{c c} \hline
             Constant Traffic (80Mbps) & Random Traffic \\ \hline \hline
-            0.92 & 0.74 \\ \hline
+            0.920 & 0.765 \\ \hline
         \end{tabular}
     \end{center}
     \vspace{-2zh}
@@ -203,7 +203,7 @@ Although the previous scheme is successful in the detection for a hardware-based
 This is because throughput is considerably dependent on various factors of the network environment such as mobility of the traffic, collisions, network topology changes, and unintentional interference.
 %\figurename~\ref{thrput} shows the graph regarding the change of throughput in a cafe on a weekday.
 %As shown in \figurename~\ref{thrput}, since the traffic in real environment is unsteady in fact, the previous scheme is subject to environmental changes, which can lead to degrade the detection performance.
-\tablename~\ref{tab:thrput result} shows the detection accuracies in different traffic environments.
+\tablename~\ref{tab:thrput result} shows the detection accuracy in different traffic environment.
 The one is the constant traffic environment, where the 80Mbps traffic is communicated through the LAP, and the other is the random traffic environment, which reproduces the real LAN in our lives.
 In the former environment, the previous scheme can detect with high accuracy.
 On the contrary, it is degraded to 0.74 in random traffic.
@@ -212,7 +212,7 @@ Thus, the requirement that we must satisfy is to leverage factors which are inde
 
 \section{PROPOSED SCHEME}\label{sec:4}
 In order to meet the requirements mentioned in Section \ref{sec:shortcoming}, in this paper, we propose RAP detection by using ARP failure under the MAC address duplication.
-In the following subsections, we explain the idea of the proposed scheme and the algorithm in detail.
+In the following subsections, we explain the idea and the algorithm in detail.
 
 \subsection{Idea}
 The main idea of the proposed scheme is that the traffic is relayed via two APs, namely, the RAP and LAP, on the path from a client to a gateway.
@@ -254,7 +254,7 @@ In addition, the proposed scheme is not affected by a spoofed MAC address becaus
 \subsection{Algorithm} \label{sec:alg}
 \begin{figure}[t]
     \begin{center}
-        \includegraphics[scale=0.43]{flowchart/flowchart.pdf}
+        \includegraphics[scale=0.42]{flowchart/flowchart.pdf}
         \caption{The Flowchart of the Proposed Scheme}
         \label{fig:flowchart}
     \end{center}
@@ -293,21 +293,21 @@ If the detection phase is carried out for all $\inputMAC$ without the detection 
 \begin{figure*}[ht]
     \begin{minipage}{0.33\hsize}
         \begin{center}
-            \includegraphics[scale=0.35]{figure/ACC.pdf}
+            \includegraphics[scale=0.34]{figure/ACC.pdf}
         \end{center}
         \caption{The Avg. ACC of the Prop. and Prev.}
         \label{fig:acc}
     \end{minipage}
         \begin{minipage}{0.33\hsize}
         \begin{center}
-            \includegraphics[scale=0.35]{figure/FPR.pdf}
+            \includegraphics[scale=0.34]{figure/FPR.pdf}
         \end{center}
         \caption{The Avg. FPR of the Prop. and Prev.}
         \label{fig:fpr}
     \end{minipage}
     \begin{minipage}{0.33\hsize}
         \begin{center}
-            \includegraphics[scale=0.35]{figure/TPR.pdf}
+            \includegraphics[scale=0.34]{figure/TPR.pdf}
         \end{center}
         \caption{The Avg. TPR of the Prop. and Prev.}
         \label{fig:tpr}
@@ -352,32 +352,25 @@ We conducted each evaluation by changing $\Delta t$ from 5 seconds to 10 seconds
 \subsection{Evaluation of the Proposed Scheme}
 In order to show the effectiveness of the proposed scheme (Prop.), we compare it with the previous scheme \cite{previous} (Prev.).
 \figurename~\ref{fig:acc} shows the results of the average ACC over the 100 experiments in each scheme.
-As shown in \figurename~\ref{fig:acc}, Prev. cannot accurately detect the attack in random traffic scenario, and the ACC is about 69\%.
+As shown in \figurename~\ref{fig:acc}, the Prev. cannot accurately detect the attack in random traffic scenario, and the ACC is about 76.5\%.
 However the ACC of the Prop. is lower than that of the Prev. when each ARP observation time is not greater than 6s.
 The ACC is getting higher as the observation time increases.
 In particular, in the case where the time is longer than 7s, ACC is improved up to 96.5\% in the Prop..
 \figurename~\ref{fig:fpr} shows the FPR of each scheme.
 As shown in \figurename~\ref{fig:fpr}, the longer each observation time is, the lower FPR is in the Prop..
-It decreases up to 74\% in the case where $\Delta t$ is no less than 8 seconds compared with the case where $\Delta t$ is 5 seconds.
+It decreases up to 74.0\% in the case where $\Delta t$ is no less than 8 seconds compared with the case where $\Delta t$ is 5 seconds.
 In additon, \figurename~\ref{fig:tpr} shows the TPR of each scheme.
-As shown in \figurename~\ref{fig:tpr}, TPR of the Prop. is 100.0\% regardless of the observation time, which means it never pass a RAP over in an attack scenario. 
+As shown in \figurename~\ref{fig:tpr}, TPR of the Prop. is 100.0\% regardless of the observation time, which means it never pass a RAP over in an attack scenario.
 
 In order to reveal the reason of these results, we analyze the ARP packets in detail.
 Through the packet analysis, we disclose the reason is that the time for finishing ARP procedure tends to be longer than 6s and it is not always fixed.
 Thus, in the case of less than 7.0 seconds, several LAPs are detected as RAPs incorrectly since it is not enough for a client to get ARP reply packets while a RAP is never overlooked.
 Given the fact, we conducted the further experiment to realize more precise detection by setting enough time to auquire ARP reply packets.
-As a result, we conclude that the proposed scheme enables the detection without any error when the $\Delta t$ is set to 15 seconds.
+As a result, we conclude that the Prop. enables the detection without any error when the $\Delta t$ is 15 seconds.
 
-\subsection{Evaluation in a Real Environment}
-\begin{figure}[t]
-    \begin{center}
-        \includegraphics[scale=0.5]{starbucks/starbucks.pdf}
-        \caption{The Network Model in the Cafe}
-        \label{fig:sbx}
-    \end{center}
-    \vspace{-1zh}
-\end{figure}
-In order to demonstrate the robustness and the average time per detection time $T$ of the proposed scheme in a real environment, we conducted an experiment in a cafe and evaluate ACC and the total time required for the detection.
+\subsection{Evaluation in Real Environment}
+
+In order to demonstrate the robustness and the average time per detection time $T$ of the proposed scheme in real environment, we conducted an experiment in a cafe and evaluate ACC and the total time required for the detection.
 \figurename~\ref{fig:sbx} shows the Wi-Fi network model in the cafe.
 As shown in \figurename~\ref{fig:sbx}, there exist two LAPs, which are LAP(a) and LAP(b), and the both have same SSID and two different MAC addersses for two frequency bands which can be used in IEEE 802.2n.
 The MAC addresses of LAP(a) are represented as $\stbA$ and $\stba$ , and similarly, those of LAP(b) are represented as $\stbB$ and $\stbb$.
@@ -389,6 +382,14 @@ In order to match the number of the MAC addesses which need to be input to the p
 Our experimental situation can be regarded as the same situation with the attack model shown in \ref{fig:model}.
 The experiments are conducted 100 times in each situation around 2:00pm on a weekday at an cafe.
 $\Delta t$ is set to 15 seconds enough to get ARP reply packets.
+\begin{figure}[t]
+    \begin{center}
+        \includegraphics[scale=0.5]{starbucks/starbucks.pdf}
+        \caption{The Network Model in the Cafe}
+        \label{fig:sbx}
+    \end{center}
+    \vspace{-1zh}
+\end{figure}
 \begin{table}[t] 
     \begin{center}
         \caption{Evaluation Result in Real Environment}
@@ -402,11 +403,11 @@ $\Delta t$ is set to 15 seconds enough to get ARP reply packets.
 \end{table}
 
 \tablename~\ref{tab:real} shows the results in the real environment.
-The proposed scheme realizes 100\% accuracy even in a real environment if $\Delta t$ is enough.
+The proposed scheme realizes 100\% accuracy even in real environment if $\Delta t$ is enough.
 At that time, $\rm T$ is 32.1 seconds.
 It is much shorter than the time that the most of recent security softwares take to scan their disk.
 Thus, it guarantees the device's safety for users without being annoyed.
-Through this result, we conclude that the proposed scheme can accurately detect the attack with relatively short time in a real environment whose traffic is unstable.
+Through this result, we conclude that the proposed scheme can accurately detect the attack with relatively short time in real environment whose traffic is unstable.
 
 However, as with other existing schemes, the proposed scheme assumes Wi-Fi network models where Legitimate Repeaters (LR) are not installed.
 It may be usual to introduce a LR in network to relay traffic farther at the expense of transmission speed in a large area.
@@ -425,9 +426,9 @@ The detection performance of the proposed scheme is better than the previous sch
 The results show it can detect a RAP without any error even in unstable traffic environment.
 In addition, the experiment in a small cafe shows the availability in a real network.
 In the future, we will conduct a large-scaled examination of the proposed scheme.
-Furhermore, we will expand the scheme for the network where a legitimate repeater is arranged.
+Furhermore, we will expand the scheme for the network where a LR is arranged.
 
-\section*{acknowledgment}
+\section{acknowledgment}
 This work is partly supported by the Grant in Aid for Scientific Research (No.17K06440) from Japan Society for Promotion of Science (JSPS).
 
 

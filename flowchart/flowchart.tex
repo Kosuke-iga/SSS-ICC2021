@@ -29,15 +29,15 @@
 	\tikzset{declare/.style={rectangle, draw, text width=2.5cm,font=\Large, text centered, minimum height=1.0cm}};
 	% Place nodes
 	\node [empty](em) at (-3cm, 4cm){};
-    \node [init] (init) at (0cm,3.2cm) {Input: $m_{input}$};
-    \node [decision] (compare) at (0cm,-0.5cm) {Comparison with $m_{connect}$};
+    \node [init] (init) at (0cm,3.2cm) {Input: $m_{\rm input}$};
+    \node [decision] (compare) at (0cm,-0.5cm) {Comparison with $m_{\rm connect}$};
     \draw [thick, ->] (init) -- (compare);
-    \node [block] (set) at (0cm, -4.2cm) {Setting MAC address to $m_{input}$};
-    \draw [thick, ->] (compare) -- node[right] {\Large $m_{input} \ne m_{connect}$}(set);
+    \node [block] (set) at (0cm, -4.2cm) {Setting MAC address to $m_{\rm input}$};
+    \draw [thick, ->] (compare) -- node[right] {\Large $m_{\rm input} \ne m_{\rm connect}$}(set);
     \node [decision] (observe) at (0cm, -7.9cm) {Observation of ARP reply packets from a gateway};
     \draw [thick, ->] (set) -- node[right]{\Large $\rm Send\ ARP\ Requests$} (observe);
-    \node [end] (lap) at (0cm, -11.6cm) {Declare that AP with $m_{input}$  is a LAP on the different path};
-    \draw [thick, ->] (observe) -- node[right]{\Large $\rm Get\ ARP\ Replys$}(lap);
+    \node [end] (lap) at (0cm, -11.6cm) {Declare that AP with $m_{\rm input}$  is a LAP on the different path};
+    \draw [thick, ->] (observe) -- node[right]{\Large $\rm Get\ ARP\ Repies$}(lap);
 
     \node [end2] (rap) at (10cm, -7.9cm) {Identify $\rm AP_{connect}$ as a RAP};
     \draw [thick, ->] (observe) -- (rap);
@@ -46,7 +46,7 @@
 	\node [empty](em) at (-6cm, -12.4cm){};
 	\node [empty](em) at (13.5cm, -12.4cm){};
 
-    \coordinate (m) at (10cm, -0.1cm) node at (m) [left] {\Large $m_{input} = m_{connect}$};
+    \coordinate (m) at (10cm, -0.1cm) node at (m) [left] {\Large $m_{\rm input} = m_{\rm connect}$};
     \coordinate (m) at (5.9cm, -7.0cm) node at (m) [left] {\Large $\rm No$};
 	\coordinate (m) at (6.3cm, -7.5cm) node at (m) [left] {\Large$\rm Reply$};
 	%Place draw

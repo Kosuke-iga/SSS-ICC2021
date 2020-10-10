@@ -14,17 +14,17 @@
 %target AP
 \newcommand{\SSID}{\rm SSID_{connect}}
 \newcommand{\tarAP}{\rm AP_{connect}}
-\newcommand{\tarMAC}{m_{connect}}
+\newcommand{\tarMAC}{m_{\rm connect}}
 %client
-\newcommand{\userMAC}{m_{user}}
+\newcommand{\userMAC}{m_{\rm user}}
 %input AP
 \newcommand{\inputAP}{\rm AP_{owner}}
-\newcommand{\inputMAC}{m_{input}}
+\newcommand{\inputMAC}{m_{\rm input}}
 %MAC address in sbxt
-\newcommand{\stba}{m_{a}}
-\newcommand{\stbA}{m_{A}}
-\newcommand{\stbb}{m_{b}}
-\newcommand{\stbB}{m_{B}}
+\newcommand{\stba}{m_{\rm a}}
+\newcommand{\stbA}{m_{\rm A}}
+\newcommand{\stbb}{m_{\rm b}}
+\newcommand{\stbB}{m_{\rm B}}
 \begin{document}
 
 \title{Rogue Access Point Detection by Using ARP Failure under the MAC Address Duplication\\
@@ -42,7 +42,7 @@ Email: igarashi@sasase.ics.ac.keio.jp}
 \begin{abstract}
 Detecting a Rouge Access Point (RAP) in Wi-Fi network is imperative.
 The previous scheme is user side detection focusing on two channels used by a RAP.
-That scheme can detect a RAP in stable traffic environment by revealing the channel used with a LAP with intentional interference.
+That scheme can detect a RAP in stable traffic environment by revealing the channel used by a LAP with intentional interference.
 However, the detection performance is degraded in the real environment where traffic is more unstable because it affects the channel interference.
 Thus, it is necessary to design the scheme which is independent of such factors.
 In this paper, we propose RAP detection by using Address Resolution Protocol (ARP) failure under the Media Access Control (MAC) address duplication.
@@ -63,9 +63,9 @@ Evil Twin Attack, Rogue Access Point, Address Resolution Protocol
 \section{INTRODUCTION}
 With the rapid development of wireless communication techniques, Wi-Fi is deployed as the most commonly used Internet access technology and keeps spreading all over the world\cite{bg-evi}.
 It is located in everywhere of our daily life, such as shopping malls, restaurants, public transit systems and so on.
-While the free access to Wi-Fi network attracts a large number of users, it also allows adversaries to launch attacks to the users just by setting up a Rogue AP (RAP) on their laptop in the network, which is called ``Evil Twin Attack (ETA) ''\cite{laptop-evi}.
+While the free access to Wi-Fi network attracts a large number of users, it also allows adversaries to launch attacks against the users just by setting up a Rogue AP (RAP) on their laptop in the network, which is called ``Evil Twin Attack (ETA) ''\cite{laptop-evi}.
 The RAP clones the Service Set IDentifier (SSID) and even Media Access Control (MAC) address of a Legitimate AP (LAP) provided by a public facility, which is the reason why it is called ETA.
-In particular, cloning SSID enables adversaries to make clients connect with a RAP because wireless devices connect automatically to an AP which has the strongest Received Signal Strength Indication (RSSI) among all APs with same SSID.
+In particular, cloning SSID enables adversaries to make clients connect with a RAP because wireless devices connect automatically to an AP which has the strongest Received Signal Strength Indication (RSSI) among all APs with the same SSID.
 In the ETA, a RAP is established between a client and the Internet as Man-In-The-Middle (MITM) attacks \cite{spoof-evi}.
 Thus, adversaries can eavesdrop on the exchange of sensitive information such as identity credentials, passwords, and bank accounts by observing relayed packets through their laptop between a client and a LAP.
 In addition, adversaries can also carry out an active attack by leading a user to phishing websites or infecting a client with malicious softwares\cite{research}.
@@ -73,8 +73,9 @@ By exploiting the characteristic that users freely connect free Wi-Fi network,  
 Thus, the detection of the RAPs is urgent demand.
 
 The attack model is divided into two models based on how a RAP provides the Internet service to client.
-The one is a model where a RAP uses mobile communication, and it can be detected easily with Internet Services Provider (ISP) names or Global IP addresses\cite{rtt}.
-Thus, we focus on the other model where a RAP uses same gateway with LAPs in the network by connecting with one of them since it cannot be easily detected by existing schemes.
+The one is a model where a RAP uses mobile communication.
+However, it can be easily detected with Internet Services Provider (ISP) names or Global IP addresses\cite{rtt}.
+Thus, we focus on the other model where a RAP uses the same gateway with LAPs in the network by directly connecting with one of them since it cannot be easily detected by existing schemes.
 
 Exisiting RAP detection schemes supposing this attack model are divided into network administrator side detections and user side detections.
 The network administrator side detections mainly use whitelist-based mechanisms based on physical features of APs\cite{prapd}, \cite{clockskew}.
@@ -89,18 +90,18 @@ Hence, we focus on that scheme \cite{previous} as the previous scheme.
 Although the previous scheme is successful in the experimental environment, its detection performance is degraded by unstable traffic in real environment.
 Therefore, it is necessary to realize the user side detection which is independent of the network traffic.
 
-In order to realize the user side detection which is independent of network environment, in this paper, we propose RAP detection by using Address Resolution Protocol (ARP) failure under the MAC address duplication.
-The main idea of our scheme is that the traffic is relayed via two APs, namely the RAP and a LAP, on the LAN path from a client to a gateway.
+In order to realize the user side detection which is independent of network traffic, in this paper, we propose RAP detection by using Address Resolution Protocol (ARP) failure under the MAC address duplication.
+The main idea of the proposed scheme is that the traffic is relayed via two APs, namely the RAP and a LAP, on the LAN path from a client to a gateway.
 Therefore, besides the connected RAP, a LAP exists inevitably on the other side of the RAP because of the MITM attack in an attack scenario.
-On the basis of this idea, our scheme reveals a connected AP as a RAP by finding MAC address of such a LAP from obtainable beacon frames by a client \cite{beacon}.
+On the basis of this idea, the proposed scheme reveals a connected AP as a RAP by finding MAC address of such a LAP from obtainable beacon frames by a client \cite{beacon}.
 In order to find the MAC address, we leverage the phenomenon that a client cannot receive ARP reply packets from a gateway in the situation where there exists the duplicated MAC address, which is set in the packets as the destination address, on the path back to the client.
-Our scheme intentionally creates such situation by setting the MAC address of a client to that of the LAP on the other side of the connected RAP.
-By doing this, our scheme can reveal the connected AP as a RAP regardless of network environment.
-The contributions of our scheme are as follows:
+The proposed scheme intentionally creates such situation by setting the MAC address of a client to that of the LAP on the other side of the connected RAP.
+By doing this, the proposed scheme can reveal the connected AP as a RAP regardless of network traffic.
+The contributions of the proposed scheme are as follows:
 \begin{enumerate}
     \renewcommand{\labelenumi}{\arabic{enumi}).}
     \item To the best of our knowledge, the proposed scheme is the first one which is independent of fingerprints of a RAP. By focusing only on the characteristic of attack and a MAC address of a LAP, the proposed scheme does not allow an adversary to avoid detection by manipulating features of the RAP.
-    \item The proposed scheme achieves accurate detection without any error even in real environment. It can guarantee beneficial effects on every available hotspot.
+    \item The proposed scheme achieves accurate detection without any error even in real LAN traffic. It can guarantee beneficial effects on every available hotspot.
 \end{enumerate}
 The rest of this paper is constructed as follows: Related works are described in Section \ref{sec:2}.
 The attack model, previous scheme and its shortcoming are introduced in Section \ref{sec:3}.
@@ -109,14 +110,14 @@ Various evaluation results are shown in Section \ref{sec:5}.
 Finally, the conclusions of this paper are presented in Section \ref{sec:6}.
 
 \section{RELATED WORKS}\label{sec:2}
-RAP detection methods are mainly classified into two categories: network administrator side detections and user side detections.
-Network administrator side detections \cite{prapd}, \cite{clockskew} focus on the physical features such as RSSI and clock skew which cannot be spoofed by an adversary.
-A RAP can be detected by comparing with the physical features of it with those in the predefined whitelist with equipments such as traffic sensors in each Wi-Fi network.
+RAP detection schemes are mainly classified into two categories: network administrator side detections and user side detections.
+Network administrator side detections \cite{prapd}, \cite{clockskew} focus on the fingerprints of an AP such as RSSI and clock skew which cannot be spoofed by an adversary.
+A RAP can be detected by comparing its fingerprints with those in the predefined whitelist collected by equipments such as traffic sensors in each Wi-Fi network.
 
-Wu et al. \cite{prapd} focus on the RSSI which is hard to be forged arbitrarily and highly correlated to the AP's location and power.
+Wu et al. \cite{prapd} focus on the RSSI which is hard to be forged arbitrarily and highly correlated to a location of an AP and its power.
 For each LAP in a network, RSSI, which is measured by additional costly devices, is registered in a whitelist beforehand.
-By using RSSI, even if the MAC address is spoofed by adversary, that scheme can disclose that it is a RAP at different location from that of LAPs.
-However, that scheme is hard to detect RAP which is located near the LAP because RSSI is not as exact as it can indicate a small difference of the nearby location.
+By using RSSI, even if the MAC address is spoofed by adversary, that scheme can disclose that it is a RAP at a different location from that of LAPs.
+However, that scheme is hard to detect a RAP which is located near the LAP because RSSI is not as exact as it can indicate a small difference of the nearby location.
 Although RSSI is useful as a supplementary feature, using only RSSI is insufficient to detect a RAP with high accuracy.
 
 In order to detect in more detail, Lanze et al. \cite{clockskew} focus on clock skew as a device fingerprinting based purely on physical properties.
@@ -127,18 +128,19 @@ However, that scheme is inapplicable to Wi-Fi hotspots because it requires addit
 Thus, the detection schemes that require no equipment of additional devices by a network administrator are desired.
 
 Meanwhile, user side detections \cite{rtt}, \cite{previous} do not need to introduce additional devices to a Wi-Fi hotspot.
-They focus on differences in the transmission features caused by the extra hop to a RAP on the path between a LAP and a client.
-Compared with legitimate networks, extra hop results in several measurable changes in transmission features such as RTT and channel used between a client and DNS server.
+They focus on differences in the LAN communication caused by the extra hop to a RAP on the path between a LAP and a client.
+Compared with legitimate networks, extra hop results in several measurable changes in LAN communication such as RTT and channel used between a client and DNS server.
 
 Mustafa et al. \cite{rtt} differentiate RAPs from LAPs by measuring the RTT between the client and the DNS server through a AP or APs.
 Because there exists the extra hop caused by the RAP on the path, RTT is longer than that in the case where a client directly connects to the LAP.
 Although that scheme is useful only for the case where the adversary sets RAP up on the laptop, Jang et al. \cite{previous} reveal the fact that the computational power of the software bridging mainly accounts for the packet delay.
-Thus, the adversary can evade the detection based packet delay by utilizing hardware-based RAPs having little bridging delay unlike software-based RAPs.
+Thus, the adversary can evade the detection based on packet delay by utilizing hardware-based RAPs having little bridging delay unlike software-based RAPs.
 
 In order to detect both types of RAPs, namely, software-based and hardware-based ones, Jang et al. focus on two communication channels utilized by a RAP between a client and LAP\cite{previous}.
-Whereas a RAP intervenes between a client and a LAP, two distinct channels are used since, in the situation where the same channel is used in the both paths, it can be detected by \cite{rtt} due to the channel interference.
+Whereas a RAP intervenes between a client and a LAP, two distinct channels are used.
+This is because a RAP can be detected by \cite{rtt} because of latency caused by the channel interference if the same channel is used in the both paths.
 For example, it is assumed that channel 1 is used as the channel between a client and a RAP, and channel 6 is that between the RAP and a LAP.
-That scheme detects RAP by finding out the presence of these two distinct channels with the throughput of the transmission from the client to the DNS server.
+That scheme detects the RAP by finding out the presence of these two distinct channels with the throughput of the transmission from the client to the DNS server.
 That scheme is the most robust user side detection which is independent of the performance of the RAP because it is the countermeasure against a reasonable attack model where hardware-based RAP is used.
 Thus, we select the scheme \cite{previous} as the previous scheme and elaborate it in the next section.
 %In the next section, we elaborate the previous scheme.
@@ -160,12 +162,12 @@ The RAP sends beacon frames with stronger signals since the client simply connec
 \figurename~\ref{fig:model} shows the attack model, where a RAP relays traffic via a LAP as a MITM attack to eavsdrop client's sensitive data.
 %Since MITM attack does not succeed in protected Wi-Fi\cite{kataoka}, whose LAPs have security protocol such as WPA2, it is beyond the scope of our work.
 %Thus, the targeted network is open Wi-Fi in the model.
-The targeted network is open Wi-Fi, whose LAPs have no security protocols such as WPA2, in our model since MITM attack does not succeed in a protected Wi-Fi\cite{kataoka}.
+In our model, the targeted network is open Wi-Fi, whose LAPs have no security protocols such as WPA2, since MITM attack does not succeed in a protected Wi-Fi\cite{kataoka}.
 %Thus, protected Wi-Fi is beyond the scope of our work.
-By using same gateway with the LAN, the adversary can evade simple detections with Internet Services Provider (ISP) names or Global IP addresses \cite{rtt}.
+By using the same gateway with the LAN, the adversary can evade simple detections with ISP names or Global IP addresses \cite{rtt}.
 In addition to that, the adversary in our model exploits a hardware-based AP, which is introduced by \cite{previous}, in order to realize a detection scheme independent of its computational performance.
 The distinct channels can be used on the both sides to avoid channel interference since the RAP is composed of two APs which are interconnected with a LAN cable.
-One of these routers is connected to a LAP in station mode and the other disguise client as a LAP in service mode.
+One of these routers is connected to a LAP in station mode, and the other disguise client as a LAP in service mode.
 Because a high-end router which can relay traffic with distinct channels appears nowadays, it can replace a RAP in our model.
 
 \subsection{Previous Scheme}
@@ -175,7 +177,7 @@ The one is the channel for the path between a LAP and a RAP, and the other is th
 Thus, from the perspective of the client, there exists another channel on the route which is different from the channel using with the connected AP.
 The extra channel cannot be observed directly from the client.
 The previous scheme detects the RAP by finding out these two channels on the basis of the decline in the throughput.
-In order to decrease the throughput, the previous scheme saturates the channel used between a LAP and the RAP by intentional interfering with an additional equipment in a client.
+In order to decrease the throughput, the previous scheme saturates the channel used between a LAP and the RAP by intentionally interfering with an additional equipment in a client.
 For example, when a client is using channel 1 with the connected AP whose benignancy is unidentified, the equipment in a client transmits a large number of packets to all the channel except channel 1 to saturate traffic on the path.
 If there exists the other channel on the route, the decline in the throughput can be observed by the client, and the presence of RAP is revealed.
 
@@ -199,7 +201,7 @@ If there exists the other channel on the route, the decline in the throughput ca
     \end{center}
     \vspace{-2zh}
 \end{table}
-Although the previous scheme is successful in the detection for a hardware-based RAP in the experimental environment, it cannot detect the RAP accurately in the real world.
+Although the previous scheme is successful in the detection for a hardware-based RAP in the experimental environment, it cannot accurately detect the RAP in the real world.
 This is because throughput is considerably dependent on various factors of the network environment such as mobility of the traffic, collisions, network topology changes, and unintentional interference.
 %\figurename~\ref{thrput} shows the graph regarding the change of throughput in a cafe on a weekday.
 %As shown in \figurename~\ref{thrput}, since the traffic in real environment is unsteady in fact, the previous scheme is subject to environmental changes, which can lead to degrade the detection performance.
@@ -208,7 +210,7 @@ The one is the constant traffic environment, where the 80Mbps traffic is communi
 In the former environment, the previous scheme can detect with high accuracy.
 On the contrary, it is degraded to 0.74 in random traffic.
 The previous scheme is subject to traffic environment, which can lead to degradaton of the detection performance.
-Thus, the requirement that we must satisfy is to leverage factors which are independent of the network environment.
+Thus, the requirement that we must satisfy is to leverage factors which are independent of the network traffic.
 
 \section{PROPOSED SCHEME}\label{sec:4}
 In order to meet the requirements mentioned in Section \ref{sec:shortcoming}, in this paper, we propose RAP detection by using ARP failure under the MAC address duplication.
@@ -230,19 +232,21 @@ Thus, since the client cannot receive ARP reply packets, it continues to resend 
 By observing the continuance of resending ARP request packets within a definite period of time without ARP reply packets, the proposed scheme can reveal that there exists the RAP and LAP on the path, which detects the attack. %reply が来るまで送り続けます
 
 When a client connects with the RAP, there exists a MAC address of a LAP in the communication range of a client.
-This is because the RAP is located relatively near a LAP to avoid communication delay.
+This is because the RAP must be located relatively near a LAP to avoid communication delay.
 Hence, we can inevitably obtain the MAC address of a LAP in the case where the RAP exists in a network.
 %---------------------------------------------------------------------------------------------------------------SSIDの限定による候補の絞り込みについて（修正）
-At this time, in addition, only the MAC addresses of APs which have the SSID used in the targeted network are collected since a RAP clones its SSID to deceive us.
-By doing this, it can be more efficient since there exists several LAPs including irrelevant ones to the network in its communication range in a real situation.
+At this time, in addition, only the MAC addresses of APs which have the SSID used in the targeted network are collected since a RAP clones its SSID to deceive clients.
+By doing this, more efficient detection is realized since we can exclude irrelevant LAPs in its communication range in a real situation.
 %---------------------------------------------------------------------------------------------------------------SSIDの限定による候補の絞り込みについて（元々）
 %In the real situation, it is possible that there exist several LAPs in a communication range of a client.
 %Thus, we collect the only MAC addresses of APs which have the SSID used in targeted network.
 %This is because a RAP must utilize an SSID of a LAP for pretending to be a LAP.
 %---------------------------------------------------------------------------------------------------------------複数LAPの状況について（修正）
-Furthermore, in the case where multiple LAPs which have same SSID and a RAP are set in the targeted LAN in real situations, the proposed scheme can detect without any problems.
-In that case, only a client which forms MITM topology with a RAP cannot receive ARP replys if its MAC address is duplicated and the other can get them since they can be sent to both of the duplicated addresses.
-Although it can not detect in the case a client does not form MITM with a RAP but it exists, the client does not have any risk to be eavesdropped on the exchange of its data.
+Furthermore, even if multiple LAPs which have the same SSID, and a RAP are set in the targeted LAN as in real situations, the proposed scheme can detect without any problem.
+In that case, only a client which forms MITM topology with a RAP cannot receive ARP replies.
+Because ARP replies can be sent to all of the LAPs with the duplicated addresses, the other LAPs which do not connect with the RAP can get the replies \cite{kataoka}.
+Thus, the connectivity of each LAP is kept available as usual.
+Also, the other clients which directly connet with the LAP can use Internet as usual without being attacked since they do not form MITM with the RAP.
 %Thus, it means it can detect in the case that MITM attacks are formed the detec
 %---------------------------------------------------------------------------------------------------------------複数LAPの状況について（元々）
 %A client can receive ARP reply packets even if its MAC address is set to that of each LAP via which the traffic is not relayed to a gateway.
@@ -261,19 +265,19 @@ In addition, the proposed scheme is not affected by a spoofed MAC address becaus
 \vspace{-2zh}
 \end{figure}
 In this subsection, the algorithm of the scheme is explained.
-Its goal is reveal whether the connected AP is a LAP or not, namely $\tarAP = LAP$ or $\tarAP \ne LA$, by searching the MAC address of a LAP between a client and a gateway.
+Its goal is reveal whether the connected AP is a LAP or not, namely $\tarAP = LAP$ or $\tarAP \ne LAP$, by searching the MAC address of a LAP between a client and a gateway.
 $\tarAP$ denotes a AP which connect with a client.
 The algorithm mainly consists of 1) MAC address collection and 2) ARP reply based detection.
 
 \subsubsection{MAC Address Collection}
 Let $\SSID$ and $\tarMAC$ denote SSID and MAC address of $\tarAP$, respectively.
 The set of MAC addresses of APs whose SSID is identical to $\SSID$  is created with beacon frames of them.
-Let the set is denoted by $M_{all}=\{m_{input}|0\le input \le n_{all}  \}$, where $n_{all}$ is the number of collected MAC addresses.
+Let the set is denoted by $M_{\rm all}=\{m_{\rm i nput}|0\le input \le n_{\rm al l}  \}$, where $n_{\rm all}$ is the number of collected MAC addresses.
 
 \subsubsection{ARP Reply based Detection}
 \figurename~\ref{fig:flowchart} shows the flowchart of this phase.
 This phase consists of three procedures which are a) Comparison with $\tarMAC$, b) Setting MAC address, and c) Observation of ARP reply from the gateway to the client.
-These procedures are repeatedly conducted for every $m_{input}$ in $M_{all}$ unless the RAP is detected.
+These procedures are repeatedly conducted for every $\inputMAC$  in $M_{all}$ unless the RAP is detected.
 
 In the first phase, $\inputMAC$ and $\tarMAC$ are compared.
 If they are the same MAC address, it easily judges that $\tarMAC$ is the cloned address.
@@ -288,7 +292,7 @@ Thus, the client sends ARP request in order to reconnect with it through the $\t
 Finally, in the third procedure, the ARP reply packets whose destination is set as $\inputMAC$ are observed to investigate whether the AP with $\inputMAC$ is on the other side of $\tarAP$.
 If the packets do not reach the client, the $\tarAP$ can be revealed as the RAP which exists between the client and the LAP with $\inputMAC$, and the detection phase is finished.
 Otherwise, the benignancy of the $\tarAP$ stil cannot be judged by the AP with $\inputMAC$.
-In this case, the same procedures in the flowchart are repeatedly conducted for another $\inputMAC$ in $M_{A_{all}}$ until the RAP is detected.
+In this case, the same procedures in the flowchart are repeatedly conducted for another $\inputMAC$ in $M_{A_{\rm all}}$ until the RAP is detected.
 If the detection phase is carried out for all $\inputMAC$ without the detection of RAP, the $\tarAP$ is declared as a LAP.
 \begin{figure*}[ht]
     \begin{minipage}{0.33\hsize}
@@ -369,16 +373,15 @@ Given the fact, we conducted the further experiment to realize more precise dete
 As a result, we conclude that the Prop. enables the detection without any error when the $\Delta t$ is 15 seconds.
 
 \subsection{Evaluation in Real Environment}
-
 In order to demonstrate the robustness and the average time per detection time $T$ of the proposed scheme in real environment, we conducted an experiment in a cafe and evaluate ACC and the total time required for the detection.
 \figurename~\ref{fig:sbx} shows the Wi-Fi network model in the cafe.
 As shown in \figurename~\ref{fig:sbx}, there exist two LAPs, which are LAP(a) and LAP(b), and the both have same SSID and two different MAC addersses for two frequency bands which can be used in IEEE 802.2n.
-The MAC addresses of LAP(a) are represented as $\stbA$ and $\stba$ , and similarly, those of LAP(b) are represented as $\stbB$ and $\stbb$.
+The MAC addresses of LAP(a) are represented as $\stbA$ and $\stba$, and similarly, those of LAP(b) are represented as $\stbB$ and $\stbb$.
 Through the evaluations, the client is always connected to $\stbA$.
-In non attack scenario, we use $\stbB$ and $\stbb$ as MAC address in the set of $M_{all}$ defined in Section \ref{sec:alg}.
-In contrast, we construct the attack scenario experimentally by assuming $\stbA$ and $\stba$ as the MAC address of a RAP and that of a LAP which is on the other side of the RAP since an acutual RAP cannot be installed in a real world.
+In non attack scenario, we use $\stbB$ and $\stbb$ as MAC address in the set of $M_{\rm all}$ defined in Section \ref{sec:alg}.
+In contrast, we construct the attack scenario experimentally by assuming $\stbA$ and $\stba$ as the MAC address of a RAP and that of a LAP which is on the other side of the RAP since an acutual RAP cannot be installed in a real LAN.
 In this case, the RAP is regarded as the high-end router which can relay packets with distinct channels.
-In order to match the number of the MAC addesses which need to be input to the proposed scheme, we only use $\stba$ and $\stbb$ in the attack scenario.
+In order to match the number of the MAC addesses which need to be input to the proposed scheme, we only use $\stba$ and $\stbb$ as the MAC addresses of LAPs in the set of $M_{\rm all}$  in the attack scenario.
 Our experimental situation can be regarded as the same situation with the attack model shown in \ref{fig:model}.
 The experiments are conducted 100 times in each situation around 2:00pm on a weekday at an cafe.
 $\Delta t$ is set to 15 seconds enough to get ARP reply packets.
@@ -409,7 +412,7 @@ It is much shorter than the time that the most of recent security softwares take
 Thus, it guarantees the device's safety for users without being annoyed.
 Through this result, we conclude that the proposed scheme can accurately detect the attack with relatively short time in real environment whose traffic is unstable.
 
-However, as with other existing schemes, the proposed scheme assumes Wi-Fi network models where Legitimate Repeaters (LR) are not installed.
+However, as with other existing schemes, this work assumes Wi-Fi network models where Legitimate Repeaters (LR) are not installed.
 It may be usual to introduce a LR in network to relay traffic farther at the expense of transmission speed in a large area.
 In this case, the proposed scheme cannot distinguish a RAP and LR since both of them relay packets between a client and a LAP in the same way as MITM attack.
 In order to detect the attack even in such Wi-Fi networks, we focus on their RSSI values as supplementary features because it can tell their general distance each other \cite{rssi}.
@@ -421,8 +424,8 @@ In the future, we plan to devise the additional countermeasures and conduct some
 \section{conclusion}\label{sec:6}
 In this paper, we have proposed RAP detection by using ARP failure under the MAC address duplication.
 We collect MAC addresses from user side and set the MAC address of a client to them.
-By observing ARP packets in the situation, we can reveal the benignancy of connected AP.
-The detection performance of the proposed scheme is better than the previous scheme.
+By observing ARP packets in the situation, we can reveal the benignancy of the connected AP.
+The detection performance of the proposed scheme is better than that of the previous scheme.
 The results show it can detect a RAP without any error even in unstable traffic environment.
 In addition, the experiment in a small cafe shows the availability in a real network.
 In the future, we will conduct a large-scaled examination of the proposed scheme.

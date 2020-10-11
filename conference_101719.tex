@@ -208,7 +208,7 @@ This is because throughput is considerably dependent on various factors of the n
 \tablename~\ref{tab:thrput result} shows the detection accuracy in different traffic environment.
 The one is the constant traffic environment, where the 80Mbps traffic is communicated through the LAP, and the other is the random traffic environment, which reproduces the real LAN in our lives.
 In the former environment, the previous scheme can detect with high accuracy.
-On the contrary, it is degraded to 0.74 in random traffic.
+On the contrary, it is degraded to 0.765 in random traffic.
 The previous scheme is subject to traffic environment, which can lead to degradation of the detection performance.
 Thus, the requirement that we must satisfy is to leverage factors which are independent of the network traffic.
 
@@ -265,8 +265,8 @@ In addition, the proposed scheme is not affected by a spoofed MAC address becaus
 \vspace{-2zh}
 \end{figure}
 In this subsection, the algorithm of the scheme is explained.
-Its goal is reveal whether the connected AP is a LAP or not, namely $\tarAP = LAP$ or $\tarAP \ne LAP$, by searching the MAC address of a LAP between a client and a gateway.
-$\tarAP$ denotes a AP which connect with a client.
+Its goal is to reveal whether the connected AP is a LAP or not, namely $\tarAP = LAP$ or $\tarAP \ne LAP$, by searching the MAC address of a LAP between a client and a gateway.
+$\tarAP$ denotes a AP which connects with a client.
 The algorithm mainly consists of 1) MAC address collection and 2) ARP reply based detection.
 
 \subsubsection{MAC Address Collection}
@@ -282,11 +282,11 @@ These procedures are repeatedly conducted for every $\inputMAC$  in $M_{all}$ un
 In the first phase, $\inputMAC$ and $\tarMAC$ are compared.
 If they are the same MAC address, it easily judges that $\tarMAC$ is the cloned address.
 In this case, the RAP is detected in the targeted LAN and the detection is finished since it is not the case in non attack scenario.
-However, in the case where the RAP clones a MAC address of a LAP beyond the communication range of a client or it does not clone, it cannot be detected by this accordance of MAC addresses procedure.
-Thus, the detection process proceeds to the second phase.
+However, in the case where the RAP clones a MAC address of a LAP beyond the communication range of a client or it does not clone, it cannot be detected by this procedure by the accordance of its MAC address.
+Thus, the process proceeds to the second phase.
 
 In the second phase, the MAC address of a client is set to $\inputMAC$.
-After that, the connection between the client and $\tarAP$ is once lost since the gateway become unable to use the original MAC address as a destination for the packets.
+After that, the connection between the client and $\tarAP$ is once lost since the gateway becomes unable to use the original MAC address as a destination for the packets.
 Thus, the client sends ARP request in order to reconnect with it through the $\tarAP$ automatically.
 
 Finally, in the third procedure, the ARP reply packets whose destination is set as $\inputMAC$ are observed to investigate whether the AP with $\inputMAC$ is on the other side of $\tarAP$.
@@ -375,7 +375,7 @@ As a result, we conclude that the Prop. enables the detection without any error 
 \subsection{Evaluation in Real Environment}
 In order to demonstrate the robustness and the average time per detection time $T$ of the proposed scheme in real environment, we conducted an experiment in a cafe and evaluate ACC and the total time required for the detection.
 \figurename~\ref{fig:sbx} shows the Wi-Fi network model in the cafe.
-As shown in \figurename~\ref{fig:sbx}, there exist two LAPs, which are LAP(a) and LAP(b), and the both have same SSID and two different MAC addersses for two frequency bands which can be used in IEEE 802.2n.
+As shown in \figurename~\ref{fig:sbx}, there exist two LAPs, which are LAP(a) and LAP(b), and the both have same SSID and two different MAC addersses for two frequency bands which can be used in IEEE 802.11n.
 The MAC addresses of LAP(a) are represented as $\stbA$ and $\stba$, and similarly, those of LAP(b) are represented as $\stbB$ and $\stbb$.
 Through the evaluations, the client is always connected to $\stbA$.
 In non attack scenario, we use $\stbB$ and $\stbb$ as MAC addresses in the set of $M_{\rm all}$ defined in Section \ref{sec:alg}.

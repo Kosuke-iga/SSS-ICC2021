@@ -40,7 +40,7 @@ Email: igarashi@sasase.ics.ac.keio.jp}
 }
 \maketitle
 \begin{abstract}
-Detecting a Rouge Access Point (RAP) in Wi-Fi network is imperative.
+Detecting a Rogue Access Point (RAP) in Wi-Fi network is imperative.
 The previous scheme is user side detection focusing on two channels used by a RAP.
 That scheme can detect a RAP in stable traffic environment by revealing the channel used with a Legitimate Access Point (LAP) with intentional interference.
 However, the detection performance is degraded in the real environment where traffic is more unstable because it affects the traffic on the channel.
@@ -117,7 +117,7 @@ A RAP can be detected by comparing its fingerprints with those in the predefined
 Wu et al. \cite{prapd} focus on the RSSI which is hard to be forged arbitrarily and highly correlated to a location of an AP and its power.
 For each LAP in a network, RSSI, which is measured by additional costly devices, is registered in a whitelist beforehand.
 By using RSSI, even if the MAC address is spoofed by adversary, that scheme can disclose that it is a RAP at a different location from that of LAPs.
-However, that scheme is hard to detect a RAP which is located near the LAP because RSSI is not as exact as it can indicate a small difference of the nearby location.
+However, it is hard for that scheme to detect a RAP which is located near the LAP because RSSI is not as exact as it can indicate a small difference of the nearby location.
 Although RSSI is useful as a supplementary feature, using only RSSI is insufficient to detect a RAP with high accuracy.
 
 In order to detect in more detail, Lanze et al. \cite{clockskew} focus on clock skew as a device fingerprinting based purely on physical properties.
@@ -165,12 +165,13 @@ The RAP sends beacon frames with stronger signals since the client simply connec
 In our model, the targeted network is open Wi-Fi, whose LAPs have no security protocols such as WPA2, since MITM attack does not succeed in a protected Wi-Fi\cite{kataoka}.
 %Thus, protected Wi-Fi is beyond the scope of our work.
 By using the same gateway with the LAN, the adversary can evade simple detections with ISP names or Global IP addresses \cite{rtt}.
-In addition to that, the adversary in our model exploits a hardware-based AP, which is introduced by \cite{previous}, in order to realize a detection scheme independent of its computational performance.
+In addition to that, the adversary in our model exploits a hardware-based AP, which is introduced by \cite{previous}, in order for us to realize a detection scheme that is independent of its computational performance.
 The distinct channels can be used on the both sides to avoid channel interference since the RAP is composed of two APs which are interconnected with a LAN cable.
 One of these routers is connected to a LAP in station mode, and the other disguise client as a LAP in service mode.
-Because a high-end router which can relay traffic with distinct channels appears nowadays, it can replace a RAP in our model.
+A high-end router which can relay traffic with distinct channels appears nowadays and can replace a RAP in our model.
+This model is likely scenario because it is applicable to small area, such as a cafe and restaurant.
 
-\subsection{Previous Scheme}
+\subsection{Previous Scheme
 \subsubsection{Overview of the Previous Scheme}
 The main idea of the previous scheme \cite{previous} is that the adversary needs to use two distinct channels on the path from a client to the gateway to avoid channel interference each other.
 The one is the channel for the path between a LAP and a RAP, and the other is that for the path between a RAP and the client.
@@ -178,7 +179,7 @@ Thus, from the perspective of the client, there exists another channel on the ro
 The extra channel cannot be observed directly from the client.
 The previous scheme detects the RAP by finding out this second channel on the basis of the decline in the throughput.
 In order to decrease the throughput, the previous scheme saturates the channel used between a LAP and the RAP by intentionally interfering with an additional equipment in a client.
-For example, when a client is using channel 1 with the connected AP whose benignancy is unidentified, the equipment in a client transmits a large number of packets to all the channel except channel 1 to saturate traffic on the path.
+For example, when a client is using channel 1 with the connected AP whose benignancy is unidentified, the equipment in a client transmits a large number of packets to all the channels except channel 1 to saturate traffic on the path.
 If there exists the other channel on the route, the decline in the throughput can be observed by the client, and the presence of RAP is revealed.
 
 \subsubsection{Shortcoming of the Previous Scheme}\label{sec:shortcoming}

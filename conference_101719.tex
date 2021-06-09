@@ -32,11 +32,9 @@
 }
 
 \author{\IEEEauthorblockN{Kosuke Igarashi, Hiroya Kato and Iwao Sasase}
-\IEEEauthorblockA{\textit{Dept. of Information and Computer Science} \\
-\textit {Keio University}\\
+\IEEEauthorblockA{\textit{Dept. of Information and Computer Science, Keio University}\\
 3-14-1 Hiyoshi, Kohoku, Yokohama, Kanagawa 223-8522, Japan, \\
 Email: igarashi@sasase.ics.ac.keio.jp}
-
 }
 \maketitle
 \begin{abstract}
@@ -90,11 +88,11 @@ Hence, we focus on that scheme \cite{previous} as the previous scheme.
 Although the previous scheme is successful in the experimental environment, its detection performance is degraded by unstable traffic in real environment.
 Therefore, it is necessary to realize the user side detection which is independent of the network traffic.
 
-In order to realize the user side detection which is independent of network traffic, in this paper, we propose RAP detection by using Address Resolution Protocol (ARP) failure under the MAC address duplication.
+To realize the user side detection which is independent of network traffic, in this paper, we propose RAP detection by using Address Resolution Protocol (ARP) failure under the MAC address duplication.
 The main idea of the proposed scheme is that the traffic is relayed via two APs, namely the RAP and a LAP, on the LAN path from a client to a gateway.
 Therefore, besides the connected RAP, a LAP exists inevitably on the other side of the RAP because of the MITM attack in an attack scenario.
 On the basis of this idea, the proposed scheme reveals a connected AP as a RAP by finding MAC address of such a LAP from obtainable beacon frames by a client \cite{beacon}.
-In order to find the MAC address, we leverage the phenomenon that a client cannot receive ARP reply packets from a gateway in the situation where there exists the duplicated MAC address, which is set in the packets as the destination address, on the path back to the client.
+To find the MAC address, we leverage the phenomenon that a client cannot receive ARP reply packets from a gateway in the situation where there exists the duplicated MAC address, which is set in the packets as the destination address, on the path back to the client.
 The proposed scheme intentionally creates such situation by setting the MAC address of a client to that of the LAP on the other side of the connected RAP.
 By doing this, the proposed scheme can reveal the connected AP as a RAP regardless of network traffic.
 The contributions of the proposed scheme are as follows:
@@ -136,7 +134,7 @@ Because there exists the extra hop caused by the RAP on the path, RTT is longer 
 Although that scheme is useful only for the case where the adversary sets RAP up on the laptop, Jang et al. \cite{previous} reveal the fact that the computational power of the software bridging mainly accounts for the packet delay.
 Thus, the adversary can evade the detection based on packet delay by utilizing hardware-based RAPs having little bridging delay unlike software-based RAPs.
 
-In order to detect both types of RAPs, namely, software-based and hardware-based ones, Jang et al. focus on two communication channels utilized by a RAP between a client and LAP\cite{previous}.
+To detect both types of RAPs, namely, software-based and hardware-based ones, Jang et al. focus on two communication channels utilized by a RAP between a client and LAP\cite{previous}.
 Whereas a RAP intervenes between a client and a LAP, two distinct channels are used.
 This is because a RAP can be detected by \cite{rtt} because of latency caused by the channel interference if the same channel is used in the both paths.
 For example, it is assumed that channel 1 is used as the channel between a client and a RAP, and channel 6 is that between the RAP and a LAP.
@@ -148,7 +146,7 @@ Thus, we select the scheme \cite{previous} as the previous scheme and elaborate 
 \section{ATTACK MODEL AND PREVIOUS SCHEME}\label{sec:3}
 \begin{figure}[t]
     \begin{center}
-        \includegraphics[scale=0.5]{attack-model/attack-model.pdf}
+        \includegraphics[scale=0.45]{attack-model/attack-model.pdf}
         \caption{The Attack Model}
         \label{fig:model}
     \end{center}
@@ -171,7 +169,7 @@ One of these routers is connected to a LAP in station mode, and the other disgui
 A high-end router which can relay traffic with distinct channels appears nowadays and can replace a RAP in our model.
 This model is likely scenario because it is applicable to small area, such as a cafe and restaurant.
 
-\subsection{Previous Scheme
+\subsection{Previous Scheme}
 \subsubsection{Overview of the Previous Scheme}
 The main idea of the previous scheme \cite{previous} is that the adversary needs to use two distinct channels on the path from a client to the gateway to avoid channel interference each other.
 The one is the channel for the path between a LAP and a RAP, and the other is that for the path between a RAP and the client.
@@ -322,11 +320,11 @@ If the detection phase is carried out for all $\inputMAC$ without the detection 
 \section{EVALUATION}\label{sec:5}
 In order to demonstrate the effectiveness of the proposed scheme, we compare it with the previous scheme \cite{previous} which interferes the channel between a LAP and a RAP.
 
-The metrics of the evaluation are ACCuracy (ACC), True Positive Rate (TPR), and False Positive Rate (FPR) defined as
+The evaluation metrics are ACCuracy (ACC), True Positive Rate (TPR), and False Positive Rate (FPR) defined as
 \begin{gather}
-    \mathrm{ACC} = \frac{\mathrm{TP} + \mathrm{TN}}{\mathrm{TP} + \mathrm{TN} + \mathrm{FP} + \mathrm{FN}}\\
-    \mathrm{TPR} = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}}\\
-    \mathrm{FPR} = \frac{\mathrm{FP}}{\mathrm{FP} + \mathrm{TN}}
+    \mathrm{ACC} = \frac{\mathrm{TP} + \mathrm{TN}}{\mathrm{TP} + \mathrm{TN} + \mathrm{FP} + \mathrm{FN}},\\
+    \mathrm{TPR} = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}},\\
+    \mathrm{FPR} = \frac{\mathrm{FP}}{\mathrm{FP} + \mathrm{TN}},
 \end{gather}
 where TP, TN, FP, and FN denote the number of True Positive (RAPs are regarded as RAPs), True Negative (LAPs are regarded as LAPs), False Positive (LAPs are regarded as RAPs), and False Negative (RAPs are regarded as LAPs), respectively.
 We evaluate the proposed scheme with these metrics in two scenarios which are the case of attack where a client connects with a RAP and that of non-attack where a client connects with a LAP.
@@ -355,7 +353,7 @@ It is affected by the observation time of ARP procedure per a AP, which is repre
 We conducted each evaluation by changing $\Delta t$ from 5 seconds to 10 seconds at every second.
 
 \subsection{Evaluation of the Proposed Scheme}
-In order to show the effectiveness of the proposed scheme (Prop.), we compare it with the previous scheme \cite{previous} (Prev.).
+To show the effectiveness of the proposed scheme (Prop.), we compare it with the previous scheme \cite{previous} (Prev.).
 \figurename~\ref{fig:acc} shows the results of the average ACC over the 100 experiments in each scheme.
 As shown in \figurename~\ref{fig:acc}, the Prev. cannot accurately detect the attack in random traffic scenario, and the ACC is about 76.5\%.
 However, the ACC of the Prop. is lower than that of the Prev. when each ARP observation time is not greater than 6s.
@@ -408,11 +406,11 @@ $\Delta t$ is set to 15 seconds enough to get ARP reply packets.
 \end{table}
 
 \tablename~\ref{tab:real} shows the results in the real environment.
-The proposed scheme realizes 100\% accuracy even in real environment.
+The proposed scheme realizes 100\% accuracy even in the real environment.
 At that time, $\rm T$ is 32.1 seconds.
-It is much shorter than the time that the most of recent security softwares take to scan their disk.
+It is much shorter than the time that the most of recent security softwares take to scan their disk, which means acceptable time.
 Thus, the safety of the LAN is guaranteed without being annoyed.
-Through this result, we conclude the proposed scheme can accurately detect the attack with relatively short time in real LAN whose traffic is unstable.
+We conclude our scheme can accurately detect the attack with relatively short time in real LAN whose traffic is unstable.
 
 However, as with other existing schemes, this work assumes Wi-Fi network models where Legitimate Repeaters (LR) are not installed.
 It may be usual to introduce a LR in network to relay traffic farther at the expense of transmission speed in a large area.

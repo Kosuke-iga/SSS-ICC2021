@@ -79,6 +79,11 @@ O.~{Nakhila} and C.~{Zou}, ``User-side wi-fi evil twin attack detection using
   random wireless channel monitoring,'' in \emph{MILCOM 2016 - 2016 IEEE
   Military Communications Conference}, 2016, pp. 1243--1248.
 
+\bibitem{kataoka}
+P.~{Shrivastava}, M.~S. {Jamal}, and K.~{Kataoka}, ``Evilscout: Detection and
+  mitigation of evil twin attack in sdn enabled wifi,'' \emph{IEEE Transactions
+  on Network and Service Management}, vol.~17, no.~1, pp. 89--102, 2020.
+
 \bibitem{wire}
 ``{Tshark-the wireshark network analyser},'' \url{http://www.wireshark.org.}
 

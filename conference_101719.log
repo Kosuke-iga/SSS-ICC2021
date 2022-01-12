@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  22 APR 2020 00:50
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.4.11)  11 OCT 2020 14:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -470,39 +470,29 @@ LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 [1
 
 
-] [2]
+]
 File: attack-model/attack-model.pdf Graphic file (type pdf)
 <attack-model/attack-model.pdf>
-File: figure/Thrput.pdf Graphic file (type pdf)
-<figure/Thrput.pdf>
- [3]
-File: flowchart/flowchart.pdf Graphic file (type pdf)
-<flowchart/flowchart.pdf>
-
-Overfull \hbox (2.44133pt too wide) in paragraph at lines 228--229
- [] 
- []
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 238
+ [2]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 197
 .
-(/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 238
+LaTeX Font Info:    Trying to load font information for U+msb on input line 197
 .
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+) [3]
+File: flowchart/flowchart.pdf Graphic file (type pdf)
+<flowchart/flowchart.pdf>
 File: figure/ACC.pdf Graphic file (type pdf)
 <figure/ACC.pdf>
 File: figure/FPR.pdf Graphic file (type pdf)
 <figure/FPR.pdf>
 File: figure/TPR.pdf Graphic file (type pdf)
 <figure/TPR.pdf>
-
-Underfull \vbox (badness 1728) has occurred while \output is active []
-
  [4]
 File: starbucks/starbucks.pdf Graphic file (type pdf)
 <starbucks/starbucks.pdf>
@@ -534,12 +524,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 3635 strings out of 481140
- 52419 string characters out of 5917417
- 311143 words of memory out of 5000000
- 19637 multiletter control sequences out of 15000+600000
+ 3632 strings out of 481140
+ 52365 string characters out of 5917417
+ 311155 words of memory out of 5000000
+ 19635 multiletter control sequences out of 15000+600000
  568926 words of font info for 127 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 32i,9n,37p,339b,391s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,9n,37p,343b,391s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on conference_101719.dvi (6 pages, 48140 bytes).
+Output written on conference_101719.dvi (6 pages, 49168 bytes).
